@@ -2,669 +2,467 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Glame chic | Luxury Beauty Brand</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#ff4fa3" />
+  <title>Glame Chic — Luxury Beauty Brand</title>
+  <meta name="description" content="Glame Chic — Luxury Beauty Brand | فخامة أنوثة… مثل الشركات العالمية ✨" />
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
     :root{
-      --bg1:#0b0610;
-      --bg2:#160818;
-      --pink:#ff2e93;
-      --pink2:#ff6fb5;
-      --rose:#ff4fb1;
-      --gold:#ffd48a;
-      --text:#ffffff;
-      --muted:rgba(255,255,255,.78);
-      --card:rgba(255,255,255,.08);
-      --stroke:rgba(255,255,255,.14);
-      --shadow:0 18px 60px rgba(0,0,0,.45);
+      --bg0:#0a0710;
+      --glass: rgba(255,255,255,.09);
+      --stroke: rgba(255,255,255,.14);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --pink:#ff4fa3;
+      --pink2:#ff77c3;
+      --gold:#ffd6a2;
+      --shadow: 0 24px 80px rgba(0,0,0,.55);
+      --shadow2: 0 10px 40px rgba(0,0,0,.45);
+      --r: 22px;
+      --r2: 30px;
     }
-
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family:'Cairo',sans-serif;
+      font-family:"Cairo", system-ui, -apple-system, Segoe UI, Arial;
       color:var(--text);
-      background: radial-gradient(1200px 700px at 80% 10%, rgba(255,46,147,.22), transparent 60%),
-                  radial-gradient(900px 600px at 10% 20%, rgba(255,212,138,.14), transparent 55%),
-                  linear-gradient(140deg, var(--bg1), var(--bg2));
+      background:
+        radial-gradient(1200px 600px at 70% 20%, rgba(255,79,163,.24), transparent 60%),
+        radial-gradient(900px 500px at 20% 60%, rgba(255,214,162,.18), transparent 55%),
+        radial-gradient(1100px 700px at 50% 90%, rgba(255,119,195,.12), transparent 60%),
+        linear-gradient(180deg, #07030b 0%, #0b0710 50%, #07030b 100%);
       overflow-x:hidden;
     }
 
-    /* Animated soft background */
-    .bg-orbs{
-      position:fixed; inset:-20%;
-      pointer-events:none;
-      z-index:-2;
-      filter: blur(18px);
-      opacity:.75;
-      animation: floatScene 18s ease-in-out infinite alternate;
-    }
-    .orb{
-      position:absolute;
-      width:520px; height:520px;
-      border-radius:50%;
-      background: radial-gradient(circle at 30% 30%, rgba(255,111,181,.65), rgba(255,46,147,.12) 55%, transparent 70%);
-      mix-blend-mode: screen;
-    }
-    .orb.o1{left:5%; top:5%; animation: orbMove1 14s ease-in-out infinite alternate;}
-    .orb.o2{right:2%; top:20%; width:620px; height:620px; background: radial-gradient(circle at 30% 30%, rgba(255,212,138,.5), rgba(255,46,147,.10) 55%, transparent 70%); animation: orbMove2 16s ease-in-out infinite alternate;}
-    .orb.o3{left:20%; bottom:0%; width:680px; height:680px; background: radial-gradient(circle at 30% 30%, rgba(255,46,147,.55), rgba(255,212,138,.10) 55%, transparent 70%); animation: orbMove3 18s ease-in-out infinite alternate;}
-    @keyframes orbMove1{to{transform:translate(140px,60px) scale(1.05)}}
-    @keyframes orbMove2{to{transform:translate(-120px,40px) scale(1.08)}}
-    @keyframes orbMove3{to{transform:translate(80px,-80px) scale(1.04)}}
-    @keyframes floatScene{to{transform:translateY(10px)}}
+    .bg{position:fixed; inset:-40px; z-index:-2; pointer-events:none; filter: blur(22px); opacity:.85;}
+    .blob{position:absolute; width:520px; height:520px; border-radius:42% 58% 52% 48% / 48% 45% 55% 52%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,79,163,.55), rgba(255,79,163,.05) 70%);
+      animation: floaty 12s ease-in-out infinite; mix-blend-mode: screen;}
+    .blob.b2{width:560px; height:560px; right:-140px; top:120px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,214,162,.45), rgba(255,214,162,.04) 70%);
+      animation-duration:14s;}
+    .blob.b1{left:-160px; top:-40px;}
+    .blob.b3{width:620px; height:620px; left:25%; bottom:-260px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,119,195,.35), rgba(255,119,195,.04) 70%);
+      animation-duration:16s;}
+    @keyframes floaty{0%,100%{transform:translate(0,0) rotate(0deg)} 50%{transform:translate(40px,-30px) rotate(10deg)}}
 
-    /* Layout */
-    .container{
-      width:min(1100px, 92vw);
-      margin:0 auto;
-      padding:24px 0 80px;
-    }
+    .container{width:min(1100px, 92vw); margin:0 auto}
+    a{color:inherit; text-decoration:none}
 
-    /* Luxury top bar */
     .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding:14px 16px;
-      border:1px solid var(--stroke);
-      border-radius:18px;
-      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      position:sticky;
-      top:10px;
-      z-index:5;
-    }
-    .brand{
-      display:flex; align-items:center; gap:12px;
-    }
-    .logo{
-      width:44px; height:44px;
-      border-radius:14px;
-      background: linear-gradient(135deg, var(--pink), var(--pink2));
-      position:relative;
-      box-shadow:0 12px 34px rgba(255,46,147,.35);
-      overflow:hidden;
-    }
-    .logo::after{
-      content:"";
-      position:absolute; inset:-60%;
-      background: linear-gradient(120deg, transparent 35%, rgba(255,255,255,.55) 45%, transparent 55%);
-      transform: rotate(20deg);
-      animation: shine 2.4s linear infinite;
-      opacity:.8;
-    }
-    @keyframes shine{
-      from{transform:translateX(-40%) rotate(20deg)}
-      to{transform:translateX(40%) rotate(20deg)}
-    }
-    .brand h3{
-      margin:0;
-      font-weight:800;
-      letter-spacing:.6px;
-      font-size:18px;
-      line-height:1.1;
-    }
-    .brand small{
-      display:block;
-      opacity:.8;
-      margin-top:2px;
-      font-weight:600;
-    }
-
-    .top-actions{
-      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
-    }
-
-    /* Hero */
-    .hero{
-      margin-top:22px;
-      padding:56px 18px;
-      border-radius:26px;
-      border:1px solid var(--stroke);
-      background: linear-gradient(135deg, rgba(255,46,147,.20), rgba(255,212,138,.10), rgba(255,255,255,.05));
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      position:relative;
-      overflow:hidden;
-    }
-    .hero::before{
-      content:"";
-      position:absolute; inset:-80%;
-      background: radial-gradient(circle at 30% 40%, rgba(255,46,147,.40), transparent 55%),
-                  radial-gradient(circle at 60% 60%, rgba(255,212,138,.28), transparent 55%);
-      animation: heroGlow 10s ease-in-out infinite alternate;
-    }
-    @keyframes heroGlow{to{transform:translate(40px, -20px) scale(1.05)}}
-    .hero-inner{
-      position:relative;
-      z-index:1;
-      text-align:center;
-      max-width:820px;
-      margin:0 auto;
-    }
-    .tag{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 14px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.20);
-      background: rgba(255,255,255,.06);
-      font-weight:800;
-      letter-spacing:.5px;
-      margin-bottom:16px;
-    }
-    .tag span.dot{
-      width:9px; height:9px; border-radius:50%;
-      background: linear-gradient(135deg, var(--gold), var(--pink2));
-      box-shadow:0 0 18px rgba(255,212,138,.45);
-    }
-    .hero h1{
-      margin:0;
-      font-size:46px;
-      font-weight:800;
-      letter-spacing:1px;
-    }
-    .hero p{
-      margin:12px 0 0;
-      color:var(--muted);
-      line-height:1.9;
-      font-weight:600;
-      font-size:16px;
-    }
-
-    /* Buttons */
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:14px 18px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.08);
-      color:#fff;
-      text-decoration:none;
-      font-weight:800;
-      box-shadow:0 14px 40px rgba(0,0,0,.25);
-      transition:.25s transform, .25s opacity, .25s box-shadow;
-      cursor:pointer;
-      user-select:none;
-      min-width:170px;
-    }
-    .btn:hover{transform:translateY(-2px); opacity:.95; box-shadow:0 22px 55px rgba(0,0,0,.40);}
-    .btn.primary{
-      border: none;
-      background: linear-gradient(135deg, var(--pink), var(--pink2));
-      box-shadow:0 16px 46px rgba(255,46,147,.35);
-    }
-    .btn.whatsapp{background: linear-gradient(135deg, #14c861, #25D366); border:none;}
-    .btn.tiktok{background: linear-gradient(135deg, #0b0b0b, #1c1c1c); border:1px solid rgba(255,255,255,.20);}
-    .btn.ghost{background: rgba(255,255,255,.06);}
-
-    .hero-actions{
-      margin-top:22px;
-      display:flex;
-      gap:12px;
-      justify-content:center;
-      flex-wrap:wrap;
-    }
-
-    /* Sections */
-    .section{
-      margin-top:26px;
-      padding:26px 18px;
-      border-radius:24px;
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.06);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-
-    .section h2{
-      margin:0 0 10px;
-      font-size:26px;
-      font-weight:800;
-      letter-spacing:.4px;
-    }
-    .section .sub{
-      margin:0;
-      color:var(--muted);
-      line-height:1.9;
-      font-weight:600;
-    }
-
-    /* Stats */
-    .stats{
-      margin-top:18px;
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:12px;
-    }
-    .stat{
-      padding:16px;
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,.14);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-      position:relative;
-      overflow:hidden;
-    }
-    .stat::after{
-      content:"";
-      position:absolute; inset:-60%;
-      background: linear-gradient(120deg, transparent 35%, rgba(255,255,255,.22) 45%, transparent 55%);
-      transform: rotate(18deg);
-      animation: shine 3.2s linear infinite;
-      opacity:.5;
-    }
-    .stat b{display:block; font-size:26px; font-weight:800; position:relative; z-index:1;}
-    .stat small{display:block; margin-top:4px; opacity:.85; font-weight:700; position:relative; z-index:1;}
-
-    /* Products */
-    .grid{
-      margin-top:18px;
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:16px;
-    }
-    .card{
-      border-radius:22px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.18);
-      box-shadow:0 20px 60px rgba(0,0,0,.35);
-      transition:.35s transform, .35s box-shadow;
-      position:relative;
-    }
-    .card:hover{transform:translateY(-6px) scale(1.01); box-shadow:0 28px 70px rgba(0,0,0,.55);}
-    .card img{
-      width:100%; height:240px;
-      object-fit:cover;
-      display:block;
-      filter:saturate(1.08) contrast(1.03);
-    }
-    .card .cap{
-      padding:14px 14px 16px;
-      text-align:right;
-    }
-    .cap h4{
-      margin:0;
-      font-size:16px;
-      font-weight:800;
-      letter-spacing:.2px;
-    }
-    .cap p{
-      margin:6px 0 0;
-      color:var(--muted);
-      font-weight:600;
-      line-height:1.7;
-      font-size:13px;
-    }
-    .badge{
-      position:absolute;
-      top:12px;
-      left:12px;
-      padding:8px 12px;
-      border-radius:999px;
-      font-weight:900;
-      font-size:12px;
-      background: linear-gradient(135deg, rgba(255,212,138,.95), rgba(255,46,147,.9));
-      color:#1b0610;
-      box-shadow:0 12px 40px rgba(255,212,138,.25);
-    }
-
-    /* Reviews */
-    .reviews{
-      margin-top:16px;
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:12px;
-    }
-    .review{
-      padding:16px;
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-    }
-    .stars{
-      letter-spacing:2px;
-      color:var(--gold);
-      font-weight:900;
-      margin-bottom:8px;
-      text-align:right;
-    }
-    .review p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.85;
-      font-weight:650;
-      text-align:right;
-    }
-    .review b{
-      display:block;
-      margin-top:10px;
-      font-weight:900;
-      text-align:right;
-    }
-
-    /* Contact */
-    .contact-grid{
-      margin-top:12px;
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:14px;
-      align-items:stretch;
-    }
-    .contact-box{
-      padding:16px;
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      text-align:right;
-    }
-    .kv{
-      display:grid;
-      gap:10px;
-      margin-top:10px;
-    }
-    .row{
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.16);
-    }
-    .row span{opacity:.9; font-weight:800}
-    .row code{font-family:inherit; color:var(--gold); font-weight:900}
-
-    /* Privacy Modal */
-    .modal-backdrop{
-      position:fixed; inset:0;
-      background: rgba(0,0,0,.6);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding:18px;
-      z-index:20;
-    }
-    .modal{
-      width:min(900px, 96vw);
-      max-height:88vh;
-      overflow:auto;
-      border-radius:22px;
-      border:1px solid rgba(255,255,255,.16);
-      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
-      box-shadow:0 30px 90px rgba(0,0,0,.65);
+      position:sticky; top:0; z-index:50;
       backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      padding:18px;
-      text-align:right;
+      background: linear-gradient(180deg, rgba(10,6,16,.78), rgba(10,6,16,.35));
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
-    .modal header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      padding:0;
-      background:none;
-      box-shadow:none;
+    .topbar .wrap{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:14px 0;}
+    .brand{display:flex; align-items:center; gap:12px; min-width:240px;}
+    .logo{
+      width:46px; height:46px; border-radius:14px;
+      background: linear-gradient(135deg, rgba(255,79,163,.18), rgba(255,214,162,.12));
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
+      overflow:hidden; display:grid; place-items:center;
     }
-    .modal h3{margin:0; font-size:20px; font-weight:900;}
-    .close{
-      border:none;
-      background: rgba(255,255,255,.10);
-      color:#fff;
-      border-radius:14px;
-      padding:10px 12px;
-      cursor:pointer;
-      font-weight:900;
+    .logo img{width:100%; height:100%; object-fit:cover; display:block;}
+    .brand h1{margin:0; font-family:"Playfair Display", serif; font-size:18px; line-height:1.2;}
+    .brand .sub{margin-top:2px; font-size:12px; color:var(--muted);}
+
+    .nav{display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-start;}
+    .pill{
+      padding:10px 14px; border-radius:999px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      font-weight:700; font-size:13px;
+      transition:.2s ease;
     }
-    .modal p, .modal li{
-      color:var(--muted);
-      line-height:1.9;
-      font-weight:650;
+    .pill:hover{transform:translateY(-1px); background:rgba(255,255,255,.09)}
+    .pill.primary{
+      background: linear-gradient(135deg, rgba(255,79,163,.95), rgba(255,119,195,.92));
+      border-color: rgba(255,255,255,.18);
+      box-shadow: 0 14px 40px rgba(255,79,163,.16);
     }
 
-    footer{
-      margin-top:26px;
-      padding:22px 16px;
-      border-radius:20px;
+    header.hero{padding:38px 0 18px;}
+    .hero-grid{display:grid; grid-template-columns: 1.2fr .8fr; gap:18px; align-items:stretch;}
+    @media (max-width: 920px){ .hero-grid{grid-template-columns:1fr} .brand{min-width:auto} }
+
+    .card{
+      border-radius: var(--r2);
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
       border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.22);
-      text-align:center;
-      color:rgba(255,255,255,.75);
-      font-weight:650;
+      box-shadow: var(--shadow);
+      overflow:hidden; position:relative;
+    }
+    .card::before{
+      content:""; position:absolute; inset:-2px;
+      background:
+        radial-gradient(600px 180px at 50% -10%, rgba(255,214,162,.16), transparent 60%),
+        radial-gradient(600px 180px at 80% 40%, rgba(255,79,163,.18), transparent 60%);
+      z-index:0; pointer-events:none;
+    }
+    .card > *{position:relative; z-index:1}
+    .hero-left{padding:26px;}
+    .badge{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 14px; border-radius:999px;
+      background: rgba(0,0,0,.18);
+      border:1px solid rgba(255,255,255,.12);
+      font-weight:800; font-size:13px;
+    }
+    .dot{width:10px; height:10px; border-radius:999px; background: radial-gradient(circle at 30% 30%, var(--gold), var(--pink)); box-shadow:0 0 0 6px rgba(255,79,163,.12);}
+    .headline{margin:16px 0 8px; font-size: clamp(30px, 4.5vw, 52px); line-height:1.15; font-weight:900;}
+    .headline span{background: linear-gradient(90deg, rgba(255,255,255,.95), rgba(255,183,217,.95)); -webkit-background-clip:text; background-clip:text; color:transparent;}
+    .lead{margin:10px 0 0; color: rgba(255,255,255,.78); font-size:16px; line-height:1.9; max-width:62ch;}
+
+    .cta-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px;}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:14px 16px; border-radius:16px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      box-shadow: var(--shadow2);
+      font-weight:900;
+      transition:.2s ease;
+      min-width: 170px;
+      position:relative; overflow:hidden;
+    }
+    .btn::after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,.28), transparent 60%);
+      transform: translateX(-120%);
+      transition: .65s ease;
+      pointer-events:none;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09)}
+    .btn:hover::after{transform: translateX(120%);}
+
+    .btn.whatsapp{background: linear-gradient(135deg, rgba(37,211,102,.95), rgba(37,211,102,.72)); border-color:rgba(255,255,255,.18); color:#06180d;}
+    .btn.tiktok{background: linear-gradient(135deg, rgba(10,10,12,.92), rgba(10,10,12,.62));}
+    .btn.secondary{background: linear-gradient(135deg, rgba(255,79,163,.90), rgba(255,214,162,.30));}
+
+    .hero-right{padding:20px; display:flex; flex-direction:column; gap:12px; justify-content:space-between;}
+    .mini{border-radius: var(--r); background: rgba(0,0,0,.18); border:1px solid rgba(255,255,255,.10); padding:14px;}
+    .mini h3{margin:0 0 6px; font-size:14px; letter-spacing:.2px;}
+    .mini p{margin:0; color: rgba(255,255,255,.72); font-size:13px; line-height:1.8;}
+
+    .status{
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      padding:12px 12px; border-radius:18px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .pulse{display:flex; align-items:center; gap:10px; font-weight:900;}
+    .pulseDot{width:12px; height:12px; border-radius:999px; background:#25D366; box-shadow:0 0 0 0 rgba(37,211,102,.55); animation: pulse 1.4s infinite;}
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+    .status small{color: rgba(255,255,255,.70); font-weight:700}
+
+    section{padding:18px 0}
+    .section-title{display:flex; align-items:flex-end; justify-content:space-between; gap:12px; margin:10px 0 12px;}
+    .section-title h2{margin:0; font-size:22px; font-weight:900;}
+    .section-title .hint{color: rgba(255,255,255,.65); font-size:13px;}
+
+    .panel{
+      padding:18px; border-radius: var(--r2);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+      border:1px solid rgba(255,255,255,.11);
+      box-shadow: var(--shadow2);
     }
 
-    /* Responsive */
-    @media (max-width: 920px){
-      .grid{grid-template-columns: 1fr;}
-      .reviews{grid-template-columns: 1fr;}
-      .stats{grid-template-columns: 1fr;}
-      .contact-grid{grid-template-columns: 1fr;}
-      .hero h1{font-size:38px}
+    .counters{
+      display:grid; grid-template-columns: repeat(3, 1fr);
+      gap: 12px; margin-top: 12px;
     }
+    @media (max-width: 920px){ .counters{grid-template-columns: 1fr;} }
+    .countCard{
+      border-radius: 20px;
+      background: rgba(0,0,0,.16);
+      border:1px solid rgba(255,255,255,.10);
+      padding: 14px;
+      position:relative;
+      overflow:hidden;
+    }
+    .countNum{font-size:28px; font-weight:900; letter-spacing:.2px}
+    .countLbl{color: rgba(255,255,255,.70); font-weight:800; margin-top:2px}
+    .countNote{color: rgba(255,255,255,.60); font-weight:700; font-size:12px; margin-top:8px; line-height:1.7}
+
+    .gallery{display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px;}
+    @media (max-width: 920px){ .gallery{grid-template-columns: 1fr;} }
+    .shot{
+      position:relative; border-radius:22px; overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      box-shadow: 0 18px 50px rgba(0,0,0,.45);
+    }
+    .shot img{width:100%; height:300px; object-fit:cover; display:block; filter:saturate(1.06) contrast(1.02); transition: transform .35s ease;}
+    .shot:hover img{transform: scale(1.04)}
+    .shot::after{
+      content:""; position:absolute; inset:0;
+      background: radial-gradient(500px 200px at 50% 110%, rgba(255,79,163,.20), transparent 60%),
+                  linear-gradient(180deg, transparent 40%, rgba(0,0,0,.30));
+      pointer-events:none;
+    }
+    .shot .cap{
+      position:absolute; left:14px; right:14px; bottom:12px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      font-weight:900; z-index:2;
+    }
+    .cap small{font-weight:700; color: rgba(255,255,255,.75);}
+
+    .reviews{
+      display:grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px; margin-top: 12px;
+    }
+    @media (max-width: 920px){ .reviews{grid-template-columns: 1fr;} }
+    .review{
+      border-radius: 20px;
+      background: rgba(0,0,0,.16);
+      border:1px solid rgba(255,255,255,.10);
+      padding: 14px;
+    }
+    .stars{color: var(--gold); letter-spacing: 2px; font-weight: 900}
+    .review p{margin:8px 0 0; color: rgba(255,255,255,.74); line-height:1.9; font-weight:650}
+    .review b{display:block; margin-top:10px; font-weight:900}
+
+    .float{position:fixed; left:14px; bottom:14px; z-index:100; display:flex; flex-direction:column; gap:10px;}
+    .fab{
+      width:54px; height:54px; border-radius:18px;
+      display:grid; place-items:center;
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow: 0 14px 50px rgba(0,0,0,.50);
+      backdrop-filter: blur(12px);
+      transition:.2s ease;
+    }
+    .fab:hover{transform: translateY(-2px)}
+    .fab.w{background: linear-gradient(135deg, rgba(37,211,102,.95), rgba(37,211,102,.60)); color:#071a10}
+    .fab.t{background: linear-gradient(135deg, rgba(0,0,0,.92), rgba(0,0,0,.55));}
+
+    footer{padding: 20px 0 34px; color: rgba(255,255,255,.65); text-align:center; font-size: 12px;}
   </style>
 </head>
 
 <body>
-  <!-- Animated Background Orbs -->
-  <div class="bg-orbs">
-    <div class="orb o1"></div>
-    <div class="orb o2"></div>
-    <div class="orb o3"></div>
+  <div class="bg" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
   </div>
 
-  <div class="container">
-
-    <!-- Topbar -->
-    <div class="topbar">
+  <div class="topbar">
+    <div class="container wrap">
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+        <div class="logo" title="Glame Chic">
+          <img src="logo.png" alt="Glame Chic Logo"
+               onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, rgba(255,79,163,.35), rgba(255,214,162,.20))'; this.parentElement.innerHTML='<i class=&quot;fa-solid fa-gem&quot; style=&quot;color:rgba(255,255,255,.92);font-size:18px&quot;></i>';">
+        </div>
         <div>
-          <h3>Glame chic</h3>
-          <small>Oran • Algeria</small>
+          <h1>Glame Chic</h1>
+          <div class="sub">Luxury Beauty Brand • فخامة أنوثة… مثل الشركات العالمية ✨</div>
         </div>
       </div>
 
-      <div class="top-actions">
-        <a class="btn whatsapp" target="_blank"
-           href="https://wa.me/213671599739?text=مرحبا%20Glame%20chic%20💖%20أريد%20طلب%20منتج%20من%20الموقع%20(اكتب%20اسم%20المنتج%20او%20ارسل%20صورة)">
-          اطلب عبر واتساب
-        </a>
-        <a class="btn tiktok" target="_blank"
-           href="https://www.tiktok.com/@glame.chic?_r=1&_t=ZS-94GArdkxSwm">
-          اطلب عبر تيكتوك
-        </a>
-        <button class="btn ghost" onclick="openPrivacy()">Privacy Policy</button>
+      <div class="nav">
+        <a class="pill" href="#about">من نحن</a>
+        <a class="pill" href="#products">المنتجات</a>
+        <a class="pill" href="#reviews">آراء</a>
+        <a class="pill primary" href="#order">اطلب الآن</a>
       </div>
     </div>
+  </div>
 
-    <!-- Hero -->
-    <div class="hero">
-      <div class="hero-inner">
-        <div class="tag"><span class="dot"></span> Luxury Beauty Brand</div>
-        <h1>فخامة أنوثة… مثل الشركات العالمية ✨</h1>
-        <p>
-          Glame chic علامة تجميل راقية في وهران.
-          بوكسات ومنتجات مختارة بعناية… مظهر أنثوي فاخر، جذاب، ومميز.
+  <header class="hero container">
+    <div class="hero-grid">
+      <div class="card hero-left">
+        <div class="badge"><span class="dot"></span> Glame Chic — Luxury Beauty Brand</div>
+
+        <div class="headline"><span>فخامة أنوثة</span>… تجربة راقية من وهران</div>
+        <p class="lead">
+          بوكسات ومنتجات مختارة بعناية — مظهر أنثوي فاخر، ترتيب راقٍ، وتجربة سهلة للطلب عبر واتساب أو تيكتوك.
         </p>
 
-        <div class="hero-actions">
-          <a class="btn primary" href="#products">اكتشف المنتجات</a>
-          <a class="btn" href="#reviews">آراء الزبائن</a>
-          <a class="btn" href="#contact">تواصل معنا</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- About + Stats -->
-    <div class="section" id="about">
-      <h2>من نحن</h2>
-      <p class="sub">
-        نحن نقدم تجربة “Luxury” حقيقية: اختيار منتجات بعناية، ترتيب أنيق،
-        خدمة راقية، ولمسة أنثوية وردية فخمة.
-      </p>
-
-      <div class="stats" aria-label="Brand stats">
-        <div class="stat">
-          <b id="stat1">0</b>
-          <small>طلبات شهرية (تقريبًا)</small>
-        </div>
-        <div class="stat">
-          <b id="stat2">0</b>
-          <small>رضا العملاء</small>
-        </div>
-        <div class="stat">
-          <b id="stat3">0</b>
-          <small>بوكسات فاخرة</small>
-        </div>
-      </div>
-    </div>
-
-    <!-- Products -->
-    <div class="section" id="products">
-      <h2>منتجاتنا</h2>
-      <p class="sub">صور حقيقية من عملك — ستظهر تلقائيًا لأن أسماء الملفات صحيحة ✅</p>
-
-      <div class="grid">
-        <div class="card">
-          <div class="badge">BEST SELLER</div>
-          <img src="product1.jpg" alt="Product 1">
-          <div class="cap">
-            <h4>بوكس Glame chic 01</h4>
-            <p>مزيج فاخر من منتجات مختارة… لمسة أنثوية وردية ساحرة.</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="badge">LUXURY</div>
-          <img src="product2.jpg" alt="Product 2">
-          <div class="cap">
-            <h4>بوكس Glame chic 02</h4>
-            <p>تجميعة راقية بأناقة “Brand عالمي” — جودة ومظهر لا يُقاوم.</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="badge">NEW</div>
-          <img src="product3.jpg" alt="Product 3">
-          <div class="cap">
-            <h4>بوكس Glame chic 03</h4>
-            <p>إطلالة فخمة وتفاصيل دقيقة… هدية مثالية أو تدليل لنفسك.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-actions" style="margin-top:18px;">
-        <a class="btn whatsapp" target="_blank"
-           href="https://wa.me/213671599739?text=مرحبا%20Glame%20chic%20💖%20أريد%20طلب%20بوكس%20(اكتب%20بوكس%2001%20او%2002%20او%2003)%20او%20ارسل%20صورة">
-          اطلب الآن عبر واتساب
-        </a>
-        <a class="btn tiktok" target="_blank"
-           href="https://www.tiktok.com/@glame.chic?_r=1&_t=ZS-94GArdkxSwm">
-          شاهد تيكتوك واطلب
-        </a>
-      </div>
-    </div>
-
-    <!-- Reviews -->
-    <div class="section" id="reviews">
-      <h2>آراء الزبائن</h2>
-      <p class="sub">مظهر فخم + خدمة راقية = تجربة تحبينها من أول مرة ✨</p>
-
-      <div class="reviews">
-        <div class="review">
-          <div class="stars">★★★★★</div>
-          <p>بوكس روعة! ترتيب فخم ومنتجات جميلة. حسّيت روحي شارية من براند عالمي.</p>
-          <b>— زبونة من وهران</b>
-        </div>
-        <div class="review">
-          <div class="stars">★★★★★</div>
-          <p>التغليف أنيق جدًا والمنتجات ممتازة… وخدمة واتساب سريعة ومهذبة.</p>
-          <b>— عميلة سعيدة</b>
-        </div>
-        <div class="review">
-          <div class="stars">★★★★★</div>
-          <p>أفضل بوكس تجميلي شريته! تفاصيل فخمة ولمسة أنوثة وردية راقية.</p>
-          <b>— مراجعة ⭐</b>
-        </div>
-      </div>
-    </div>
-
-    <!-- Contact -->
-    <div class="section" id="contact">
-      <h2>التواصل والطلبات</h2>
-      <p class="sub">اطلب مباشرة عبر واتساب أو تيكتوك — وأرسل صورة/اسم المنتج.</p>
-
-      <div class="contact-grid">
-        <div class="contact-box">
-          <b style="font-size:16px;">معلومات العلامة</b>
-          <div class="kv">
-            <div class="row"><span>العلامة</span><code>Glame chic</code></div>
-            <div class="row"><span>المدينة</span><code>Oran</code></div>
-            <div class="row"><span>البريد</span><code>glame.chic31@gmail.com</code></div>
-            <div class="row"><span>الهاتف</span><code>0671599739</code></div>
-          </div>
-        </div>
-
-        <div class="contact-box" style="display:flex;flex-direction:column;gap:10px;justify-content:center;">
-          <a class="btn whatsapp" target="_blank"
-             href="https://wa.me/213671599739?text=مرحبا%20Glame%20chic%20💖%20أريد%20طلب%20من%20الموقع%20(اكتب%20اسم%20المنتج%20او%20ارسل%20صورة)%20وشكرا">
-            اطلب عبر واتساب
+        <div class="cta-row" id="order">
+          <a class="btn whatsapp" target="_blank" id="waBtnTop" href="#">
+            <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
           </a>
-          <a class="btn tiktok" target="_blank"
-             href="https://www.tiktok.com/@glame.chic?_r=1&_t=ZS-94GArdkxSwm">
-            اطلب عبر تيكتوك
+
+          <a class="btn tiktok" target="_blank" href="https://www.tiktok.com/@glame.chic?_r=1&_t=ZS-94GArdkxSwm">
+            <i class="fa-brands fa-tiktok"></i> اطلب عبر تيكتوك
           </a>
-          <a class="btn ghost" href="#about">الرجوع للأعلى</a>
+
+          <a class="btn secondary" href="#products">
+            <i class="fa-solid fa-sparkles"></i> اكتشف المنتجات
+          </a>
+        </div>
+
+        <div style="margin-top:14px" class="status">
+          <div class="pulse"><span class="pulseDot"></span> الطلبات مفتوحة الآن</div>
+          <small id="statusText">تحديث المؤشر كل دقيقة حسب نشاط الزوار الحقيقي</small>
+        </div>
+      </div>
+
+      <div class="card hero-right">
+        <div class="mini">
+          <h3>رقم واتساب الرسمي</h3>
+          <p><b id="waNumberText">+213 779 665 820</b></p>
+        </div>
+
+        <div class="mini">
+          <h3>مؤشر الطلبات عبر الموقع</h3>
+          <p style="margin-top:6px;color:rgba(255,255,255,.72);line-height:1.8">
+            <b style="font-size:22px" id="liveOrders">—</b><br>
+            <small style="color:rgba(255,255,255,.65);font-weight:700">
+              هذا الرقم يزيد فقط عندما يضغط الزوار زر واتساب (حقيقي).
+            </small>
+          </p>
+        </div>
+
+        <div class="mini">
+          <h3>تواصل بالبريد</h3>
+          <p><a href="mailto:glame.chic31@gmail.com" style="text-decoration:underline">glame.chic31@gmail.com</a></p>
         </div>
       </div>
     </div>
+  </header>
+
+  <main class="container">
+    <section id="about">
+      <div class="section-title">
+        <h2>من نحن</h2>
+        <div class="hint">Luxury Beauty Brand • فخامة أنوثة</div>
+      </div>
+
+      <div class="panel">
+        <p style="margin:0; color:rgba(255,255,255,.78); line-height:2; font-size:15px">
+          Glame Chic علامة تجميل راقية في <b>Oran</b> — نختار المنتجات بعناية وننسق بوكسات فخمة
+          تناسب الذوق الأنثوي: ألوان ناعمة، تفاصيل راقية، وتجربة مثل الشركات العالمية ✨
+        </p>
+
+        <div class="counters">
+          <div class="countCard">
+            <div class="countNum" id="c1">0</div>
+            <div class="countLbl">إجمالي الطلبات (حقيقي — تضعه أنت)</div>
+            <div class="countNote">ضع رقمك الحقيقي هنا في الإعدادات.</div>
+          </div>
+          <div class="countCard">
+            <div class="countNum" id="c2">0</div>
+            <div class="countLbl">عملاء سعيدون (حقيقي — تضعه أنت)</div>
+            <div class="countNote">رقم حقيقي يعطي ثقة قوية للبراند.</div>
+          </div>
+          <div class="countCard">
+            <div class="countNum" id="c3">0</div>
+            <div class="countLbl">تقييمات 5 نجوم (حقيقي — تضعه أنت)</div>
+            <div class="countNote">اعرض عدد المراجعات الفعلي لديك.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="products">
+      <div class="section-title">
+        <h2>المنتجات</h2>
+        <div class="hint">صور من البوكسات</div>
+      </div>
+
+      <div class="panel">
+        <div class="gallery">
+          <div class="shot">
+            <img src="product1.jpg" alt="Glame Chic Product 1">
+            <div class="cap"><div>بوكس فاخر <small>Premium</small></div><i class="fa-solid fa-star"></i></div>
+          </div>
+          <div class="shot">
+            <img src="product2.jpg" alt="Glame Chic Product 2">
+            <div class="cap"><div>اختيارات راقية <small>Curated</small></div><i class="fa-solid fa-sparkles"></i></div>
+          </div>
+          <div class="shot">
+            <img src="product3.jpg" alt="Glame Chic Product 3">
+            <div class="cap"><div>لمسة أنوثة <small>Feminine</small></div><i class="fa-solid fa-gem"></i></div>
+          </div>
+        </div>
+
+        <div class="cta-row" style="margin-top:14px">
+          <a class="btn whatsapp" target="_blank" id="waBtnProducts" href="#">
+            <i class="fa-brands fa-whatsapp"></i> اطلب هذا الآن
+          </a>
+          <a class="btn tiktok" target="_blank" href="https://www.tiktok.com/@glame.chic?_r=1&_t=ZS-94GArdkxSwm">
+            <i class="fa-brands fa-tiktok"></i> شاهد الفيديوهات
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews">
+      <div class="section-title">
+        <h2>آراء الزبائن</h2>
+        <div class="hint">نصوص إيجابية — استبدلها لاحقًا بمراجعاتك الحقيقية</div>
+      </div>
+
+      <div class="panel">
+        <div class="reviews">
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>بوكس روعة! ترتيب فخم وخدمة سريعة… حسّيت روحي شارية من براند عالمي.</p>
+            <b>— زبونة (Oran)</b>
+          </div>
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>التغليف أنيق جدًا والمنتجات ممتازة… وواتساب يرد بسرعة وبأسلوب محترم.</p>
+            <b>— عميلة سعيدة</b>
+          </div>
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>أفضل بوكس تجميلي! تفاصيل فخمة ولمسة أنوثة وردية راقية.</p>
+            <b>— مراجعة ⭐</b>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <footer>
-      © 2026 Glame chic — Oran, Algeria • Email: glame.chic31@gmail.com • Phone: 0671599739
+      © <span id="y"></span> Glame Chic — All rights reserved.
     </footer>
-  </div>
+  </main>
 
-  <!-- Privacy Policy Modal -->
-  <div class="modal-backdrop" id="privacyBackdrop" onclick="closePrivacy(event)">
-    <div class="modal" role="dialog" aria-modal="true" aria-label="Privacy Policy">
-      <header>
-        <h3>Privacy Policy — Glame chic</h3>
-        <button class="close" onclick="closePrivacy()">إغلاق ✕</button>
-      </header>
-
-      <p>
-        نحن نحترم خصوصيتك. هذا الموقع يعرض معلومات عامة عن العلامة ويسهّل التواصل عبر واتساب أو تيكتوك.
-      </p>
-
-      <ul>
-        <li><b>المعلومات التي نجمعها:</b> هذا الموقع لا يجمع بيانات حساسة تلقائيًا. قد تتواصل معنا عبر واتساب/تيكتوك وتشارك معلوماتك بإرادتك.</li>
-        <li><b>الكوكيز:</b> لا نستخدم كوكيز تتبع متقدمة في هذا الموقع البسيط.</li>
-        <li><b>روابط خارجية:</b> أزرار واتساب/تيكتوك تنقلك لمنصات خارجية وقد تطبق سياساتها الخاصة.</li>
-        <li><b>الاستخدام:</b> تُستخدم معلومات التواصل فقط للرد على الطلبات وخدمة العملاء.</li>
-        <li><b>التواصل:</b> لأي استفسار: <b>glame.chic31@gmail.com</b></li>
-      </ul>
-
-      <p>
-        بتصفحك للموقع فأنت توافق على هذه السياسة.
-      </p>
-    </div>
+  <div class="float" aria-label="Quick actions">
+    <a class="fab w" id="waFab" target="_blank" title="WhatsApp" href="#"><i class="fa-brands fa-whatsapp"></i></a>
+    <a class="fab t" target="_blank" title="TikTok" href="https://www.tiktok.com/@glame.chic?_r=1&_t=ZS-94GArdkxSwm"><i class="fa-brands fa-tiktok"></i></a>
   </div>
 
   <script>
-    // Modal
-    functio
+    // =========================
+    // ✅ بياناتك هنا
+    // =========================
+    const WHATSAPP_E164 = "213779665820"; // رقمك الرسمي بدون +
+    const WHATSAPP_DISPLAY = "+213 779 665 820";
+    const WA_MESSAGE = "مرحبا Glame Chic 💖 أريد طلب من الموقع (اكتب اسم المنتج أو أرسل صورة)";
+
+    // ✅ ضع أرقامك الحقيقية هنا (إن كنت تريد)
+    const COUNTERS_REAL = {
+      totalOrders: 0,
+      happyCustomers: 0,
+      fiveStarReviews: 0
+    };
+
+    // ==========================================
+    // ✅ عداد حقيقي عالمي لطلبات/استفسارات واتساب
+    // يزيد فقط عند الضغط على زر واتساب (حقيقي)
+    // ==========================================
+    const COUNTAPI_NS = "glamechic-com";
+    const COUNTAPI_KEY = "wa-inquiries";
+
+    async function countapiGet(){
+      const r = await fetch(`https://api.countapi.xyz/get/${COUNTAPI_NS}/${COUNTAPI_KEY}`);
+      const j = await r.json();
+      return j.value ?? 0;
+    }
+    async function countapiHit(){
+      const r = await fetch(`https://api.countapi.xyz/hit/${COUNTAPI_NS}/${COUNTAPI_KEY}`);
+      const j = await r.json();
+      return j.valu
