@@ -2,44 +2,34 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#ff2f86" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#2a0a1d" />
   <title>glamchic — Luxury Beauty Brand</title>
-  <meta name="description" content="glamchic — علامة تجميل راقية في Oran. اطلب عبر واتساب أو تيكتوك." />
+  <meta name="description" content="glamchic — علامة تجميل راقية في وهران. اطلب عبر واتساب أو تواصل عبر تيكتوك." />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="glamchic — Luxury Beauty Brand" />
-  <meta property="og:description" content="اطلب بسرعة عبر واتساب أو تيكتوك. تصميم فخم عالمي ومؤثرات ناعمة." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="logo.png" />
-
+  <!-- Fonts (safe + fast) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg0:#07010a;
-      --bg1:#120013;
-      --bg2:#2a0520;
-
-      --pink:#ff2f86;
-      --pink2:#ff6bb0;
-      --gold:#f7d68b;
-      --mint:#25D366;
-
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.70);
-
-      --glass: rgba(255,255,255,.09);
-      --glass2: rgba(255,255,255,.06);
-      --stroke: rgba(255,255,255,.14);
-
-      --shadow: 0 26px 90px rgba(0,0,0,.55);
-      --shadow2: 0 16px 50px rgba(0,0,0,.45);
-
-      --r: 22px;
-      --r2: 30px;
+      --bg0:#16010d;
+      --bg1:#2a0a1d;
+      --bg2:#5b2141;
+      --pink:#ff3ea6;
+      --pink2:#ff6bc0;
+      --gold:#f5c36a;
+      --text:#f6eef3;
+      --muted:rgba(246,238,243,.75);
+      --glass:rgba(255,255,255,.08);
+      --glass2:rgba(255,255,255,.12);
+      --stroke:rgba(255,255,255,.18);
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius: 28px;
+      --radius2: 22px;
+      --safeTop: env(safe-area-inset-top, 0px);
+      --safeBottom: env(safe-area-inset-bottom, 0px);
     }
 
     *{box-sizing:border-box}
@@ -48,562 +38,633 @@
       margin:0;
       font-family:"Cairo", system-ui, -apple-system, Segoe UI, Roboto, Arial;
       color:var(--text);
-      background:
-        radial-gradient(1200px 700px at 70% 10%, rgba(255,47,134,.20), transparent 60%),
-        radial-gradient(900px 600px at 10% 60%, rgba(247,214,139,.14), transparent 55%),
-        radial-gradient(900px 600px at 80% 80%, rgba(255,107,176,.12), transparent 55%),
-        linear-gradient(180deg, var(--bg0), var(--bg2));
+      background: radial-gradient(1200px 900px at 20% 20%, rgba(255,62,166,.20), transparent 60%),
+                  radial-gradient(900px 700px at 85% 70%, rgba(245,195,106,.18), transparent 55%),
+                  linear-gradient(140deg, var(--bg0), var(--bg1) 45%, var(--bg2));
       overflow-x:hidden;
     }
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
 
-    /* =========================
-       خلفية عالمية متحركة (Blobs + Grain + Glow)
-    ========================= */
-    .bg{
-      position:fixed; inset:-60px;
-      z-index:-3; pointer-events:none;
-      filter: blur(18px);
+    /* Animated soft background */
+    .bg-motion{
+      position:fixed; inset:-30%;
+      background:
+        radial-gradient(closest-side at 20% 30%, rgba(255,62,166,.22), transparent 60%),
+        radial-gradient(closest-side at 80% 70%, rgba(245,195,106,.18), transparent 60%),
+        radial-gradient(closest-side at 40% 80%, rgba(255,107,192,.14), transparent 60%);
+      filter: blur(22px);
+      animation: floaty 10s ease-in-out infinite alternate;
+      pointer-events:none;
+      z-index:0;
       opacity:.95;
     }
-    .blob{
-      position:absolute;
-      width:560px; height:560px;
-      border-radius: 45% 55% 50% 50% / 50% 45% 55% 50%;
-      mix-blend-mode: screen;
-      animation: floaty 12s ease-in-out infinite;
-      will-change: transform;
-    }
-    .b1{
-      left:-200px; top:-160px;
-      background: radial-gradient(circle at 30% 30%, rgba(255,47,134,.65), rgba(255,47,134,.04) 70%);
-    }
-    .b2{
-      right:-220px; top:120px;
-      width:640px; height:640px;
-      background: radial-gradient(circle at 30% 30%, rgba(247,214,139,.52), rgba(247,214,139,.04) 72%);
-      animation-duration: 15s;
-    }
-    .b3{
-      left:20%; bottom:-300px;
-      width:720px; height:720px;
-      background: radial-gradient(circle at 30% 30%, rgba(255,107,176,.42), rgba(255,107,176,.04) 72%);
-      animation-duration: 17s;
-    }
     @keyframes floaty{
-      0%,100%{ transform: translate3d(0,0,0) rotate(0deg) scale(1); }
-      50%{ transform: translate3d(46px,-34px,0) rotate(10deg) scale(1.03); }
+      from{transform:translate3d(-2%, -1%, 0) scale(1.05) rotate(-2deg)}
+      to{transform:translate3d(2%, 1%, 0) scale(1.10) rotate(2deg)}
     }
 
-    /* Grain */
-    .grain{
+    /* Preloader */
+    .preloader{
       position:fixed; inset:0;
-      z-index:-2; pointer-events:none;
-      opacity:.18;
-      background-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
-      mix-blend-mode: overlay;
-    }
-
-    /* =========================
-       Preloader (CSS-only) يختفي بعد 3 ثواني
-    ========================= */
-    #preloader{
-      position:fixed; inset:0;
-      display:grid; place-items:center;
-      background:
-        radial-gradient(900px 600px at 60% 25%, rgba(255,47,134,.22), transparent 60%),
-        linear-gradient(180deg, #07010a, #2a0520);
+      display:flex; align-items:center; justify-content:center;
+      padding:24px;
+      background: linear-gradient(140deg, rgba(10,0,6,.96), rgba(42,10,29,.96));
       z-index:9999;
-      animation: preHide .7s ease forwards;
-      animation-delay: 3s;
+      transition: opacity .35s ease, transform .35s ease;
     }
-    @keyframes preHide{
-      to{ opacity:0; visibility:hidden; pointer-events:none; }
-    }
-    .prebox{
-      width:min(520px, 90vw);
-      padding:26px 22px;
-      border-radius: 32px;
-      border:1px solid rgba(255,255,255,.16);
+    .preloader.hidden{opacity:0; transform:scale(1.03); pointer-events:none}
+    .pl-card{
+      width:min(520px, 92vw);
+      border-radius: var(--radius);
       background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+      border:1px solid rgba(255,255,255,.16);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(16px);
-      text-align:center;
+      padding:22px 18px;
       position:relative;
       overflow:hidden;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      text-align:center;
     }
-    .prebox::after{
-      content:"";
-      position:absolute; inset:-2px;
-      background: linear-gradient(120deg, transparent 25%, rgba(255,255,255,.14), transparent 60%);
-      transform: translateX(-70%);
-      animation: shine 2.8s ease-in-out infinite;
-      pointer-events:none;
-    }
-    @keyframes shine{
-      0%{transform:translateX(-75%)}
-      55%{transform:translateX(75%)}
-      100%{transform:translateX(75%)}
-    }
-    .prelogo{
-      width:92px; height:92px;
-      border-radius: 24px;
-      overflow:hidden;
-      margin: 0 auto 14px;
-      border:1px solid rgba(255,255,255,.16);
-      box-shadow: 0 18px 55px rgba(0,0,0,.45);
-      background: rgba(0,0,0,.18);
-    }
-    .prelogo img{width:100%;height:100%;object-fit:cover}
-    .ring{
-      width:80px; height:80px;
-      margin: 10px auto 10px;
-      border-radius:50%;
-      border: 4px solid rgba(255,255,255,.18);
-      border-top-color: var(--pink);
-      border-right-color: var(--gold);
-      animation: spin 1s linear infinite;
-      box-shadow: 0 0 0 10px rgba(255,47,134,.08);
+    .pl-shine{
+      position:absolute; inset:-60%;
+      background: conic-gradient(from 180deg, transparent, rgba(255,62,166,.20), rgba(245,195,106,.18), transparent);
+      animation: spin 2.6s linear infinite;
+      filter: blur(6px);
+      opacity:.9;
     }
     @keyframes spin{to{transform:rotate(360deg)}}
-    .pretitle{
+    .pl-content{position:relative; z-index:1}
+    .logoWrap{
+      width:86px; height:86px; border-radius:22px;
+      margin:0 auto 12px;
+      background: rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.18);
+      display:flex; align-items:center; justify-content:center;
+      overflow:hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+    }
+    .logoWrap img{width:100%; height:100%; object-fit:cover}
+    .pl-title{
       font-family:"Playfair Display","Cairo",serif;
-      font-size: 30px;
-      font-weight: 700;
-      margin: 4px 0 4px;
+      font-size:30px; margin:0;
       letter-spacing:.2px;
+      text-transform:none;
     }
-    .presub{margin:0;color:var(--muted);font-weight:700;line-height:1.8}
+    .pl-sub{margin:6px 0 0; color:var(--muted); font-weight:600}
+    .ring{
+      width:70px; height:70px; margin:14px auto 10px;
+      border-radius:50%;
+      border:5px solid rgba(255,255,255,.18);
+      border-top-color: var(--pink);
+      border-right-color: var(--gold);
+      animation: loadspin 1s linear infinite;
+      box-shadow: 0 10px 20px rgba(0,0,0,.25) inset;
+    }
+    @keyframes loadspin{to{transform:rotate(360deg)}}
 
-    /* =========================
-       Layout + Cards + Buttons (فخامة)
-    ========================= */
-    .container{width:min(1100px, 92vw); margin: 22px auto 120px;}
-    .topbar{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(180deg, rgba(8,1,10,.80), rgba(8,1,10,.35));
-      border-bottom: 1px solid rgba(255,255,255,.08);
+    .pl-hint{margin:0; color:rgba(246,238,243,.75); font-size:14px}
+
+    /* Layout */
+    .wrap{
+      position:relative;
+      z-index:1;
+      min-height:100vh;
+      padding: calc(18px + var(--safeTop)) 16px calc(22px + var(--safeBottom));
+      display:flex;
+      justify-content:center;
     }
-    .topbar .wrap{
-      width:min(1100px, 92vw);
-      margin:0 auto;
+    .container{
+      width:min(980px, 100%);
+      display:grid;
+      gap:16px;
+    }
+
+    /* Top bar card */
+    .topCard{
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+      border:1px solid rgba(255,255,255,.16);
+      box-shadow: var(--shadow);
+      padding:16px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      overflow:hidden;
+      position:relative;
+    }
+    .topCard::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(600px 200px at 70% 30%, rgba(255,62,166,.25), transparent 55%);
+      opacity:.85;
+      pointer-events:none;
+    }
+    .topRow{
+      position:relative;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:12px;
-      padding: 14px 0;
     }
     .brand{
-      display:flex; align-items:center; gap:12px;
-      min-width: 220px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
     }
-    .logo{
-      width:48px; height:48px;
-      border-radius: 16px;
+    .brandLogo{
+      width:58px; height:58px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.18);
       overflow:hidden;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(0,0,0,.18);
-      box-shadow: 0 14px 40px rgba(0,0,0,.35);
+      flex:0 0 auto;
+      background: rgba(255,255,255,.08);
+      box-shadow: 0 14px 30px rgba(0,0,0,.35);
     }
-    .logo img{width:100%;height:100%;object-fit:cover}
-    .brand h1{
-      margin:0;
+    .brandLogo img{width:100%; height:100%; object-fit:cover}
+    .brandText{min-width:0}
+    .brandName{
       font-family:"Playfair Display","Cairo",serif;
-      font-size: 20px;
-      line-height:1.1;
-    }
-    .brand small{display:block;color:var(--muted);font-weight:800;margin-top:2px}
-
-    .nav{
-      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-start;
-    }
-    .pill{
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      font-weight:900;
-      font-size:13px;
-      transition:.2s ease;
-    }
-    .pill:hover{transform: translateY(-1px); background: rgba(255,255,255,.09)}
-    .pill.primary{
-      background: linear-gradient(135deg, rgba(255,47,134,.95), rgba(255,107,176,.75));
-      border-color: rgba(255,255,255,.18);
-      box-shadow: 0 18px 50px rgba(255,47,134,.12);
-    }
-
-    .card{
-      border-radius: var(--r2);
-      background: linear-gradient(180deg, var(--glass), var(--glass2));
-      border:1px solid var(--stroke);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(14px);
+      font-size:28px;
+      margin:0;
+      white-space:nowrap;
       overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .brandMeta{
+      margin:2px 0 0;
+      color:rgba(246,238,243,.80);
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+
+    /* Buttons */
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-start;
+      margin-top:14px;
       position:relative;
     }
-    .card::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(600px 200px at 30% 0%, rgba(255,47,134,.16), transparent 60%),
-        radial-gradient(600px 200px at 80% 60%, rgba(247,214,139,.12), transparent 60%);
-      pointer-events:none;
-      opacity:.95;
-    }
-    .card > *{position:relative; z-index:1}
-
-    header.hero{padding: 26px 0 14px;}
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:14px;
-      align-items:stretch;
-    }
-    @media (max-width: 920px){ .hero-grid{grid-template-columns:1fr;} }
-
-    .hero-left{padding: 22px;}
-    .badge{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.18);
+    .btn{
+      border:none;
+      cursor:pointer;
+      border-radius: 18px;
+      padding:14px 16px;
       font-weight:900;
-      font-size:13px;
+      font-size:16px;
+      color: #0a0710;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      transition: transform .18s ease, filter .18s ease, box-shadow .18s ease;
+      box-shadow: 0 14px 30px rgba(0,0,0,.35);
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn:active{transform:translateY(2px) scale(.99)}
+    .btn:hover{filter:brightness(1.03)}
+    .btn-green{
+      background: linear-gradient(90deg, #17d86a, #0bbf5a);
+    }
+    .btn-dark{
+      background: linear-gradient(90deg, rgba(0,0,0,.65), rgba(0,0,0,.35));
+      color: var(--text);
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow: 0 14px 30px rgba(0,0,0,.28);
+    }
+    .btn-ghost{
+      background: rgba(255,255,255,.08);
+      color: var(--text);
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow: none;
+    }
+    .pulse{
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes pulse{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-2px)}
     }
     .dot{
       width:10px; height:10px; border-radius:50%;
-      background: radial-gradient(circle at 30% 30%, var(--gold), var(--pink));
-      box-shadow: 0 0 0 8px rgba(255,47,134,.12);
-    }
-    .headline{
-      margin: 14px 0 8px;
-      font-size: clamp(30px, 4.7vw, 56px);
-      line-height:1.12;
-      font-weight: 900;
-      letter-spacing: .2px;
-    }
-    .headline span{
-      background: linear-gradient(90deg, rgba(255,255,255,.96), rgba(255,209,232,.95));
-      -webkit-background-clip:text; background-clip:text;
-      color:transparent;
-    }
-    .lead{
-      margin:0;
-      color: var(--muted);
-      font-weight:700;
-      line-height:1.95;
-      font-size: 16px;
-      max-width: 60ch;
+      background:#1cff80;
+      box-shadow: 0 0 0 6px rgba(28,255,128,.18);
     }
 
-    .cta{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-top: 16px;
-    }
-    .btn{
-      padding: 14px 16px;
-      border-radius: 18px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      font-weight: 900;
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      min-width: 180px;
-      transition: transform .18s ease, background .18s ease, filter .18s ease;
+    /* Hero card */
+    .hero{
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+      border:1px solid rgba(255,255,255,.16);
+      box-shadow: var(--shadow);
+      padding:18px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       position:relative;
       overflow:hidden;
-      box-shadow: var(--shadow2);
     }
-    .btn::after{
+    .hero::after{
       content:"";
-      position:absolute; inset:0;
-      background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,.26), transparent 60%);
-      transform: translateX(-120%);
-      transition: .65s ease;
+      position:absolute; inset:-1px;
+      background:
+        radial-gradient(500px 220px at 25% 20%, rgba(245,195,106,.18), transparent 60%),
+        radial-gradient(450px 260px at 75% 75%, rgba(255,62,166,.18), transparent 65%);
+      opacity:.9;
       pointer-events:none;
     }
-    .btn:hover{transform: translateY(-2px); background: rgba(255,255,255,.09); filter: brightness(1.05);}
-    .btn:hover::after{transform: translateX(120%);}
-    .btn.wa{
-      background: linear-gradient(135deg, rgba(37,211,102,.95), rgba(37,211,102,.68));
-      border-color: rgba(37,211,102,.55);
-      color:#06180d;
+    .heroInner{position:relative; z-index:1}
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.08);
+      font-weight:900;
+      color: rgba(246,238,243,.90);
     }
-    .btn.tt{
-      background: linear-gradient(135deg, rgba(0,0,0,.80), rgba(0,0,0,.45));
+    .badge i{
+      width:10px;height:10px;border-radius:50%;
+      background: var(--gold);
+      box-shadow:0 0 0 6px rgba(245,195,106,.18);
     }
-    .btn.pink{
-      background: linear-gradient(135deg, rgba(255,47,134,.90), rgba(247,214,139,.30));
+    .h1{
+      margin:14px 0 10px;
+      font-size: clamp(30px, 5vw, 48px);
+      line-height:1.12;
+      font-weight: 1000;
+      letter-spacing:.2px;
+    }
+    .p{
+      margin:0;
+      color: rgba(246,238,243,.80);
+      font-weight:700;
+      font-size:16px;
+      line-height:1.8;
     }
 
-    .hero-right{padding: 18px; display:flex; flex-direction:column; gap:12px;}
-    .mini{
-      border-radius: var(--r);
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.18);
-      padding: 14px;
+    /* Sections */
+    .grid{
+      display:grid;
+      gap:16px;
+      grid-template-columns: 1fr;
     }
-    .mini h3{margin:0 0 6px; font-size:14px; letter-spacing:.2px;}
-    .mini p{margin:0; color: var(--muted); font-weight:700; line-height:1.8;}
-    .mono{font-family: ui-monospace, Menlo, Consolas, monospace; direction:ltr; unicode-bidi: plaintext;}
 
-    /* Live counter card */
-    .live{
-      display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap;
-      padding: 14px;
-      border-radius: 22px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
+    .card{
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
+      border:1px solid rgba(255,255,255,.15);
+      box-shadow: var(--shadow);
+      padding:18px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      overflow:hidden;
+      position:relative;
     }
-    .liveTitle{font-weight:900}
-    .liveState{margin-top:6px; display:flex; align-items:center; gap:10px; color:var(--muted); font-weight:800; font-size:13px;}
-    .pulse{
-      width:12px; height:12px; border-radius:50%;
-      background:#2cff8a;
-      box-shadow:0 0 0 0 rgba(44,255,138,.55);
-      animation: pulse 1.5s ease-out infinite;
+    .cardTitle{
+      margin:0 0 12px;
+      font-size:22px;
+      font-weight:1000;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
     }
-    @keyframes pulse{
-      0%{box-shadow:0 0 0 0 rgba(44,255,138,.55)}
-      100%{box-shadow:0 0 0 18px rgba(44,255,138,0)}
-    }
-    .liveNum{
-      font-family:"Playfair Display","Cairo",serif;
-      font-size: 44px;
-      font-weight: 700;
-      letter-spacing: .5px;
-    }
+    .cardTitle small{color:rgba(246,238,243,.70); font-weight:800}
 
     /* Products */
-    section{padding: 14px 0;}
-    .sectionHead{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:10px;
-      margin: 10px 0 10px;
-    }
-    .sectionHead h2{margin:0; font-size:22px; font-weight:900;}
-    .sectionHead .hint{color:var(--muted); font-weight:800; font-size:13px}
-
-    .panel{
-      padding: 16px;
-      border-radius: var(--r2);
-      border:1px solid rgba(255,255,255,.12);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
-      box-shadow: var(--shadow2);
-      backdrop-filter: blur(12px);
-    }
-
-    .gallery{
+    .products{
       display:grid;
-      grid-template-columns: repeat(3, 1fr);
       gap:12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    @media (max-width: 900px){ .gallery{grid-template-columns:1fr;} }
-
-    .shot{
-      border-radius: 24px;
+    .prod{
+      border-radius: 22px;
       overflow:hidden;
       border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.04);
-      box-shadow: 0 18px 55px rgba(0,0,0,.45);
+      background: rgba(255,255,255,.06);
+      box-shadow: 0 14px 26px rgba(0,0,0,.28);
       position:relative;
       transform: translateZ(0);
-      transition: transform .25s ease, filter .25s ease;
     }
-    .shot:hover{transform: translateY(-6px) scale(1.01); filter: brightness(1.06);}
-    .shot img{width:100%; height: 320px; object-fit: cover;}
-    .cap{
-      position:absolute; left:14px; right:14px; bottom:12px;
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
+    .prod::after{
+      content:"";
+      position:absolute; inset:-60%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,62,166,.12), transparent 55%),
+                  radial-gradient(circle at 70% 70%, rgba(245,195,106,.10), transparent 55%);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .prod img{
+      width:100%;
+      height:170px;
+      object-fit:cover;
+      display:block;
+      transform: scale(1.02);
+      transition: transform .35s ease, filter .35s ease;
+      filter:saturate(1.05) contrast(1.02);
+    }
+    .prod:hover img{transform: scale(1.06)}
+    .prod span{
+      position:absolute;
+      bottom:10px; right:10px;
+      background: rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.18);
+      color: rgba(255,255,255,.92);
+      padding:8px 10px;
+      border-radius: 999px;
       font-weight:900;
-      text-shadow: 0 10px 30px rgba(0,0,0,.6);
+      font-size:12px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
-    .cap small{color: rgba(255,255,255,.78); font-weight:800}
 
-    /* Reviews slider */
-    .slider{
-      overflow:hidden;
-      border-radius: 24px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.16);
-      padding: 14px;
-    }
-    .track{
-      display:flex;
+    /* Live orders */
+    .orders{
+      display:grid;
       gap:12px;
-      width:max-content;
-      animation: marquee 26s linear infinite;
-      will-change: transform;
+      grid-template-columns: 1fr;
+      align-items:stretch;
     }
-    @keyframes marquee{
-      from{transform: translateX(0)}
-      to{transform: translateX(50%)}
+    .liveRow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
     }
-    .review{
-      width: 280px;
-      flex:0 0 auto;
-      border-radius: 18px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      padding: 14px;
-    }
-    .stars{color: var(--gold); letter-spacing:2px; font-weight:900}
-    .review p{margin:8px 0 0; color: rgba(255,255,255,.78); line-height:1.8; font-weight:700}
-    .review b{display:block; margin-top:10px; font-weight:900}
-
-    /* Reveal on scroll */
-    [data-reveal]{
-      opacity:0;
-      transform: translateY(18px);
-      transition: opacity .65s ease, transform .65s ease;
-    }
-    [data-reveal].in{opacity:1; transform: translateY(0);}
-
-    /* Floating WhatsApp */
-    .floatWa{
-      position:fixed;
-      left: 14px; bottom: 14px;
-      z-index:60;
-      display:flex; align-items:center; gap:10px;
-      padding: 12px 14px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, rgba(37,211,102,.98), rgba(37,211,102,.72));
-      color:#071a10;
-      border:1px solid rgba(37,211,102,.65);
-      box-shadow: 0 18px 55px rgba(0,0,0,.55);
-      font-weight: 900;
-      transition:.18s ease;
-    }
-    .floatWa:hover{transform: translateY(-2px); filter: brightness(1.05);}
-    .floatWa .num{
-      background: rgba(255,255,255,.20);
-      border:1px solid rgba(255,255,255,.22);
-      padding: 6px 10px;
-      border-radius: 999px;
-      direction:ltr; unicode-bidi: plaintext;
-      font-family: ui-monospace, Menlo, Consolas, monospace;
+    .liveMeta{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color: rgba(246,238,243,.80);
       font-weight:900;
     }
-
-    footer{
-      padding: 18px 0 26px;
-      color: rgba(255,255,255,.60);
-      text-align:center;
+    .liveMeta .dot{flex:0 0 auto}
+    .bigNum{
+      font-size:44px;
+      font-weight:1100;
+      letter-spacing:.4px;
+      font-family:"Playfair Display","Cairo",serif;
+    }
+    .mini{
+      color: rgba(246,238,243,.75);
       font-weight:800;
-      font-size: 12px;
+      line-height:1.7;
+      margin-top:6px;
+    }
+    .bar{
+      height:12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.12);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      position:relative;
+    }
+    .bar > i{
+      display:block;
+      height:100%;
+      width:32%;
+      border-radius:999px;
+      background: linear-gradient(90deg, var(--pink), var(--gold));
+      filter:saturate(1.1);
+      animation: barMove 2.4s ease-in-out infinite alternate;
+    }
+    @keyframes barMove{
+      from{width:26%}
+      to{width:78%}
     }
 
-    /* Reduce motion */
-    @media (prefers-reduced-motion: reduce){
-      *{animation:none !important; transition:none !important}
-      .bg,.grain{display:none}
+    /* Reviews */
+    .reviews{display:grid; gap:12px}
+    .review{
+      border-radius: 22px;
+      padding:14px;
+      background: rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .reviewTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:8px;
+    }
+    .stars{color: var(--gold); font-weight:1000; letter-spacing:1px}
+    .who{font-weight:1000}
+    .review p{margin:0;color:rgba(246,238,243,.82);font-weight:800;line-height:1.75}
+
+    /* Reveal animations */
+    [data-reveal]{opacity:0; transform: translateY(10px); transition: opacity .6s ease, transform .6s ease}
+    [data-reveal].in{opacity:1; transform: translateY(0)}
+
+    /* Sticky bottom WhatsApp */
+    .sticky{
+      position:fixed;
+      left:16px; right:16px;
+      bottom: calc(14px + var(--safeBottom));
+      z-index: 20;
+      display:flex;
+      justify-content:center;
+      pointer-events:none;
+    }
+    .sticky a{
+      pointer-events:auto;
+      width:min(980px, 100%);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:12px;
+      padding:16px 18px;
+      border-radius: 22px;
+      background: linear-gradient(90deg, #17d86a, #0bbf5a);
+      color:#07160c;
+      font-weight:1000;
+      text-decoration:none;
+      box-shadow: 0 18px 36px rgba(0,0,0,.42);
+      border: 1px solid rgba(255,255,255,.14);
+      transform: translateZ(0);
+    }
+
+    /* Responsive */
+    @media (min-width: 860px){
+      .grid{grid-template-columns: 1.05fr .95fr}
+      .orders{grid-template-columns: 1fr}
+      .products{grid-template-columns: repeat(3, minmax(0, 1fr))}
+      .prod img{height:200px}
+      .brandName{font-size:32px}
     }
   </style>
 </head>
 
 <body>
-  <!-- خلفية متحركة -->
-  <div class="bg" aria-hidden="true">
-    <div class="blob b1"></div>
-    <div class="blob b2"></div>
-    <div class="blob b3"></div>
-  </div>
-  <div class="grain" aria-hidden="true"></div>
+  <div class="bg-motion" aria-hidden="true"></div>
 
-  <!-- Preloader (CSS-only) -->
-  <div id="preloader" aria-label="Loading">
-    <div class="prebox">
-      <div class="prelogo">
-        <img src="logo.png" alt="glamchic logo" onerror="this.style.display='none'">
-      </div>
-      <div class="ring" aria-hidden="true"></div>
-      <div class="pretitle">glamchic</div>
-      <p class="presub">فخامة أنوثة… مثل الشركات العالمية ✨</p>
-    </div>
-  </div>
-
-  <!-- Topbar -->
-  <div class="topbar">
-    <div class="wrap">
-      <div class="brand">
-        <div class="logo"><img src="logo.png" alt="glamchic" onerror="this.style.display='none'"></div>
-        <div>
-          <h1>glamchic</h1>
-          <small>Oran • Algeria</small>
+  <!-- Preloader (always hides max 3s) -->
+  <div class="preloader" id="preloader" role="status" aria-live="polite">
+    <div class="pl-card">
+      <div class="pl-shine"></div>
+      <div class="pl-content">
+        <div class="logoWrap">
+          <img id="plLogo" alt="glamchic logo" />
         </div>
-      </div>
-
-      <div class="nav">
-        <a class="pill" href="#products">المنتجات</a>
-        <a class="pill" href="#reviews">آراء</a>
-        <a class="pill primary" href="#order">اطلب الآن</a>
+        <h1 class="pl-title">glamchic</h1>
+        <p class="pl-sub">فخامة أنوثة… مثل الشركات العالمية ✨</p>
+        <div class="ring" aria-hidden="true"></div>
+        <p class="pl-hint">التحميل جارٍ…</p>
       </div>
     </div>
   </div>
 
-  <div class="container">
-    <!-- HERO -->
-    <header class="hero" id="top">
-      <div class="hero-grid">
-        <div class="card hero-left" data-reveal>
-          <div class="badge"><span class="dot"></span> glamchic — Luxury Beauty Brand</div>
-          <div class="headline"><span>فخامة أنوثة</span>… تجربة راقية من وهران</div>
-          <p class="lead">
-            بوكسات ومنتجات مختارة بعناية — تصميم فخم، تفاصيل ناعمة، وتجربة طلب سريعة عبر واتساب أو تيكتوك.
-          </p>
+  <div class="wrap">
+    <div class="container">
 
-          <div class="cta" id="order">
-            <a class="btn wa" id="waTop" target="_blank" href="#">اطلب عبر واتساب</a>
-            <a class="btn tt" target="_blank" href="https://www.tiktok.com/@glame.chic?_r=1&_t=ZS-94GArdkxSwm">اطلب عبر تيكتوك</a>
-            <a class="btn pink" href="#products">اكتشف المنتجات</a>
-          </div>
-        </div>
-
-        <div class="card hero-right" data-reveal>
-          <div class="mini">
-            <h3>واتساب الرسمي</h3>
-            <p class="mono">+213779665820</p>
-          </div>
-
-          <div class="mini">
-            <h3>البريد</h3>
-            <p><a href="mailto:glame.chic31@gmail.com" style="text-decoration:underline">glame.chic31@gmail.com</a></p>
-          </div>
-
-          <div class="mini live">
-            <div>
-              <div class="liveTitle">📈 عداد الطلبات المباشر</div>
-              <div class="liveState"><span class="pulse"></span> يتحدّث كل دقيقة</div>
-              <div style="margin-top:6px;color:var(--muted);font-weight:800;font-size:12px;line-height:1.7">
-                يتم حفظ الرقم على نفس الهاتف حتى بعد التحديث.
-              </div>
+      <!-- Top Card -->
+      <section class="topCard" data-reveal>
+        <div class="topRow">
+          <div class="brand">
+            <div class="brandLogo">
+              <img id="brandLogo" alt="glamchic logo" />
             </div>
-            <div class="liveNum" id="orders">—</div>
+            <div class="brandText">
+              <h2 class="brandName">glamchic</h2>
+              <div class="brandMeta">Oran • Algeria</div>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+            <a class="btn btn-ghost" href="#products">المنتجات</a>
+            <a class="btn btn-ghost" href="#reviews">آراء</a>
+            <a class="btn btn-ghost" href="#order">اطلب الآن</a>
           </div>
         </div>
-      </div>
-    </header>
 
-    <!-- PRODUCTS -->
-    <section id="products" data-reveal>
-      <div class="sectionHead">
-        <h2>المنتجات</h2>
-        <div class="hint">صور من ملفاتك</div>
+        <div class="actions" id="order">
+          <a class="btn btn-green pulse" id="waTop" href="#" rel="noopener">
+            <span class="dot" aria-hidden="true"></span>
+            اطلب عبر واتساب
+          </a>
+
+          <a class="btn btn-dark" id="ttTop" href="#" rel="noopener">
+            اطلب عبر تيكتوك
+          </a>
+
+          <a class="btn btn-ghost" href="#privacy">
+            Privacy Policy
+          </a>
+        </div>
+      </section>
+
+      <!-- Hero -->
+      <section class="hero" data-reveal>
+        <div class="heroInner">
+          <div class="badge"><i></i> Luxury Beauty Brand</div>
+          <div class="h1">فخامة أنوثة… مثل الشركات العالمية ✨</div>
+          <p class="p">
+            glamchic علامة تجميل راقية في وهران. بوكسات ومنتجات مختارة بعناية…
+            مظهر أنثوي فاخر جذاب ومميز. اطلب بسرعة عبر واتساب أو تواصل عبر تيكتوك.
+          </p>
+        </div>
+      </section>
+
+      <div class="grid">
+        <!-- Live Orders -->
+        <section class="card" data-reveal>
+          <div class="cardTitle">
+            <span>مؤشر الطلبات المباشر 📈</span>
+            <small>يتحدث تلقائياً</small>
+          </div>
+
+          <div class="orders">
+            <div class="liveRow">
+              <div class="liveMeta">
+                <span class="dot" aria-hidden="true"></span>
+                <span>مباشر الآن • تحديث تلقائي</span>
+              </div>
+              <div class="bigNum" id="ordersNum">0</div>
+            </div>
+
+            <div class="bar" aria-hidden="true"><i></i></div>
+            <div class="mini" id="ordersHint">
+              يزيد كل دقيقة بعدد معقول لإظهار نشاط الطلبات.
+            </div>
+
+            <a class="btn btn-green" id="waMid" href="#" rel="noopener" style="justify-content:center;">
+              <span style="font-weight:1000">+213779665820</span>
+              <span>اطلب واتساب</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- Reviews -->
+        <section class="card" id="reviews" data-reveal>
+          <div class="cardTitle">
+            <span>آراء العملاء ⭐</span>
+            <small>تقييمات إيجابية</small>
+          </div>
+
+          <div class="reviews" id="reviewsList"></div>
+        </section>
       </div>
 
-      <div class="panel">
-        <div class="gallery">
-          <div class="shot">
-            <img src="product1.jpg" alt="glamchic product 1" onerror="this.style.opacity=.2">
-            <div class="cap"><div>بوكس 01 <small>Premium</small></div><div>✨</div></div>
+      <!-- Products -->
+      <section class="card" id="products" data-reveal>
+        <div class="cardTitle">
+          <span>منتجاتنا</span>
+          <small>صور حقيقية</small>
+        </div>
+
+        <div class="products">
+          <div class="prod">
+            <img src="product1.jpg" alt="منتج 1">
+            <span>Beauty Box</span>
           </div>
-          <div class="shot">
-            <img src="product2.jpg" alt="glamchic product 2" onerror="this.style.opacity=.2">
-            <div class="cap"><div>بوكس 02 <small>Curated</small></div><div>💎</div></div>
+          <div class="prod">
+            <img src="product2.jpg" alt="منتج 2">
+            <span>Makeup Set</span>
           </div>
-          <div class="shot">
-            <img src="product3.jpg" alt="glamchic product 3" onerr
+          <div class="prod">
+            <img src="product3.jpg" alt="منتج 3">
+            <span>Luxury Kit</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Privacy -->
+      <section class="card" id="privacy" data-reveal>
+        <div class="cardTitle"><span>Privacy Policy</span><small>ملخص</small></div>
+        <p class="p" style="margin:0">
+          نحن لا نجمع بيانات حساسة. الروابط الخارجية (واتساب/تيكتوك) تفتح في تطبيقاتها.
+          لأي استفسار: <span style="color:var(--gold); font-weight:1000;">glame.chic31@gmail.com</span>
+        </p>
+      </section>
+
+      <div style="height:90px"></div>
+    </div>
+  </div>
+
+  <!-- Sticky WhatsApp -->
+  <div class="sticky">
+    <a id="waSticky" href="#" rel="noopener">
+      <span class="dot" aria-hidden="true"></span>
+      اطلب الآن عبر واتساب
+    </a>
+  </div>
+
+  <script>
+  // ====== GLOBAL SAFE MODE: page never breaks on any phone ======
+  try {
+    // --- Config ---
+    const BRAND = "glamchic";
+    const CITY = "Oran";
+    const COUNTRY = "Algeria";
+    const EMAIL = "glame.chic31@gmail.com";
+    const WA_NUMBER = "+213779665820";
+    const WA_NUMBER_PLAIN = "213779665820";
+    const TIKTOK = "https://www.tiktok.com/@glame.chic?_r=1&_t=ZS-94GArdkxSwm";
+
+    // Put your logo filename in repo (recommended: logo.png)
+    const LOGO
