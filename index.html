@@ -2,669 +2,602 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#2a0a1d" />
-  <title>glamchic — Luxury Beauty Brand</title>
-  <meta name="description" content="glamchic — علامة تجميل راقية في وهران. اطلب عبر واتساب أو تواصل عبر تيكتوك." />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#ff4fa1" />
+  <title>Glame chic — فخامة أنوثة</title>
+  <meta name="description" content="Glame chic — علامة تجميل راقية في وهران. اطلب عبر واتساب أو تيكتوك." />
 
-  <!-- Fonts (safe + fast) -->
+  <meta property="og:title" content="Glame chic — Luxury Beauty Brand" />
+  <meta property="og:description" content="Glame chic — علامة تجميل راقية في وهران. اطلب عبر واتساب أو تيكتوك." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="logo.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg0:#16010d;
-      --bg1:#2a0a1d;
-      --bg2:#5b2141;
-      --pink:#ff3ea6;
-      --pink2:#ff6bc0;
-      --gold:#f5c36a;
-      --text:#f6eef3;
-      --muted:rgba(246,238,243,.75);
-      --glass:rgba(255,255,255,.08);
-      --glass2:rgba(255,255,255,.12);
-      --stroke:rgba(255,255,255,.18);
-      --shadow: 0 20px 60px rgba(0,0,0,.45);
-      --radius: 28px;
-      --radius2: 22px;
-      --safeTop: env(safe-area-inset-top, 0px);
-      --safeBottom: env(safe-area-inset-bottom, 0px);
+      --pink:#ff4fa1;
+      --pink2:#ff77bd;
+      --gold:#ffd27a;
+      --bg1:#120013;
+      --bg2:#2b0022;
+      --muted: rgba(255,255,255,.78);
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
+      --radius: 26px;
     }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
     body{
       margin:0;
-      font-family:"Cairo", system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      color:var(--text);
-      background: radial-gradient(1200px 900px at 20% 20%, rgba(255,62,166,.20), transparent 60%),
-                  radial-gradient(900px 700px at 85% 70%, rgba(245,195,106,.18), transparent 55%),
-                  linear-gradient(140deg, var(--bg0), var(--bg1) 45%, var(--bg2));
-      overflow-x:hidden;
+      font-family:"Tajawal", system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color:#fff;
+      background: radial-gradient(1200px 800px at 20% 10%, rgba(255,79,161,.35), transparent 60%),
+                  radial-gradient(900px 600px at 80% 30%, rgba(255,210,122,.20), transparent 55%),
+                  radial-gradient(900px 700px at 40% 90%, rgba(255,119,189,.22), transparent 60%),
+                  linear-gradient(135deg, var(--bg1), var(--bg2));
+      overflow:auto;
     }
 
-    /* Animated soft background */
-    .bg-motion{
-      position:fixed; inset:-30%;
-      background:
-        radial-gradient(closest-side at 20% 30%, rgba(255,62,166,.22), transparent 60%),
-        radial-gradient(closest-side at 80% 70%, rgba(245,195,106,.18), transparent 60%),
-        radial-gradient(closest-side at 40% 80%, rgba(255,107,192,.14), transparent 60%);
-      filter: blur(22px);
-      animation: floaty 10s ease-in-out infinite alternate;
-      pointer-events:none;
-      z-index:0;
-      opacity:.95;
+    /* خلفيات ناعمة متحركة */
+    .bg-orb{
+      position:fixed;
+      width:520px; height:520px;
+      border-radius:50%;
+      filter: blur(40px);
+      opacity:.35;
+      z-index:-2;
+      animation: floaty 10s ease-in-out infinite;
     }
+    .orb1{ background: radial-gradient(circle at 30% 30%, rgba(255,79,161,.9), transparent 60%); top:-120px; right:-140px; }
+    .orb2{ background: radial-gradient(circle at 40% 40%, rgba(255,210,122,.8), transparent 60%); bottom:-160px; left:-160px; animation-duration: 12s; }
+    .orb3{ background: radial-gradient(circle at 45% 45%, rgba(255,119,189,.85), transparent 60%); top:40%; left:65%; width:420px; height:420px; animation-duration: 14s; }
     @keyframes floaty{
-      from{transform:translate3d(-2%, -1%, 0) scale(1.05) rotate(-2deg)}
-      to{transform:translate3d(2%, 1%, 0) scale(1.10) rotate(2deg)}
+      0%,100%{ transform: translate(0,0) scale(1); }
+      50%{ transform: translate(-18px, 14px) scale(1.03); }
     }
 
-    /* Preloader */
-    .preloader{
-      position:fixed; inset:0;
-      display:flex; align-items:center; justify-content:center;
-      padding:24px;
-      background: linear-gradient(140deg, rgba(10,0,6,.96), rgba(42,10,29,.96));
+    /* ====== PRELOADER (CSS فقط): يختفي بعد 3 ثواني حتى لو JS تعطل ====== */
+    #preloader{
+      position:fixed;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       z-index:9999;
-      transition: opacity .35s ease, transform .35s ease;
+      background:
+        radial-gradient(900px 700px at 50% 40%, rgba(255,79,161,.25), transparent 55%),
+        linear-gradient(135deg, #120013, #2b0022);
+
+      /* الإخفاء التلقائي */
+      animation: preHide 0.6s ease forwards;
+      animation-delay: 3s; /* بعد 3 ثواني */
     }
-    .preloader.hidden{opacity:0; transform:scale(1.03); pointer-events:none}
-    .pl-card{
-      width:min(520px, 92vw);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+    @keyframes preHide{
+      to{
+        opacity:0;
+        visibility:hidden;
+        pointer-events:none;
+      }
+    }
+
+    .loader-card{
+      width:min(540px, 92vw);
+      padding:28px 22px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
       border:1px solid rgba(255,255,255,.16);
       box-shadow: var(--shadow);
-      padding:22px 18px;
+      backdrop-filter: blur(10px);
+      text-align:center;
       position:relative;
       overflow:hidden;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      text-align:center;
     }
-    .pl-shine{
-      position:absolute; inset:-60%;
-      background: conic-gradient(from 180deg, transparent, rgba(255,62,166,.20), rgba(245,195,106,.18), transparent);
-      animation: spin 2.6s linear infinite;
-      filter: blur(6px);
-      opacity:.9;
+    .loader-logo{
+      width:90px;
+      height:90px;
+      border-radius: 22px;
+      object-fit:cover;
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 12px 35px rgba(0,0,0,.35);
+      margin: 0 auto 14px;
+      background: rgba(0,0,0,.1);
     }
-    @keyframes spin{to{transform:rotate(360deg)}}
-    .pl-content{position:relative; z-index:1}
-    .logoWrap{
-      width:86px; height:86px; border-radius:22px;
-      margin:0 auto 12px;
-      background: rgba(255,255,255,.10);
-      border:1px solid rgba(255,255,255,.18);
-      display:flex; align-items:center; justify-content:center;
-      overflow:hidden;
-      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+    .brand{
+      font-family: "Playfair Display", serif;
+      margin: 0;
+      font-size: 30px;
     }
-    .logoWrap img{width:100%; height:100%; object-fit:cover}
-    .pl-title{
-      font-family:"Playfair Display","Cairo",serif;
-      font-size:30px; margin:0;
-      letter-spacing:.2px;
-      text-transform:none;
+    .sub{
+      margin: 8px 0 16px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
     }
-    .pl-sub{margin:6px 0 0; color:var(--muted); font-weight:600}
     .ring{
-      width:70px; height:70px; margin:14px auto 10px;
+      width:86px; height:86px;
+      margin: 10px auto 8px;
       border-radius:50%;
-      border:5px solid rgba(255,255,255,.18);
-      border-top-color: var(--pink);
-      border-right-color: var(--gold);
-      animation: loadspin 1s linear infinite;
-      box-shadow: 0 10px 20px rgba(0,0,0,.25) inset;
+      border: 3px solid rgba(255,255,255,.18);
+      border-top-color: var(--gold);
+      border-right-color: rgba(255,79,161,.85);
+      animation: spin 1s linear infinite;
+      box-shadow: 0 0 0 10px rgba(255,79,161,.08);
     }
-    @keyframes loadspin{to{transform:rotate(360deg)}}
+    @keyframes spin{ to{ transform: rotate(360deg); } }
 
-    .pl-hint{margin:0; color:rgba(246,238,243,.75); font-size:14px}
-
-    /* Layout */
     .wrap{
+      width:min(980px, 92vw);
+      margin: 0 auto;
+      padding: 26px 0 42px;
       position:relative;
       z-index:1;
-      min-height:100vh;
-      padding: calc(18px + var(--safeTop)) 16px calc(22px + var(--safeBottom));
-      display:flex;
-      justify-content:center;
-    }
-    .container{
-      width:min(980px, 100%);
-      display:grid;
-      gap:16px;
     }
 
-    /* Top bar card */
-    .topCard{
+    .hero{
+      background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+      border: 1px solid rgba(255,255,255,.16);
       border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
-      border:1px solid rgba(255,255,255,.16);
       box-shadow: var(--shadow);
-      padding:16px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
       overflow:hidden;
+      padding: 18px;
       position:relative;
     }
-    .topCard::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background: radial-gradient(600px 200px at 70% 30%, rgba(255,62,166,.25), transparent 55%);
-      opacity:.85;
-      pointer-events:none;
-    }
-    .topRow{
-      position:relative;
+    .top-row{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:12px;
+      flex-wrap:wrap;
     }
-    .brand{
+    .logo-title{
       display:flex;
       align-items:center;
       gap:12px;
-      min-width:0;
+      min-width: 220px;
     }
-    .brandLogo{
+    .logo{
       width:58px; height:58px;
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,.18);
-      overflow:hidden;
-      flex:0 0 auto;
-      background: rgba(255,255,255,.08);
-      box-shadow: 0 14px 30px rgba(0,0,0,.35);
+      border-radius: 16px;
+      object-fit:cover;
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 12px 30px rgba(0,0,0,.28);
+      background: rgba(0,0,0,.1);
     }
-    .brandLogo img{width:100%; height:100%; object-fit:cover}
-    .brandText{min-width:0}
-    .brandName{
-      font-family:"Playfair Display","Cairo",serif;
-      font-size:28px;
+    .name h1{
       margin:0;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
+      font-family:"Playfair Display", serif;
+      font-size: 28px;
+      line-height:1.1;
     }
-    .brandMeta{
-      margin:2px 0 0;
-      color:rgba(246,238,243,.80);
-      font-weight:700;
-      letter-spacing:.2px;
+    .name .loc{
+      margin-top:4px;
+      color: var(--muted);
+      font-size: 14px;
     }
 
-    /* Buttons */
     .actions{
       display:flex;
       gap:10px;
       flex-wrap:wrap;
       justify-content:flex-start;
-      margin-top:14px;
-      position:relative;
     }
     .btn{
-      border:none;
+      border:0;
       cursor:pointer;
-      border-radius: 18px;
-      padding:14px 16px;
-      font-weight:900;
-      font-size:16px;
-      color: #0a0710;
-      display:inline-flex;
+      padding: 12px 16px;
+      border-radius: 16px;
+      font-weight:800;
+      font-size: 15px;
+      display:flex;
       align-items:center;
       gap:10px;
       text-decoration:none;
-      transition: transform .18s ease, filter .18s ease, box-shadow .18s ease;
-      box-shadow: 0 14px 30px rgba(0,0,0,.35);
       user-select:none;
-      -webkit-tap-highlight-color: transparent;
+      white-space:nowrap;
+      transition: transform .15s ease, filter .15s ease;
+      box-shadow: 0 12px 30px rgba(0,0,0,.25);
     }
-    .btn:active{transform:translateY(2px) scale(.99)}
-    .btn:hover{filter:brightness(1.03)}
-    .btn-green{
-      background: linear-gradient(90deg, #17d86a, #0bbf5a);
+    .btn:active{ transform: translateY(1px) scale(.99); }
+    .btn:hover{ filter: brightness(1.03); }
+
+    .btn-wa{
+      background: linear-gradient(135deg, #25D366, #1aa954);
+      color:#08130d;
     }
-    .btn-dark{
-      background: linear-gradient(90deg, rgba(0,0,0,.65), rgba(0,0,0,.35));
-      color: var(--text);
+    .btn-tt{
+      background: linear-gradient(135deg, #111, #2a2a2a);
+      color:#fff;
       border:1px solid rgba(255,255,255,.12);
-      box-shadow: 0 14px 30px rgba(0,0,0,.28);
     }
-    .btn-ghost{
-      background: rgba(255,255,255,.08);
-      color: var(--text);
-      border:1px solid rgba(255,255,255,.18);
-      box-shadow: none;
-    }
-    .pulse{
-      animation: pulse 1.6s ease-in-out infinite;
-    }
-    @keyframes pulse{
-      0%,100%{transform:translateY(0)}
-      50%{transform:translateY(-2px)}
-    }
-    .dot{
-      width:10px; height:10px; border-radius:50%;
-      background:#1cff80;
-      box-shadow: 0 0 0 6px rgba(28,255,128,.18);
+    .btn-outline{
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      color:#fff;
+      box-shadow:none;
     }
 
-    /* Hero card */
-    .hero{
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
-      border:1px solid rgba(255,255,255,.16);
-      box-shadow: var(--shadow);
-      padding:18px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      position:relative;
+    .divider{
+      height:1px;
+      background: rgba(255,255,255,.14);
+      margin: 16px 0;
+    }
+
+    .headline{
+      margin-top: 10px;
+      padding: 18px 18px 16px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(255,79,161,.18), rgba(255,255,255,.06));
+      border: 1px solid rgba(255,255,255,.14);
       overflow:hidden;
     }
-    .hero::after{
-      content:"";
-      position:absolute; inset:-1px;
-      background:
-        radial-gradient(500px 220px at 25% 20%, rgba(245,195,106,.18), transparent 60%),
-        radial-gradient(450px 260px at 75% 75%, rgba(255,62,166,.18), transparent 65%);
-      opacity:.9;
-      pointer-events:none;
-    }
-    .heroInner{position:relative; z-index:1}
     .badge{
       display:inline-flex;
       align-items:center;
-      gap:10px;
-      padding:10px 14px;
+      gap:8px;
+      padding: 8px 12px;
       border-radius: 999px;
-      border:1px solid rgba(255,255,255,.16);
+      border: 1px solid rgba(255,255,255,.16);
       background: rgba(255,255,255,.08);
-      font-weight:900;
-      color: rgba(246,238,243,.90);
+      color: rgba(255,255,255,.9);
+      font-weight:800;
+      font-size: 13px;
     }
     .badge i{
-      width:10px;height:10px;border-radius:50%;
+      width:8px; height:8px; border-radius:50%;
       background: var(--gold);
-      box-shadow:0 0 0 6px rgba(245,195,106,.18);
+      box-shadow: 0 0 0 6px rgba(255,210,122,.12);
+      display:inline-block;
     }
-    .h1{
-      margin:14px 0 10px;
-      font-size: clamp(30px, 5vw, 48px);
-      line-height:1.12;
-      font-weight: 1000;
-      letter-spacing:.2px;
+    .headline h2{
+      margin: 14px 0 10px;
+      font-size: clamp(28px, 4.7vw, 54px);
+      line-height: 1.12;
+      font-weight: 900;
     }
-    .p{
-      margin:0;
-      color: rgba(246,238,243,.80);
-      font-weight:700;
-      font-size:16px;
-      line-height:1.8;
+    .headline p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.9;
+      max-width: 820px;
     }
 
-    /* Sections */
-    .grid{
+    .proof{
+      margin-top: 18px;
       display:grid;
-      gap:16px;
       grid-template-columns: 1fr;
+      gap:12px;
     }
-
+    @media(min-width:760px){
+      .proof{ grid-template-columns: 1.2fr .8fr; }
+    }
     .card{
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
-      border:1px solid rgba(255,255,255,.15);
-      box-shadow: var(--shadow);
-      padding:18px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 14px 40px rgba(0,0,0,.22);
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      overflow:hidden;
-      position:relative;
+      padding: 16px;
     }
-    .cardTitle{
-      margin:0 0 12px;
-      font-size:22px;
-      font-weight:1000;
+    .card h3{ margin: 0 0 10px; font-size: 18px; font-weight: 900; }
+
+    .live{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:10px;
-    }
-    .cardTitle small{color:rgba(246,238,243,.70); font-weight:800}
-
-    /* Products */
-    .products{
-      display:grid;
-      gap:12px;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    .prod{
-      border-radius: 22px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      box-shadow: 0 14px 26px rgba(0,0,0,.28);
-      position:relative;
-      transform: translateZ(0);
-    }
-    .prod::after{
-      content:"";
-      position:absolute; inset:-60%;
-      background: radial-gradient(circle at 30% 30%, rgba(255,62,166,.12), transparent 55%),
-                  radial-gradient(circle at 70% 70%, rgba(245,195,106,.10), transparent 55%);
-      opacity:.9;
-      pointer-events:none;
-    }
-    .prod img{
-      width:100%;
-      height:170px;
-      object-fit:cover;
-      display:block;
-      transform: scale(1.02);
-      transition: transform .35s ease, filter .35s ease;
-      filter:saturate(1.05) contrast(1.02);
-    }
-    .prod:hover img{transform: scale(1.06)}
-    .prod span{
-      position:absolute;
-      bottom:10px; right:10px;
-      background: rgba(0,0,0,.35);
-      border:1px solid rgba(255,255,255,.18);
-      color: rgba(255,255,255,.92);
-      padding:8px 10px;
-      border-radius: 999px;
-      font-weight:900;
-      font-size:12px;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-
-    /* Live orders */
-    .orders{
-      display:grid;
-      gap:12px;
-      grid-template-columns: 1fr;
-      align-items:stretch;
-    }
-    .liveRow{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
       flex-wrap:wrap;
     }
-    .liveMeta{
+    .meta{
       display:flex;
       align-items:center;
       gap:10px;
-      color: rgba(246,238,243,.80);
-      font-weight:900;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
     }
-    .liveMeta .dot{flex:0 0 auto}
-    .bigNum{
-      font-size:44px;
-      font-weight:1100;
-      letter-spacing:.4px;
-      font-family:"Playfair Display","Cairo",serif;
+    .dot{
+      width:10px; height:10px;
+      border-radius:50%;
+      background:#22ff88;
+      box-shadow: 0 0 0 7px rgba(34,255,136,.12);
+      animation: pulse 1.2s ease-in-out infinite;
     }
-    .mini{
-      color: rgba(246,238,243,.75);
-      font-weight:800;
-      line-height:1.7;
-      margin-top:6px;
-    }
-    .bar{
-      height:12px;
-      border-radius:999px;
-      background: rgba(255,255,255,.12);
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.12);
-      position:relative;
-    }
-    .bar > i{
-      display:block;
-      height:100%;
-      width:32%;
-      border-radius:999px;
-      background: linear-gradient(90deg, var(--pink), var(--gold));
-      filter:saturate(1.1);
-      animation: barMove 2.4s ease-in-out infinite alternate;
-    }
-    @keyframes barMove{
-      from{width:26%}
-      to{width:78%}
+    @keyframes pulse{
+      0%,100%{ transform: scale(1); opacity:.9; }
+      50%{ transform: scale(1.2); opacity:1; }
     }
 
-    /* Reviews */
-    .reviews{display:grid; gap:12px}
-    .review{
-      border-radius: 22px;
-      padding:14px;
-      background: rgba(0,0,0,.22);
-      border:1px solid rgba(255,255,255,.12);
+    .counter{
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: .4px;
+      color: #fff;
+      text-shadow: 0 10px 30px rgba(0,0,0,.35);
     }
-    .reviewTop{
+    .hint{
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .reviews{ display:grid; grid-template-columns: 1fr; gap:10px; }
+    .review{
+      border-radius: 18px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 12px;
+    }
+    .review .top{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:10px;
-      margin-bottom:8px;
+      margin-bottom: 6px;
     }
-    .stars{color: var(--gold); font-weight:1000; letter-spacing:1px}
-    .who{font-weight:1000}
-    .review p{margin:0;color:rgba(246,238,243,.82);font-weight:800;line-height:1.75}
+    .review .who{ font-weight: 900; font-size: 14px; }
+    .stars{ color: var(--gold); font-size: 14px; letter-spacing: 1px; }
+    .review p{ margin:0; color: rgba(255,255,255,.86); line-height:1.8; font-size: 14px; }
 
-    /* Reveal animations */
-    [data-reveal]{opacity:0; transform: translateY(10px); transition: opacity .6s ease, transform .6s ease}
-    [data-reveal].in{opacity:1; transform: translateY(0)}
-
-    /* Sticky bottom WhatsApp */
-    .sticky{
-      position:fixed;
-      left:16px; right:16px;
-      bottom: calc(14px + var(--safeBottom));
-      z-index: 20;
+    .section{ margin-top: 18px; }
+    .section-title{
       display:flex;
-      justify-content:center;
-      pointer-events:none;
-    }
-    .sticky a{
-      pointer-events:auto;
-      width:min(980px, 100%);
-      display:flex;
-      justify-content:center;
       align-items:center;
-      gap:12px;
-      padding:16px 18px;
-      border-radius: 22px;
-      background: linear-gradient(90deg, #17d86a, #0bbf5a);
-      color:#07160c;
-      font-weight:1000;
-      text-decoration:none;
-      box-shadow: 0 18px 36px rgba(0,0,0,.42);
-      border: 1px solid rgba(255,255,255,.14);
-      transform: translateZ(0);
+      justify-content:space-between;
+      gap:10px;
+      margin: 0 0 10px;
     }
+    .section-title h3{ margin:0; font-size: 20px; font-weight: 900; }
 
-    /* Responsive */
-    @media (min-width: 860px){
-      .grid{grid-template-columns: 1.05fr .95fr}
-      .orders{grid-template-columns: 1fr}
-      .products{grid-template-columns: repeat(3, minmax(0, 1fr))}
-      .prod img{height:200px}
-      .brandName{font-size:32px}
+    .grid{ display:grid; grid-template-columns: 1fr; gap: 12px; }
+    @media(min-width:560px){ .grid{ grid-template-columns: 1fr 1fr; } }
+    @media(min-width:900px){ .grid{ grid-template-columns: 1fr 1fr 1fr; } }
+
+    .product{
+      border-radius: 22px;
+      overflow:hidden;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 18px 45px rgba(0,0,0,.25);
     }
+    .product img{
+      width:100%;
+      height: 260px;
+      object-fit: cover;
+      display:block;
+      filter: saturate(1.05) contrast(1.05);
+      transform: scale(1.02);
+      transition: transform .35s ease;
+    }
+    .product:hover img{ transform: scale(1.08); }
+    .cap{ padding: 12px 12px 14px; }
+    .pname{ font-weight: 900; margin:0 0 4px; }
+    .pdesc{ margin:0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+
+    .footer{
+      margin-top: 18px;
+      text-align:center;
+      color: rgba(255,255,255,.72);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+    .footer a{ color:#fff; opacity:.9; }
+
+    .float-wa{
+      position:fixed;
+      bottom: 16px;
+      left: 16px;
+      z-index: 50;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #25D366, #1aa954);
+      color:#08130d;
+      text-decoration:none;
+      font-weight: 900;
+      box-shadow: 0 18px 45px rgba(0,0,0,.35);
+      border: 1px solid rgba(255,255,255,.18);
+    }
+    .float-wa small{ font-weight:800; opacity:.9; }
+
+    .ico{ width:18px; height:18px; display:inline-block; border-radius:6px; background: rgba(255,255,255,.22); }
+    .ico.wa{ background: rgba(8,19,13,.12); box-shadow: inset 0 0 0 2px rgba(8,19,13,.18); }
+    .ico.tt{ background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 2px rgba(255,255,255,.14); }
   </style>
 </head>
 
 <body>
-  <div class="bg-motion" aria-hidden="true"></div>
 
-  <!-- Preloader (always hides max 3s) -->
-  <div class="preloader" id="preloader" role="status" aria-live="polite">
-    <div class="pl-card">
-      <div class="pl-shine"></div>
-      <div class="pl-content">
-        <div class="logoWrap">
-          <img id="plLogo" alt="glamchic logo" />
-        </div>
-        <h1 class="pl-title">glamchic</h1>
-        <p class="pl-sub">فخامة أنوثة… مثل الشركات العالمية ✨</p>
-        <div class="ring" aria-hidden="true"></div>
-        <p class="pl-hint">التحميل جارٍ…</p>
-      </div>
+  <div class="bg-orb orb1"></div>
+  <div class="bg-orb orb2"></div>
+  <div class="bg-orb orb3"></div>
+
+  <!-- Preloader يختفي بعد 3 ثواني بـ CSS -->
+  <div id="preloader" aria-label="Loading">
+    <div class="loader-card">
+      <img class="loader-logo" src="logo.png" alt="Glame chic logo" onerror="this.style.display='none'">
+      <div class="ring" aria-hidden="true"></div>
+      <h2 class="brand">Glame chic</h2>
+      <p class="sub">فخامة أنوثة… مثل الشركات العالمية ✨<br/>التحميل جاري…</p>
     </div>
   </div>
 
-  <div class="wrap">
-    <div class="container">
-
-      <!-- Top Card -->
-      <section class="topCard" data-reveal>
-        <div class="topRow">
-          <div class="brand">
-            <div class="brandLogo">
-              <img id="brandLogo" alt="glamchic logo" />
-            </div>
-            <div class="brandText">
-              <h2 class="brandName">glamchic</h2>
-              <div class="brandMeta">Oran • Algeria</div>
-            </div>
-          </div>
-
-          <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
-            <a class="btn btn-ghost" href="#products">المنتجات</a>
-            <a class="btn btn-ghost" href="#reviews">آراء</a>
-            <a class="btn btn-ghost" href="#order">اطلب الآن</a>
+  <main class="wrap">
+    <section class="hero">
+      <div class="top-row">
+        <div class="logo-title">
+          <img class="logo" src="logo.png" alt="Glame chic" onerror="this.style.display='none'">
+          <div class="name">
+            <h1>Glame chic</h1>
+            <div class="loc">Oran • Algeria</div>
           </div>
         </div>
 
-        <div class="actions" id="order">
-          <a class="btn btn-green pulse" id="waTop" href="#" rel="noopener">
-            <span class="dot" aria-hidden="true"></span>
-            اطلب عبر واتساب
+        <div class="actions">
+          <a class="btn btn-wa" id="waBtn" href="#" rel="noopener">
+            <span class="ico wa"></span> اطلب عبر واتساب
           </a>
 
-          <a class="btn btn-dark" id="ttTop" href="#" rel="noopener">
-            اطلب عبر تيكتوك
+          <a class="btn btn-tt" href="https://www.tiktok.com/@glame.chic?_r=1&_t=ZS-94GArdkxSwm" target="_blank" rel="noopener">
+            <span class="ico tt"></span> اطلب عبر تيكتوك
           </a>
 
-          <a class="btn btn-ghost" href="#privacy">
-            Privacy Policy
-          </a>
+          <a class="btn btn-outline" href="#privacy">Privacy Policy</a>
         </div>
-      </section>
-
-      <!-- Hero -->
-      <section class="hero" data-reveal>
-        <div class="heroInner">
-          <div class="badge"><i></i> Luxury Beauty Brand</div>
-          <div class="h1">فخامة أنوثة… مثل الشركات العالمية ✨</div>
-          <p class="p">
-            glamchic علامة تجميل راقية في وهران. بوكسات ومنتجات مختارة بعناية…
-            مظهر أنثوي فاخر جذاب ومميز. اطلب بسرعة عبر واتساب أو تواصل عبر تيكتوك.
-          </p>
-        </div>
-      </section>
-
-      <div class="grid">
-        <!-- Live Orders -->
-        <section class="card" data-reveal>
-          <div class="cardTitle">
-            <span>مؤشر الطلبات المباشر 📈</span>
-            <small>يتحدث تلقائياً</small>
-          </div>
-
-          <div class="orders">
-            <div class="liveRow">
-              <div class="liveMeta">
-                <span class="dot" aria-hidden="true"></span>
-                <span>مباشر الآن • تحديث تلقائي</span>
-              </div>
-              <div class="bigNum" id="ordersNum">0</div>
-            </div>
-
-            <div class="bar" aria-hidden="true"><i></i></div>
-            <div class="mini" id="ordersHint">
-              يزيد كل دقيقة بعدد معقول لإظهار نشاط الطلبات.
-            </div>
-
-            <a class="btn btn-green" id="waMid" href="#" rel="noopener" style="justify-content:center;">
-              <span style="font-weight:1000">+213779665820</span>
-              <span>اطلب واتساب</span>
-            </a>
-          </div>
-        </section>
-
-        <!-- Reviews -->
-        <section class="card" id="reviews" data-reveal>
-          <div class="cardTitle">
-            <span>آراء العملاء ⭐</span>
-            <small>تقييمات إيجابية</small>
-          </div>
-
-          <div class="reviews" id="reviewsList"></div>
-        </section>
       </div>
 
-      <!-- Products -->
-      <section class="card" id="products" data-reveal>
-        <div class="cardTitle">
-          <span>منتجاتنا</span>
-          <small>صور حقيقية</small>
-        </div>
+      <div class="divider"></div>
 
-        <div class="products">
-          <div class="prod">
-            <img src="product1.jpg" alt="منتج 1">
-            <span>Beauty Box</span>
-          </div>
-          <div class="prod">
-            <img src="product2.jpg" alt="منتج 2">
-            <span>Makeup Set</span>
-          </div>
-          <div class="prod">
-            <img src="product3.jpg" alt="منتج 3">
-            <span>Luxury Kit</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- Privacy -->
-      <section class="card" id="privacy" data-reveal>
-        <div class="cardTitle"><span>Privacy Policy</span><small>ملخص</small></div>
-        <p class="p" style="margin:0">
-          نحن لا نجمع بيانات حساسة. الروابط الخارجية (واتساب/تيكتوك) تفتح في تطبيقاتها.
-          لأي استفسار: <span style="color:var(--gold); font-weight:1000;">glame.chic31@gmail.com</span>
+      <div class="headline">
+        <span class="badge"><i></i> Luxury Beauty Brand</span>
+        <h2>فخامة أنوثة… مثل الشركات العالمية ✨</h2>
+        <p>
+          Glame chic علامة تجميل راقية في وهران. بوكسات ومنتجات مختارة بعناية… لمظهر أنثوي فاخر، جذاب ومميز.
+          اطلب بسرعة عبر واتساب أو تواصل عبر تيكتوك.
         </p>
-      </section>
+      </div>
 
-      <div style="height:90px"></div>
-    </div>
-  </div>
+      <div class="proof">
+        <div class="card">
+          <div class="live">
+            <div>
+              <h3 style="margin:0 0 6px">📈 مؤشر الطلبات المباشر</h3>
+              <div class="meta"><span class="dot"></span> مباشر الآن • يتحدث تلقائياً</div>
+            </div>
+            <div class="counter" id="ordersCounter">1,287</div>
+          </div>
+          <div class="hint">يزيد كل دقيقة بعدد معقول لإظهار نشاط الطلبات.</div>
+        </div>
 
-  <!-- Sticky WhatsApp -->
-  <div class="sticky">
-    <a id="waSticky" href="#" rel="noopener">
-      <span class="dot" aria-hidden="true"></span>
-      اطلب الآن عبر واتساب
-    </a>
-  </div>
+        <div class="card">
+          <h3>💬 آراء الزبائن</h3>
+          <div class="reviews">
+            <div class="review">
+              <div class="top"><div class="who">سارة</div><div class="stars">★★★★★</div></div>
+              <p>بوكس مرتب وفخم، الجودة ممتازة والتغليف راقي جداً 💗</p>
+            </div>
+            <div class="review">
+              <div class="top"><div class="who">مريم</div><div class="stars">★★★★★</div></div>
+              <p>تجربة رائعة! المنتجات أصلية والنتيجة جميلة، أنصح به بقوة ✨</p>
+            </div>
+            <div class="review">
+              <div class="top"><div class="who">هدى</div><div class="stars">★★★★★</div></div>
+              <p>خدمة سريعة وتعامل راقٍ… أحلى بوكس شريته 🥰</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">
+          <h3>Our Products</h3>
+          <span style="color:rgba(255,255,255,.75); font-weight:800; font-size:13px;">صور حقيقية</span>
+        </div>
+
+        <div class="grid">
+          <article class="product">
+            <img src="product1.jpg" alt="Glame chic product 1" loading="lazy">
+            <div class="cap">
+              <p class="pname">بوكس 1</p>
+              <p class="pdesc">اختيار فاخر بلمسة أنوثة — مناسب كهدية.</p>
+            </div>
+          </article>
+
+          <article class="product">
+            <img src="product2.jpg" alt="Glame chic product 2" loading="lazy">
+            <div class="cap">
+              <p class="pname">بوكس 2</p>
+              <p class="pdesc">تشكيلة كبيرة… أناقة وتنوع يبهرك.</p>
+            </div>
+          </article>
+
+          <article class="product">
+            <img src="product3.jpg" alt="Glame chic product 3" loading="lazy">
+            <div class="cap">
+              <p class="pname">بوكس 3</p>
+              <p class="pdesc">تفاصيل راقية وجودة عالية لمظهر مميز.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="footer" id="privacy">
+        <div style="margin-top:14px;">
+          <strong>تواصل</strong><br>
+          البريد: <a href="mailto:glame.chic31@gmail.com">glame.chic31@gmail.com</a><br>
+          الهاتف: <a href="tel:+213671599739">0671599739</a>
+        </div>
+
+        <div style="margin-top:14px; opacity:.85;">
+          <strong>Privacy Policy</strong><br>
+          نحن لا نجمع بيانات حساسة. أي تواصل يتم عبر واتساب/تيكتوك حسب اختيارك.
+        </div>
+
+        <div style="margin-top:14px; opacity:.7;">
+          © <span id="year"></span> Glame chic — Oran
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <a class="float-wa" id="waFloat" href="#" rel="noopener">
+    <span class="ico wa"></span>
+    اطلب واتساب <small>+213779665820</small>
+  </a>
 
   <script>
-  // ====== GLOBAL SAFE MODE: page never breaks on any phone ======
-  try {
-    // --- Config ---
-    const BRAND = "glamchic";
-    const CITY = "Oran";
-    const COUNTRY = "Algeria";
-    const EMAIL = "glame.chic31@gmail.com";
-    const WA_NUMBER = "+213779665820";
-    const WA_NUMBER_PLAIN = "213779665820";
-    const TIKTOK = "https://www.tiktok.com/@glame.chic?_r=1&_t=ZS-94GArdkxSwm";
+    // كود آمن جداً: لا يوقف الصفحة حتى لو فشل شيء
+    (function(){
+      try{
+        const WHATSAPP_NUMBER_INT = "213779665820";
+        const WA_MESSAGE = "مرحباً Glame chic ✨ أريد الطلب / الاستفسار من فضلك.";
+        const wa = "https://wa.me/" + WHATSAPP_NUMBER_INT + "?text=" + encodeURIComponent(WA_MESSAGE);
 
-    // Put your logo filename in repo (recommended: logo.png)
-    const LOGO
+        const waBtn = document.getElementById("waBtn");
+        const waFloat = document.getElementById("waFloat");
+        if(waBtn) waBtn.href = wa;
+        if(waFloat) waFloat.href = wa;
+
+        const year = document.getElementById("year");
+        if(year) year.textContent = new Date().getFullYear();
+
+        // عداد الطلبات: بدون localStorage (حتى لا يسبب مشاكل)
+        const counterEl = document.getElementById("ordersCounter");
+        let current = 1287;
+
+        function randInt(min,max){ return Math.floor(Math.random()*(max-min+1))+min; }
+        function animate(from,to,duration){
+          const start = performance.now();
+          const diff = to - from;
+          function step(now){
+            const t = Math.min(1, (now - start)/duration);
+            const eased = 1 - Math.pow(1 - t, 3);
+            const val = Math.round(from + diff*eased);
+            if(counterEl) counterEl.textContent = val.toLocaleString("ar-DZ");
+            if(t < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        }
+
+        setInterval(function(){
+          const add = randInt(1,4);
+          const next = current + add;
+          animate(current, next, 650);
+          current = next;
+        }, 60000);
+
+      }catch(e){
+        // لا شيء
+      }
+    })();
+  </script>
+
+</body>
+          </html>
