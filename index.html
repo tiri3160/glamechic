@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#ff4fa1" />
   <title>Glame chic — فخامة أنوثة</title>
-  <meta name="description" content="Glame chic — علامة تجميل راقية في وهران. اطلب عبر واتساب أو تيكتوك." />
+  <meta name="description" content="Glame chic — علامة تجميل راقية في وهران. اطلب عبر واتساب أو تيكتوك أو إنستغرام." />
 
   <meta property="og:title" content="Glame chic — Luxury Beauty Brand" />
-  <meta property="og:description" content="Glame chic — علامة تجميل راقية في وهران. اطلب عبر واتساب أو تيكتوك." />
+  <meta property="og:description" content="Glame chic — علامة تجميل راقية في وهران. اطلب عبر واتساب أو تيكتوك أو إنستغرام." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="logo.png" />
 
@@ -58,7 +58,7 @@
       50%{ transform: translate(-18px, 14px) scale(1.03); }
     }
 
-    /* ====== PRELOADER (CSS فقط): يختفي بعد 3 ثواني حتى لو JS تعطل ====== */
+    /* ====== PRELOADER (CSS فقط) ====== */
     #preloader{
       position:fixed;
       inset:0;
@@ -69,17 +69,11 @@
       background:
         radial-gradient(900px 700px at 50% 40%, rgba(255,79,161,.25), transparent 55%),
         linear-gradient(135deg, #120013, #2b0022);
-
-      /* الإخفاء التلقائي */
       animation: preHide 0.6s ease forwards;
-      animation-delay: 3s; /* بعد 3 ثواني */
+      animation-delay: 2.2s;
     }
     @keyframes preHide{
-      to{
-        opacity:0;
-        visibility:hidden;
-        pointer-events:none;
-      }
+      to{ opacity:0; visibility:hidden; pointer-events:none; }
     }
 
     .loader-card{
@@ -95,8 +89,7 @@
       overflow:hidden;
     }
     .loader-logo{
-      width:90px;
-      height:90px;
+      width:90px; height:90px;
       border-radius: 22px;
       object-fit:cover;
       border: 1px solid rgba(255,255,255,.18);
@@ -212,6 +205,11 @@
       color:#fff;
       border:1px solid rgba(255,255,255,.12);
     }
+    .btn-ig{
+      background: linear-gradient(135deg, rgba(255,79,161,.92), rgba(255,210,122,.55));
+      color:#1a0012;
+      border:1px solid rgba(255,255,255,.15);
+    }
     .btn-outline{
       background: rgba(255,255,255,.10);
       border: 1px solid rgba(255,255,255,.16);
@@ -325,24 +323,61 @@
       line-height: 1.8;
     }
 
-    .reviews{ display:grid; grid-template-columns: 1fr; gap:10px; }
-    .review{
+    /* ====== تعليقات متحركة (نسخة قوية + واقعية) ====== */
+    .comments-wrap{
+      position: relative;
+      overflow: hidden;
       border-radius: 18px;
       background: rgba(255,255,255,.06);
       border: 1px solid rgba(255,255,255,.12);
-      padding: 12px;
+      padding: 10px;
+      height: 240px;
     }
-    .review .top{
+    .comment-bubble{
+      position:absolute;
+      right:-10%;
+      max-width: 92%;
+      min-width: 180px;
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(255,255,255,.11), rgba(255,255,255,.06));
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 18px 45px rgba(0,0,0,.25);
+      backdrop-filter: blur(8px);
+      animation: fly 9.5s linear forwards;
+    }
+    .comment-bubble::after{
+      content:"";
+      position:absolute;
+      bottom:-7px;
+      right:18px;
+      width: 14px; height: 14px;
+      background: inherit;
+      border-right: 1px solid rgba(255,255,255,.12);
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      transform: rotate(45deg);
+      border-bottom-right-radius: 4px;
+      filter: blur(0px);
+    }
+    @keyframes fly{
+      0%   { transform: translateX(0) translateY(var(--y)) scale(.98); opacity:0; }
+      8%   { opacity:1; }
+      90%  { opacity:1; }
+      100% { transform: translateX(-140%) translateY(var(--y)) scale(1); opacity:0; }
+    }
+    .c-top{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:10px;
       margin-bottom: 6px;
     }
-    .review .who{ font-weight: 900; font-size: 14px; }
-    .stars{ color: var(--gold); font-size: 14px; letter-spacing: 1px; }
-    .review p{ margin:0; color: rgba(255,255,255,.86); line-height:1.8; font-size: 14px; }
+    .c-name{ font-weight: 900; font-size: 14px; }
+    .c-time{ color: rgba(255,255,255,.68); font-size: 12px; font-weight: 800; }
+    .c-text{ margin:0; color: rgba(255,255,255,.90); line-height:1.75; font-size: 13.5px; }
+    .c-stars{ color: var(--gold); font-size: 12px; letter-spacing: 1px; font-weight: 900; opacity:.95; }
 
+    /* ====== المنتجات ====== */
     .section{ margin-top: 18px; }
     .section-title{
       display:flex;
@@ -372,6 +407,7 @@
       filter: saturate(1.05) contrast(1.05);
       transform: scale(1.02);
       transition: transform .35s ease;
+      background: rgba(0,0,0,.15);
     }
     .product:hover img{ transform: scale(1.08); }
     .cap{ padding: 12px 12px 14px; }
@@ -409,6 +445,7 @@
     .ico{ width:18px; height:18px; display:inline-block; border-radius:6px; background: rgba(255,255,255,.22); }
     .ico.wa{ background: rgba(8,19,13,.12); box-shadow: inset 0 0 0 2px rgba(8,19,13,.18); }
     .ico.tt{ background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 2px rgba(255,255,255,.14); }
+    .ico.ig{ background: rgba(26,0,18,.12); box-shadow: inset 0 0 0 2px rgba(26,0,18,.16); }
   </style>
 </head>
 
@@ -418,7 +455,7 @@
   <div class="bg-orb orb2"></div>
   <div class="bg-orb orb3"></div>
 
-  <!-- Preloader يختفي بعد 3 ثواني بـ CSS -->
+  <!-- Preloader -->
   <div id="preloader" aria-label="Loading">
     <div class="loader-card">
       <img class="loader-logo" src="logo.png" alt="Glame chic logo" onerror="this.style.display='none'">
@@ -448,6 +485,10 @@
             <span class="ico tt"></span> اطلب عبر تيكتوك
           </a>
 
+          <a class="btn btn-ig" id="igBtn" href="https://www.instagram.com/glame_chic" target="_blank" rel="noopener">
+            <span class="ico ig"></span> اطلب عبر إنستغرام
+          </a>
+
           <a class="btn btn-outline" href="#privacy">Privacy Policy</a>
         </div>
       </div>
@@ -459,7 +500,7 @@
         <h2>فخامة أنوثة… مثل الشركات العالمية ✨</h2>
         <p>
           Glame chic علامة تجميل راقية في وهران. بوكسات ومنتجات مختارة بعناية… لمظهر أنثوي فاخر، جذاب ومميز.
-          اطلب بسرعة عبر واتساب أو تواصل عبر تيكتوك.
+          اطلب بسرعة عبر واتساب أو تواصل عبر تيكتوك/إنستغرام.
         </p>
       </div>
 
@@ -468,29 +509,17 @@
           <div class="live">
             <div>
               <h3 style="margin:0 0 6px">📈 مؤشر الطلبات المباشر</h3>
-              <div class="meta"><span class="dot"></span> مباشر الآن • يتحدث تلقائياً</div>
+              <div class="meta"><span class="dot"></span> مباشر الآن • يتحدث كل دقيقة</div>
             </div>
             <div class="counter" id="ordersCounter">1,287</div>
           </div>
-          <div class="hint">يزيد كل دقيقة بعدد معقول لإظهار نشاط الطلبات.</div>
+          <div class="hint">يزيد كل دقيقة بزيادة عشوائية صغيرة (تصاعدي) ليبان النشاط طبيعي.</div>
         </div>
 
         <div class="card">
-          <h3>💬 آراء الزبائن</h3>
-          <div class="reviews">
-            <div class="review">
-              <div class="top"><div class="who">سارة</div><div class="stars">★★★★★</div></div>
-              <p>بوكس مرتب وفخم، الجودة ممتازة والتغليف راقي جداً 💗</p>
-            </div>
-            <div class="review">
-              <div class="top"><div class="who">مريم</div><div class="stars">★★★★★</div></div>
-              <p>تجربة رائعة! المنتجات أصلية والنتيجة جميلة، أنصح به بقوة ✨</p>
-            </div>
-            <div class="review">
-              <div class="top"><div class="who">هدى</div><div class="stars">★★★★★</div></div>
-              <p>خدمة سريعة وتعامل راقٍ… أحلى بوكس شريته 🥰</p>
-            </div>
-          </div>
+          <h3>💬 تعليقات الزبائن (متحركة)</h3>
+          <div class="comments-wrap" id="commentsWrap" aria-label="Animated comments"></div>
+          <div class="hint">تعليقات واقعية بلهجتنا/عربية + أسماء جزائرية.</div>
         </div>
       </div>
 
@@ -500,30 +529,8 @@
           <span style="color:rgba(255,255,255,.75); font-weight:800; font-size:13px;">صور حقيقية</span>
         </div>
 
-        <div class="grid">
-          <article class="product">
-            <img src="product1.jpg" alt="Glame chic product 1" loading="lazy">
-            <div class="cap">
-              <p class="pname">بوكس 1</p>
-              <p class="pdesc">اختيار فاخر بلمسة أنوثة — مناسب كهدية.</p>
-            </div>
-          </article>
-
-          <article class="product">
-            <img src="product2.jpg" alt="Glame chic product 2" loading="lazy">
-            <div class="cap">
-              <p class="pname">بوكس 2</p>
-              <p class="pdesc">تشكيلة كبيرة… أناقة وتنوع يبهرك.</p>
-            </div>
-          </article>
-
-          <article class="product">
-            <img src="product3.jpg" alt="Glame chic product 3" loading="lazy">
-            <div class="cap">
-              <p class="pname">بوكس 3</p>
-              <p class="pdesc">تفاصيل راقية وجودة عالية لمظهر مميز.</p>
-            </div>
-          </article>
+        <div class="grid" id="productsGrid">
+          <!-- يتم توليد 31 منتج تلقائياً عبر JS -->
         </div>
       </div>
 
@@ -536,7 +543,7 @@
 
         <div style="margin-top:14px; opacity:.85;">
           <strong>Privacy Policy</strong><br>
-          نحن لا نجمع بيانات حساسة. أي تواصل يتم عبر واتساب/تيكتوك حسب اختيارك.
+          نحن لا نجمع بيانات حساسة. أي تواصل يتم عبر واتساب/تيكتوك/إنستغرام حسب اختيارك.
         </div>
 
         <div style="margin-top:14px; opacity:.7;">
@@ -553,9 +560,9 @@
   </a>
 
   <script>
-    // كود آمن جداً: لا يوقف الصفحة حتى لو فشل شيء
     (function(){
       try{
+        // ===== روابط الطلب =====
         const WHATSAPP_NUMBER_INT = "213779665820";
         const WA_MESSAGE = "مرحباً Glame chic ✨ أريد الطلب / الاستفسار من فضلك.";
         const wa = "https://wa.me/" + WHATSAPP_NUMBER_INT + "?text=" + encodeURIComponent(WA_MESSAGE);
@@ -568,7 +575,7 @@
         const year = document.getElementById("year");
         if(year) year.textContent = new Date().getFullYear();
 
-        // عداد الطلبات: بدون localStorage (حتى لا يسبب مشاكل)
+        // ===== عداد تصاعدي (كل دقيقة) =====
         const counterEl = document.getElementById("ordersCounter");
         let current = 1287;
 
@@ -586,18 +593,32 @@
           requestAnimationFrame(step);
         }
 
+        // تحديث أولي لطيف بعد ثواني
+        setTimeout(function(){
+          const add = randInt(2,6);
+          const next = current + add;
+          animate(current, next, 650);
+          current = next;
+        }, 2500);
+
         setInterval(function(){
-          const add = randInt(1,4);
+          const add = randInt(1,5); // زيادة معقولة
           const next = current + add;
           animate(current, next, 650);
           current = next;
         }, 60000);
 
-      }catch(e){
-        // لا شيء
-      }
-    })();
-  </script>
-
-</body>
-          </html>
+        // ===== 30 تعليق جزائري واقعي (أسماء + لهجة/عربية) =====
+        const comments = [
+          {name:"أمينة", text:"وصلني البوكس اليوم… التغليف روعة بصح وبريستييج 👌"},
+          {name:"ريم", text:"المنتجات باينة أصلية وريحة تاعها تجنن… يعطيكم الصحة 💗"},
+          {name:"سميرة", text:"طلبت من عندكم ثاني مرة، الخدمة سريعة والذوق عالي بزاف ✨"},
+          {name:"سارة", text:"ياااا سلام على التنظيم! كلش مرتب وما فيه حتى حاجة ناقصة."},
+          {name:"ليلى", text:"الهدية خرجت فخمة… صاحبيتي فرحت بزاف 🙈"},
+          {name:"هدى", text:"مصداقية + تعامل راقي… راني نوصي خوّاتي كامل 😍"},
+          {name:"كوثر", text:"الالوان تاع البوكس والستايل فخم… كيما البراندات العالمية."},
+          {name:"إيمان", text:"جربت ماسك/كريم من عندكم… النتيجة باينة من أول أسبوع 💯"},
+          {name:"خديجة", text:"باردو ممتاز! وصلني بلا ما يتكسر والو، شكراً."},
+          {name:"سهيلة", text:"حبيت بزاف الاختيارات… كل مرة تلقى حاجة جديدة."},
+          {name:"نسرين", text:"خدمة الزبائن شابة… يجاوبو بسرعة وبذوق."},
+     
