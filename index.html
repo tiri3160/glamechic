@@ -19,46 +19,59 @@
   <style>
     :root{
       --pink:#ff4fa1;
-      --pink2:#ff77bd;
+      --pink2:#ff8bc9;
       --gold:#ffd27a;
-      --bg1:#120013;
-      --bg2:#2b0022;
-      --muted: rgba(255,255,255,.78);
-      --shadow: 0 20px 60px rgba(0,0,0,.35);
+      --gold2:#ffe3a6;
+
+      /* ✅ فاتح ملكي (الأفخم) */
+      --bg1:#fff3f9;
+      --bg2:#ffe6f2;
+      --bg3:#fff7fb;
+
+      --text:#1a0a14;
+      --muted: rgba(20,10,18,.74);
+
+      --shadow: 0 22px 70px rgba(22,6,16,.22);
+      --shadow2: 0 14px 45px rgba(22,6,16,.14);
       --radius: 26px;
     }
+
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
     body{
       margin:0;
       font-family:"Tajawal", system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      color:#fff;
-      background: radial-gradient(1200px 800px at 20% 10%, rgba(255,79,161,.35), transparent 60%),
-                  radial-gradient(900px 600px at 80% 30%, rgba(255,210,122,.20), transparent 55%),
-                  radial-gradient(900px 700px at 40% 90%, rgba(255,119,189,.22), transparent 60%),
-                  linear-gradient(135deg, var(--bg1), var(--bg2));
+      color: var(--text);
+
+      /* ✅ خلفية وردي فاتح + لمسات ذهبية */
+      background:
+        radial-gradient(1000px 700px at 18% 12%, rgba(255,79,161,.22), transparent 60%),
+        radial-gradient(900px 650px at 86% 22%, rgba(255,210,122,.26), transparent 58%),
+        radial-gradient(900px 750px at 50% 90%, rgba(255,139,201,.18), transparent 60%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+
       overflow:auto;
     }
 
-    /* خلفيات ناعمة متحركة */
+    /* ✅ أورب ناعمة متحركة (فاتحة) */
     .bg-orb{
       position:fixed;
       width:520px; height:520px;
       border-radius:50%;
-      filter: blur(40px);
-      opacity:.35;
+      filter: blur(45px);
+      opacity:.45;
       z-index:-2;
       animation: floaty 10s ease-in-out infinite;
     }
-    .orb1{ background: radial-gradient(circle at 30% 30%, rgba(255,79,161,.9), transparent 60%); top:-120px; right:-140px; }
-    .orb2{ background: radial-gradient(circle at 40% 40%, rgba(255,210,122,.8), transparent 60%); bottom:-160px; left:-160px; animation-duration: 12s; }
-    .orb3{ background: radial-gradient(circle at 45% 45%, rgba(255,119,189,.85), transparent 60%); top:40%; left:65%; width:420px; height:420px; animation-duration: 14s; }
+    .orb1{ background: radial-gradient(circle at 30% 30%, rgba(255,79,161,.75), transparent 62%); top:-140px; right:-160px; }
+    .orb2{ background: radial-gradient(circle at 40% 40%, rgba(255,210,122,.75), transparent 62%); bottom:-170px; left:-170px; animation-duration: 12s; }
+    .orb3{ background: radial-gradient(circle at 45% 45%, rgba(255,139,201,.75), transparent 62%); top:42%; left:65%; width:430px; height:430px; animation-duration: 14s; }
     @keyframes floaty{
       0%,100%{ transform: translate(0,0) scale(1); }
       50%{ transform: translate(-18px, 14px) scale(1.03); }
     }
 
-    /* ====== PRELOADER (CSS فقط): يختفي بعد 3 ثواني حتى لو JS تعطل ====== */
+    /* ====== PRELOADER (يختفي بعد 3 ثواني) ====== */
     #preloader{
       position:fixed;
       inset:0;
@@ -66,63 +79,85 @@
       align-items:center;
       justify-content:center;
       z-index:9999;
-      background:
-        radial-gradient(900px 700px at 50% 40%, rgba(255,79,161,.25), transparent 55%),
-        linear-gradient(135deg, #120013, #2b0022);
 
-      animation: preHide 0.6s ease forwards;
+      background:
+        radial-gradient(900px 700px at 50% 40%, rgba(255,79,161,.20), transparent 55%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+
+      animation: preHide .6s ease forwards;
       animation-delay: 3s;
     }
     @keyframes preHide{
-      to{
-        opacity:0;
-        visibility:hidden;
-        pointer-events:none;
-      }
+      to{ opacity:0; visibility:hidden; pointer-events:none; }
     }
 
     .loader-card{
-      width:min(540px, 92vw);
-      padding:28px 22px;
-      border-radius: 28px;
-      background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
-      border:1px solid rgba(255,255,255,.16);
+      width:min(560px, 92vw);
+      padding:30px 22px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(255,255,255,.80), rgba(255,255,255,.45));
+      border:1px solid rgba(255,79,161,.18);
       box-shadow: var(--shadow);
       backdrop-filter: blur(10px);
       text-align:center;
       position:relative;
       overflow:hidden;
     }
+    .loader-card::before{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background: linear-gradient(115deg,
+        transparent 0%,
+        rgba(255,210,122,.26) 35%,
+        rgba(255,255,255,.26) 45%,
+        rgba(255,79,161,.18) 55%,
+        transparent 75%);
+      transform: rotate(8deg);
+      animation: shimmer 6s ease-in-out infinite;
+      pointer-events:none;
+      filter: blur(2px);
+      opacity:.9;
+    }
+    @keyframes shimmer{
+      0%{ transform: translateX(-20%) rotate(8deg); opacity:.55; }
+      50%{ transform: translateX(20%) rotate(8deg); opacity:.95; }
+      100%{ transform: translateX(-20%) rotate(8deg); opacity:.55; }
+    }
+
     .loader-logo{
-      width:90px;
-      height:90px;
+      width:92px; height:92px;
       border-radius: 22px;
       object-fit:cover;
-      border: 1px solid rgba(255,255,255,.18);
-      box-shadow: 0 12px 35px rgba(0,0,0,.35);
+      border: 1px solid rgba(255,79,161,.22);
+      box-shadow: 0 14px 40px rgba(22,6,16,.22);
       margin: 0 auto 14px;
-      background: rgba(0,0,0,.1);
+      background: rgba(255,255,255,.4);
     }
     .brand{
       font-family: "Playfair Display", serif;
       margin: 0;
       font-size: 30px;
+      color:#2b001e;
+      text-shadow: 0 10px 28px rgba(255,210,122,.18);
     }
     .sub{
       margin: 8px 0 16px;
-      color: var(--muted);
+      color: rgba(30,10,22,.75);
       font-size: 15px;
-      line-height: 1.7;
+      line-height: 1.8;
+      font-weight: 700;
     }
     .ring{
       width:86px; height:86px;
-      margin: 10px auto 8px;
+      margin: 12px auto 10px;
       border-radius:50%;
-      border: 3px solid rgba(255,255,255,.18);
+      border: 3px solid rgba(255,79,161,.18);
       border-top-color: var(--gold);
-      border-right-color: rgba(255,79,161,.85);
+      border-right-color: rgba(255,79,161,.75);
       animation: spin 1s linear infinite;
-      box-shadow: 0 0 0 10px rgba(255,79,161,.08);
+      box-shadow: 0 0 0 12px rgba(255,210,122,.10);
+      background: rgba(255,255,255,.30);
     }
     @keyframes spin{ to{ transform: rotate(360deg); } }
 
@@ -134,9 +169,10 @@
       z-index:1;
     }
 
+    /* ✅ كرت رئيسي فاخر فاتح */
     .hero{
-      background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
-      border: 1px solid rgba(255,255,255,.16);
+      background: linear-gradient(135deg, rgba(255,255,255,.78), rgba(255,255,255,.42));
+      border: 1px solid rgba(255,79,161,.16);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       backdrop-filter: blur(12px);
@@ -144,7 +180,19 @@
       padding: 18px;
       position:relative;
     }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:
+        radial-gradient(900px 500px at 75% 10%, rgba(255,210,122,.18), transparent 55%),
+        radial-gradient(900px 600px at 15% 90%, rgba(255,79,161,.12), transparent 60%);
+      opacity:.9;
+    }
+
     .top-row{
+      position:relative;
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -161,81 +209,82 @@
       width:58px; height:58px;
       border-radius: 16px;
       object-fit:cover;
-      border: 1px solid rgba(255,255,255,.18);
-      box-shadow: 0 12px 30px rgba(0,0,0,.28);
-      background: rgba(0,0,0,.1);
+      border: 1px solid rgba(255,79,161,.20);
+      box-shadow: 0 14px 34px rgba(22,6,16,.16);
+      background: rgba(255,255,255,.4);
     }
     .name h1{
       margin:0;
       font-family:"Playfair Display", serif;
       font-size: 28px;
       line-height:1.1;
+      color:#2b001e;
     }
     .name .loc{
       margin-top:4px;
-      color: var(--muted);
+      color: rgba(30,10,22,.70);
       font-size: 14px;
+      font-weight: 800;
     }
 
+    /* ✅ أزرار 2×2 متناسقة */
     .actions{
-      display:flex;
+      display:grid;
+      grid-template-columns: repeat(2, minmax(160px, 1fr));
       gap:10px;
-      flex-wrap:wrap;
-      justify-content:flex-start;
+      width:min(460px, 100%);
+      align-content:start;
     }
+    @media (max-width:520px){
+      .actions{ grid-template-columns: 1fr 1fr; width:100%; }
+    }
+
     .btn{
       border:0;
       cursor:pointer;
-      padding: 12px 16px;
+      padding: 12px 14px;
       border-radius: 16px;
-      font-weight:800;
-      font-size: 15px;
+      font-weight:900;
+      font-size: 14px;
       display:flex;
       align-items:center;
+      justify-content:center;
       gap:10px;
       text-decoration:none;
       user-select:none;
       white-space:nowrap;
       transition: transform .15s ease, filter .15s ease;
-      box-shadow: 0 12px 30px rgba(0,0,0,.25);
+      box-shadow: var(--shadow2);
+      min-height: 48px;
     }
     .btn:active{ transform: translateY(1px) scale(.99); }
-    .btn:hover{ filter: brightness(1.03); }
+    .btn:hover{ filter: brightness(1.02); }
 
-    .btn-wa{
-      background: linear-gradient(135deg, #25D366, #1aa954);
-      color:#08130d;
-    }
-    .btn-tt{
-      background: linear-gradient(135deg, #111, #2a2a2a);
-      color:#fff;
-      border:1px solid rgba(255,255,255,.12);
-    }
-    .btn-ig{
-      background: linear-gradient(135deg, #ff4fa1, #ffd27a);
-      color:#2b0022;
-      border: 1px solid rgba(255,255,255,.14);
-    }
+    .btn-wa{ background: linear-gradient(135deg, #25D366, #1aa954); color:#07110b; }
+    .btn-tt{ background: linear-gradient(135deg, #111, #2a2a2a); color:#fff; border:1px solid rgba(255,255,255,.10); }
+    .btn-ig{ background: linear-gradient(135deg, #ff4fa1, #ffd27a); color:#2b0022; border:1px solid rgba(255,79,161,.12); }
     .btn-outline{
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.16);
-      color:#fff;
-      box-shadow:none;
+      background: linear-gradient(135deg, rgba(255,255,255,.78), rgba(255,255,255,.38));
+      border: 1px solid rgba(255,210,122,.40);
+      color:#2b001e;
     }
 
     .divider{
       height:1px;
-      background: rgba(255,255,255,.14);
+      background: rgba(255,79,161,.16);
       margin: 16px 0;
+      position:relative;
     }
 
     .headline{
+      position:relative;
       margin-top: 10px;
       padding: 18px 18px 16px;
       border-radius: 22px;
-      background: linear-gradient(135deg, rgba(255,79,161,.18), rgba(255,255,255,.06));
-      border: 1px solid rgba(255,255,255,.14);
+      background: linear-gradient(135deg, rgba(255,255,255,.70), rgba(255,255,255,.35));
+      border: 1px solid rgba(255,210,122,.35);
       overflow:hidden;
+      box-shadow: 0 10px 35px rgba(22,6,16,.10);
     }
     .badge{
       display:inline-flex;
@@ -243,36 +292,36 @@
       gap:8px;
       padding: 8px 12px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.08);
-      color: rgba(255,255,255,.9);
-      font-weight:800;
+      border: 1px solid rgba(255,210,122,.55);
+      background: rgba(255,210,122,.18);
+      color: rgba(43,0,30,.92);
+      font-weight:900;
       font-size: 13px;
     }
     .badge i{
       width:8px; height:8px; border-radius:50%;
       background: var(--gold);
-      box-shadow: 0 0 0 6px rgba(255,210,122,.12);
+      box-shadow: 0 0 0 6px rgba(255,210,122,.20);
       display:inline-block;
     }
     .headline h2{
       margin: 14px 0 10px;
-      font-size: clamp(28px, 4.7vw, 54px);
+      font-size: clamp(26px, 4.6vw, 50px);
       line-height: 1.12;
       font-weight: 900;
+      color:#2b001e;
     }
     .headline p{
       margin: 0;
-      color: var(--muted);
+      color: rgba(30,10,22,.74);
       font-size: 16px;
-      line-height: 1.9;
+      line-height: 1.95;
       max-width: 820px;
+      font-weight: 700;
     }
 
     /* ======= شاشة العرض (السلايد) ======= */
-    .showcase{
-      margin-top: 16px;
-    }
+    .showcase{ margin-top: 16px; position:relative; }
     .showcase-title{
       display:flex;
       align-items:center;
@@ -280,56 +329,43 @@
       gap:10px;
       margin: 0 0 10px;
     }
-    .showcase-title h3{
-      margin:0;
-      font-size: 20px;
-      font-weight: 900;
-    }
-    .showcase-title span{
-      color: rgba(255,255,255,.78);
-      font-weight:800;
-      font-size: 13px;
-    }
+    .showcase-title h3{ margin:0; font-size: 20px; font-weight: 900; color:#2b001e; }
+    .showcase-title span{ color: rgba(30,10,22,.70); font-weight:900; font-size: 13px; }
 
     .frame{
       position: relative;
       border-radius: 28px;
       padding: 10px;
-      background: linear-gradient(135deg, rgba(255,210,122,.28), rgba(255,79,161,.22));
-      border: 1px solid rgba(255,255,255,.18);
-      box-shadow: 0 18px 60px rgba(0,0,0,.30);
+      background: linear-gradient(135deg, rgba(255,210,122,.45), rgba(255,79,161,.18));
+      border: 1px solid rgba(255,210,122,.55);
+      box-shadow: 0 18px 60px rgba(22,6,16,.18);
       overflow:hidden;
     }
-    /* لمعان فاخر على الإطار */
     .frame::before{
       content:"";
       position:absolute;
       inset:-40%;
       background: linear-gradient(115deg,
         transparent 0%,
-        rgba(255,210,122,.22) 35%,
-        rgba(255,255,255,.16) 45%,
+        rgba(255,210,122,.30) 35%,
+        rgba(255,255,255,.35) 45%,
         rgba(255,79,161,.18) 55%,
         transparent 75%);
       transform: rotate(8deg);
       animation: shimmer 6s ease-in-out infinite;
       pointer-events:none;
       filter: blur(2px);
-      opacity:.9;
-    }
-    @keyframes shimmer{
-      0%{ transform: translateX(-20%) rotate(8deg); opacity:.55; }
-      50%{ transform: translateX(20%) rotate(8deg); opacity:.95; }
-      100%{ transform: translateX(-20%) rotate(8deg); opacity:.55; }
+      opacity:.95;
     }
 
     .slider{
       position: relative;
       border-radius: 22px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.52);
+      border: 1px solid rgba(255,79,161,.16);
       overflow:hidden;
       backdrop-filter: blur(10px);
+      direction:ltr; /* ✅ حل نهائي لمشكلة RTL */
     }
 
     .slides{
@@ -339,39 +375,31 @@
       will-change: transform;
       touch-action: pan-y;
     }
-    .slide{
-      min-width:100%;
-      position:relative;
-    }
+    .slide{ min-width:100%; position:relative; }
     .slide img{
       width:100%;
       height: 360px;
       object-fit: cover;
       display:block;
       transform: scale(1.01);
-      filter: saturate(1.05) contrast(1.03);
+      filter: saturate(1.04) contrast(1.02);
+      background: rgba(255,255,255,.25);
     }
-    @media(min-width:760px){
-      .slide img{ height: 420px; }
-    }
+    @media(min-width:760px){ .slide img{ height: 420px; } }
 
-    /* طبقة نعومة + فخامة داخل الصورة */
     .slide::after{
       content:"";
       position:absolute;
       inset:0;
       background:
-        radial-gradient(800px 500px at 70% 15%, rgba(255,210,122,.18), transparent 55%),
-        radial-gradient(700px 550px at 20% 85%, rgba(255,79,161,.18), transparent 60%),
-        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.05), rgba(0,0,0,.20));
+        radial-gradient(800px 500px at 70% 15%, rgba(255,210,122,.16), transparent 55%),
+        radial-gradient(700px 550px at 20% 85%, rgba(255,79,161,.12), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(0,0,0,.02), rgba(0,0,0,.10));
       pointer-events:none;
     }
 
-    .slider-controls{
-      position:absolute;
-      inset: 0;
-      pointer-events:none;
-    }
+    .slider-controls{ position:absolute; inset:0; pointer-events:none; }
+
     .navBtn{
       position:absolute;
       top:50%;
@@ -382,18 +410,21 @@
       height:44px;
       border-radius: 999px;
       cursor:pointer;
-      background: rgba(255,255,255,.14);
-      border:1px solid rgba(255,255,255,.18);
+
+      background: linear-gradient(135deg, rgba(255,255,255,.70), rgba(255,255,255,.35));
+      border:1px solid rgba(255,210,122,.55);
       backdrop-filter: blur(10px);
-      box-shadow: 0 10px 25px rgba(0,0,0,.22);
+      box-shadow: 0 10px 25px rgba(22,6,16,.12);
+
       display:flex;
       align-items:center;
       justify-content:center;
-      color:#fff;
+      color:#2b001e;
       font-size: 20px;
+      font-weight: 900;
       transition: transform .15s ease, filter .15s ease;
     }
-    .navBtn:hover{ filter: brightness(1.05); }
+    .navBtn:hover{ filter: brightness(1.03); }
     .navBtn:active{ transform: translateY(-50%) scale(.98); }
     .prev{ right: 10px; }
     .next{ left: 10px; }
@@ -412,35 +443,36 @@
     .dotBtn{
       width:10px; height:10px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.25);
-      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,210,122,.70);
+      background: rgba(255,255,255,.55);
       cursor:pointer;
       transition: transform .15s ease, background .15s ease;
     }
     .dotBtn.active{
-      background: rgba(255,210,122,.75);
-      border-color: rgba(255,210,122,.9);
+      background: rgba(255,210,122,.95);
       transform: scale(1.15);
     }
 
+    /* ======= الأقسام (عداد + آراء) ======= */
     .proof{
       margin-top: 18px;
       display:grid;
       grid-template-columns: 1fr;
       gap:12px;
+      position:relative;
     }
-    @media(min-width:760px){
-      .proof{ grid-template-columns: 1.2fr .8fr; }
-    }
+    @media(min-width:760px){ .proof{ grid-template-columns: 1.2fr .8fr; } }
+
     .card{
       border-radius: 22px;
-      background: linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
-      border: 1px solid rgba(255,255,255,.14);
-      box-shadow: 0 14px 40px rgba(0,0,0,.22);
+      background: linear-gradient(135deg, rgba(255,255,255,.72), rgba(255,255,255,.34));
+      border: 1px solid rgba(255,79,161,.14);
+      box-shadow: var(--shadow2);
       backdrop-filter: blur(10px);
       padding: 16px;
+      overflow:hidden;
     }
-    .card h3{ margin: 0 0 10px; font-size: 18px; font-weight: 900; }
+    .card h3{ margin: 0 0 10px; font-size: 18px; font-weight: 900; color:#2b001e; }
 
     .live{
       display:flex;
@@ -453,15 +485,15 @@
       display:flex;
       align-items:center;
       gap:10px;
-      color: var(--muted);
+      color: rgba(30,10,22,.72);
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 900;
     }
     .dot{
       width:10px; height:10px;
       border-radius:50%;
       background:#22ff88;
-      box-shadow: 0 0 0 7px rgba(34,255,136,.12);
+      box-shadow: 0 0 0 7px rgba(34,255,136,.18);
       animation: pulse 1.2s ease-in-out infinite;
     }
     @keyframes pulse{
@@ -473,22 +505,52 @@
       font-size: 34px;
       font-weight: 900;
       letter-spacing: .4px;
-      color: #fff;
-      text-shadow: 0 10px 30px rgba(0,0,0,.35);
+      color: #2b001e;
+      text-shadow: 0 10px 30px rgba(255,210,122,.20);
     }
     .hint{
       margin-top: 8px;
-      color: var(--muted);
+      color: rgba(30,10,22,.70);
       font-size: 13px;
-      line-height: 1.8;
+      line-height: 1.85;
+      font-weight: 800;
     }
 
-    .reviews{ display:grid; grid-template-columns: 1fr; gap:10px; }
-    .review{
+    /* ====== آراء متحركة (فاخر) ====== */
+    .reviews-marquee{
+      position:relative;
+      overflow:hidden;
       border-radius: 18px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
+      padding: 6px 0;
+      background: rgba(255,255,255,.35);
+      border: 1px solid rgba(255,210,122,.35);
+    }
+    .reviews-track{
+      display:flex;
+      gap:10px;
+      width:max-content;
+      will-change: transform;
+      animation: marquee 22s linear infinite;
+      direction:ltr;
+      padding: 6px 10px;
+    }
+    .reviews-marquee:active .reviews-track,
+    .reviews-marquee:hover .reviews-track{
+      animation-play-state: paused;
+    }
+    @keyframes marquee{
+      from{ transform: translateX(0); }
+      to{ transform: translateX(-50%); }
+    }
+
+    .review{
+      min-width: min(320px, 78vw);
+      border-radius: 18px;
+      background: rgba(255,255,255,.62);
+      border: 1px solid rgba(255,79,161,.14);
       padding: 12px;
+      box-shadow: 0 10px 25px rgba(22,6,16,.10);
+      backdrop-filter: blur(8px);
     }
     .review .top{
       display:flex;
@@ -497,11 +559,12 @@
       gap:10px;
       margin-bottom: 6px;
     }
-    .review .who{ font-weight: 900; font-size: 14px; }
-    .stars{ color: var(--gold); font-size: 14px; letter-spacing: 1px; }
-    .review p{ margin:0; color: rgba(255,255,255,.86); line-height:1.8; font-size: 14px; }
+    .review .who{ font-weight: 900; font-size: 14px; color:#2b001e; }
+    .stars{ color: #d1a23a; font-size: 14px; letter-spacing: 1px; }
+    .review p{ margin:0; color: rgba(30,10,22,.78); line-height:1.85; font-size: 14px; font-weight: 800; }
 
-    .section{ margin-top: 18px; }
+    /* ======= المنتجات ======= */
+    .section{ margin-top: 18px; position:relative; }
     .section-title{
       display:flex;
       align-items:center;
@@ -509,7 +572,7 @@
       gap:10px;
       margin: 0 0 10px;
     }
-    .section-title h3{ margin:0; font-size: 20px; font-weight: 900; }
+    .section-title h3{ margin:0; font-size: 20px; font-weight: 900; color:#2b001e; }
 
     .grid{ display:grid; grid-template-columns: 1fr; gap: 12px; }
     @media(min-width:560px){ .grid{ grid-template-columns: 1fr 1fr; } }
@@ -518,34 +581,37 @@
     .product{
       border-radius: 22px;
       overflow:hidden;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow: 0 18px 45px rgba(0,0,0,.25);
+      background: rgba(255,255,255,.62);
+      border: 1px solid rgba(255,79,161,.14);
+      box-shadow: 0 18px 45px rgba(22,6,16,.12);
     }
     .product img{
       width:100%;
       height: 260px;
       object-fit: cover;
       display:block;
-      filter: saturate(1.05) contrast(1.05);
+      filter: saturate(1.02) contrast(1.02);
       transform: scale(1.02);
       transition: transform .35s ease;
-      background: rgba(0,0,0,.08);
+      background: rgba(255,255,255,.35);
     }
     .product:hover img{ transform: scale(1.08); }
     .cap{ padding: 12px 12px 14px; }
-    .pname{ font-weight: 900; margin:0 0 4px; }
-    .pdesc{ margin:0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .pname{ font-weight: 900; margin:0 0 4px; color:#2b001e; }
+    .pdesc{ margin:0; color: rgba(30,10,22,.70); font-size: 13px; line-height: 1.8; font-weight: 800; }
 
+    /* ======= الفوتر ======= */
     .footer{
       margin-top: 18px;
       text-align:center;
-      color: rgba(255,255,255,.72);
+      color: rgba(30,10,22,.72);
       font-size: 13px;
-      line-height: 1.9;
+      line-height: 1.95;
+      font-weight: 800;
     }
-    .footer a{ color:#fff; opacity:.9; }
+    .footer a{ color:#2b001e; opacity:.95; font-weight:900; }
 
+    /* ======= زر واتساب العائم ======= */
     .float-wa{
       position:fixed;
       bottom: 16px;
@@ -557,28 +623,27 @@
       padding: 12px 14px;
       border-radius: 999px;
       background: linear-gradient(135deg, #25D366, #1aa954);
-      color:#08130d;
+      color:#07110b;
       text-decoration:none;
       font-weight: 900;
-      box-shadow: 0 18px 45px rgba(0,0,0,.35);
-      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 18px 45px rgba(22,6,16,.18);
+      border: 1px solid rgba(255,255,255,.30);
     }
-    .float-wa small{ font-weight:800; opacity:.9; }
+    .float-wa small{ font-weight:900; opacity:.95; }
 
-    /* ✅ تعديل الأيقونات فقط (مثل الصورة الأولى) */
+    /* ====== أيقونات SVG ملونة بألوانها الحقيقية ====== */
     .ico{
-      width:22px;
-      height:22px;
+      width:24px; height:24px;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      color: currentColor;
+      flex: 0 0 24px;
     }
-    .ico svg{
-      width:100%;
-      height:100%;
-      display:block;
-    }
+    .ico svg{ width:100%; height:100%; display:block; filter: drop-shadow(0 6px 14px rgba(0,0,0,.12)); }
+
+    /* ترتيب داخل الزر (RTL) */
+    .btn .ico{ margin-left: 2px; }
+
   </style>
 </head>
 
@@ -588,7 +653,6 @@
   <div class="bg-orb orb2"></div>
   <div class="bg-orb orb3"></div>
 
-  <!-- Preloader يختفي بعد 3 ثواني بـ CSS -->
   <div id="preloader" aria-label="Loading">
     <div class="loader-card">
       <img class="loader-logo" src="logo.png" alt="Glame chic logo" onerror="this.style.display='none'">
@@ -609,38 +673,56 @@
           </div>
         </div>
 
+        <!-- ✅ أزرار 2×2 متناسقة + أيقونات ملونة -->
         <div class="actions">
           <a class="btn btn-wa" id="waBtn" href="#" rel="noopener">
             <span class="ico" aria-hidden="true">
-              <svg viewBox="0 0 32 32" fill="currentColor">
-                <path d="M16 .6C7.5.6.6 7.5.6 16c0 2.8.7 5.4 2 7.7L.5 31.4l8-2.1c2.2 1.2 4.7 1.8 7.5 1.8 8.5 0 15.4-6.9 15.4-15.4S24.5.6 16 .6zm0 28.3c-2.4 0-4.7-.7-6.7-1.9l-.5-.3-4.8 1.3 1.3-4.7-.3-.5C3.7 20.7 3 18.4 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 13-13 13zm7.1-9.8c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.6-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.2-.4.3-.6.1-.2 0-.4 0-.6 0-.2-.9-2.2-1.2-3-.3-.7-.6-.6-.9-.6h-.8c-.2 0-.6.1-.9.4-.3.4-1.2 1.2-1.2 3 0 1.8 1.3 3.6 1.5 3.9.2.2 2.6 4 6.3 5.5.9.4 1.6.6 2.2.8.9.3 1.7.3 2.3.2.7-.1 2.4-1 2.7-2 .3-1 .3-1.8.2-2-.1-.2-.4-.3-.8-.5z"/>
+              <!-- WhatsApp -->
+              <svg viewBox="0 0 32 32">
+                <path fill="#25D366" d="M16 .6C7.5.6.6 7.5.6 16c0 2.8.7 5.4 2 7.7L.5 31.4l8-2.1c2.2 1.2 4.7 1.8 7.5 1.8 8.5 0 15.4-6.9 15.4-15.4S24.5.6 16 .6z"/>
+                <path fill="#fff" d="M16 3C8.8 3 3 8.8 3 16c0 2.4.7 4.7 1.9 6.7l.3.5-1.3 4.7 4.8-1.3.5.3c2 1.2 4.3 1.9 6.8 1.9 7.2 0 13-5.8 13-13S23.2 3 16 3zm7.3 18.1c-.3 1-2 1.9-2.7 2-.6.1-1.4.1-2.3-.2-.6-.2-1.3-.4-2.2-.8-3.7-1.6-6.1-5.3-6.3-5.5-.2-.3-1.5-2.1-1.5-3.9 0-1.8.9-2.6 1.2-3 .3-.3.7-.4.9-.4h.8c.3 0 .6-.1.9.6.3.8 1.2 2.8 1.2 3 0 .2.1.4 0 .6-.1.2-.1.4-.3.6-.2.3-.4.5-.6.7-.2.2-.4.4-.2.8.2.4 1 1.6 2.1 2.6 1.4 1.3 2.6 1.7 3 1.9.4.2.6.1.8-.1.3-.3 1-1.2 1.3-1.6.3-.4.5-.3.9-.2.3.1 2.3 1.1 2.7 1.3.4.2.7.3.8.5.1.2.1 1-.2 2z"/>
               </svg>
             </span>
-            اطلب عبر واتساب
+            اطلب واتساب
           </a>
 
           <a class="btn btn-tt" href="https://www.tiktok.com/@glame.chic?_r=1&_t=ZS-94GArdkxSwm" target="_blank" rel="noopener">
             <span class="ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2v14.2a3.8 3.8 0 1 1-3-3.7v3a1 1 0 1 0 1 1V2h2zm5 2.5c.6 1.6 2 2.8 3.7 3.1v2.1c-1.7-.1-3.2-.8-4.4-1.9v6.2a5.8 5.8 0 1 1-5.8-5.8c.3 0 .6 0 .9.1v2.3a3.4 3.4 0 1 0 2.6 3.3V2h2.3z"/>
+              <!-- TikTok -->
+              <svg viewBox="0 0 24 24">
+                <path fill="#25F4EE" d="M14.6 3.1c.6 2.1 2.4 3.7 4.6 3.9v2.7c-1.6-.1-3-.6-4.2-1.6v6.2a5.9 5.9 0 1 1-5.9-5.9c.5 0 1 .1 1.5.2v2.8a3.2 3.2 0 1 0 2.2 3V3.1h1.8z"/>
+                <path fill="#FE2C55" d="M13.6 2v14.2a3.8 3.8 0 1 1-3-3.7v2.2a1.6 1.6 0 1 0 1.2 1.5V2h1.8z" opacity=".92"/>
+                <path fill="#fff" d="M14.6 3.1c.6 2.1 2.4 3.7 4.6 3.9v1.2c-1.7-.2-3.2-1-4.6-2.1V3.1z" opacity=".85"/>
               </svg>
             </span>
-            اطلب عبر تيكتوك
+            اطلب تيكتوك
           </a>
 
           <a class="btn btn-ig" href="https://www.instagram.com/glame_chic" target="_blank" rel="noopener">
             <span class="ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2.2c3.2 0 3.6 0 4.8.1 3 .1 4.5 1.6 4.6 4.6.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3-1.6 4.5-4.6 4.6-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3-.1-4.5-1.6-4.6-4.6-.1-1.2-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-3 1.6-4.5 4.6-4.6 1.2-.1 1.6-.1 4.8-.1zm0 2c-3.1 0-3.5 0-4.7.1-2.1.1-3.1 1.1-3.2 3.2-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 2.1 1.1 3.1 3.2 3.2 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c2.1-.1 3.1-1.1 3.2-3.2.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-2.1-1.1-3.1-3.2-3.2-1.2-.1-1.6-.1-4.7-.1zm0 3.8a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm0 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm5.2-2.3a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+              <!-- Instagram -->
+              <svg viewBox="0 0 24 24">
+                <defs>
+                  <linearGradient id="igG" x1="0" x2="1" y1="1" y2="0">
+                    <stop offset="0" stop-color="#FEDA75"/>
+                    <stop offset=".35" stop-color="#FA7E1E"/>
+                    <stop offset=".7" stop-color="#D62976"/>
+                    <stop offset="1" stop-color="#4F5BD5"/>
+                  </linearGradient>
+                </defs>
+                <path fill="url(#igG)" d="M12 2.2c3.2 0 3.6 0 4.8.1 3 .1 4.5 1.6 4.6 4.6.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3-1.6 4.5-4.6 4.6-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3-.1-4.5-1.6-4.6-4.6-.1-1.2-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-3 1.6-4.5 4.6-4.6 1.2-.1 1.6-.1 4.8-.1z"/>
+                <path fill="#fff" d="M12 7.8a4.2 4.2 0 1 1 0 8.4 4.2 4.2 0 0 1 0-8.4zm0 2a2.2 2.2 0 1 0 0 4.4 2.2 2.2 0 0 0 0-4.4zm5.4-2.2a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
               </svg>
             </span>
-            اطلب عبر إنستغرام
+            اطلب إنستغرام
           </a>
 
           <a class="btn btn-outline" href="#privacy">
             <span class="ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2l7 4v6c0 5-3.4 9.7-7 10-3.6-.3-7-5-7-10V6l7-4z"/>
+              <!-- Privacy (ذهبي) -->
+              <svg viewBox="0 0 24 24">
+                <path fill="#ffd27a" d="M12 2l8 4v6c0 5.7-3.9 10.3-8 10.9C7.9 22.3 4 17.7 4 12V6l8-4z"/>
+                <path fill="rgba(43,0,30,.35)" d="M12 6.8c1.6 0 2.9 1.3 2.9 2.9v1.1h.7c.5 0 .9.4.9.9v3.8c0 .5-.4.9-.9.9H8.4c-.5 0-.9-.4-.9-.9v-3.8c0-.5.4-.9.9-.9h.7V9.7c0-1.6 1.3-2.9 2.9-2.9zm-1.2 4h2.4V9.7c0-.7-.5-1.2-1.2-1.2s-1.2.5-1.2 1.2v1.1z"/>
               </svg>
             </span>
             Privacy Policy
@@ -659,7 +741,7 @@
         </p>
       </div>
 
-      <!-- شاشة العرض (السلايد) -->
+      <!-- ✅ السلايدر -->
       <div class="showcase">
         <div class="showcase-title">
           <h3>✨ شاشة العرض</h3>
@@ -669,14 +751,14 @@
         <div class="frame">
           <div class="slider" id="slider" aria-label="Glame chic slideshow">
             <div class="slides" id="slides">
-              <div class="slide"><img src="slides/slide1.jpg" alt="Glame chic slide 1" loading="eager" onerror="this.style.display='none'"></div>
-              <div class="slide"><img src="slides/slide2.jpg" alt="Glame chic slide 2" loading="lazy" onerror="this.style.display='none'"></div>
-              <div class="slide"><img src="slides/slide3.jpg" alt="Glame chic slide 3" loading="lazy" onerror="this.style.display='none'"></div>
-              <div class="slide"><img src="slides/slide4.jpg" alt="Glame chic slide 4" loading="lazy" onerror="this.style.display='none'"></div>
-              <div class="slide"><img src="slides/slide5.jpg" alt="Glame chic slide 5" loading="lazy" onerror="this.style.display='none'"></div>
-              <div class="slide"><img src="slides/slide6.jpg" alt="Glame chic slide 6" loading="lazy" onerror="this.style.display='none'"></div>
-              <div class="slide"><img src="slides/slide7.jpg" alt="Glame chic slide 7" loading="lazy" onerror="this.style.display='none'"></div>
-              <div class="slide"><img src="slides/slide8.jpg" alt="Glame chic slide 8" loading="lazy" onerror="this.style.display='none'"></div>
+              <div class="slide"><img src="slides/slide1.jpg" alt="Glame chic slide 1" loading="eager"></div>
+              <div class="slide"><img src="slides/slide2.jpg" alt="Glame chic slide 2" loading="lazy"></div>
+              <div class="slide"><img src="slides/slide3.jpg" alt="Glame chic slide 3" loading="lazy"></div>
+              <div class="slide"><img src="slides/slide4.jpg" alt="Glame chic slide 4" loading="lazy"></div>
+              <div class="slide"><img src="slides/slide5.jpg" alt="Glame chic slide 5" loading="lazy"></div>
+              <div class="slide"><img src="slides/slide6.jpg" alt="Glame chic slide 6" loading="lazy"></div>
+              <div class="slide"><img src="slides/slide7.jpg" alt="Glame chic slide 7" loading="lazy"></div>
+              <div class="slide"><img src="slides/slide8.jpg" alt="Glame chic slide 8" loading="lazy"></div>
             </div>
 
             <div class="slider-controls" aria-hidden="false">
@@ -688,6 +770,7 @@
         </div>
       </div>
 
+      <!-- ✅ عداد + آراء متحركة -->
       <div class="proof">
         <div class="card">
           <div class="live">
@@ -701,29 +784,47 @@
         </div>
 
         <div class="card">
-          <h3>💬 تعليقات الزبائن</h3>
-          <div class="reviews">
-            <div class="review">
-              <div class="top"><div class="who">أمينة بن حمو</div><div class="stars">★★★★★</div></div>
-              <p>الروائح و الجودة روعة… حسّيت روحي شارية من برا ✨</p>
-            </div>
-            <div class="review">
-              <div class="top"><div class="who">ليلى بوعلام</div><div class="stars">★★★★★</div></div>
-              <p>كاين تنوع كبير… كل مرة نلقى حاجة جديدة، صحّة 👌</p>
-            </div>
-            <div class="review">
-              <div class="top"><div class="who">نسـرين لعماري</div><div class="stars">★★★★★</div></div>
-              <p>أصليين 100%… هذا هو لي حبيتـو، ماشي تقليد 💗</p>
+          <h3>💬 تعليقات الزبائن (متحركة)</h3>
+          <div class="reviews-marquee" aria-label="تعليقات متحركة">
+            <div class="reviews-track" id="reviewsTrack">
+              <!-- مجموعة 1 -->
+              <div class="review">
+                <div class="top"><div class="who">أمينة بن حمو</div><div class="stars">★★★★★</div></div>
+                <p>الروائح و الجودة روعة… حسّيت روحي شارية من برا ✨</p>
+              </div>
+              <div class="review">
+                <div class="top"><div class="who">ليلى بوعلام</div><div class="stars">★★★★★</div></div>
+                <p>كاين تنوع كبير… كل مرة نلقى حاجة جديدة، صحّة 👌</p>
+              </div>
+              <div class="review">
+                <div class="top"><div class="who">نسـرين لعماري</div><div class="stars">★★★★★</div></div>
+                <p>أصليين 100%… هذا هو لي حبيتـو، ماشي تقليد 💗</p>
+              </div>
+
+              <!-- مجموعة 2 (تكرار للّوب) -->
+              <div class="review" aria-hidden="true">
+                <div class="top"><div class="who">أمينة بن حمو</div><div class="stars">★★★★★</div></div>
+                <p>الروائح و الجودة روعة… حسّيت روحي شارية من برا ✨</p>
+              </div>
+              <div class="review" aria-hidden="true">
+                <div class="top"><div class="who">ليلى بوعلام</div><div class="stars">★★★★★</div></div>
+                <p>كاين تنوع كبير… كل مرة نلقى حاجة جديدة، صحّة 👌</p>
+              </div>
+              <div class="review" aria-hidden="true">
+                <div class="top"><div class="who">نسـرين لعماري</div><div class="stars">★★★★★</div></div>
+                <p>أصليين 100%… هذا هو لي حبيتـو، ماشي تقليد 💗</p>
+              </div>
             </div>
           </div>
+          <div class="hint">المس/اضغط على التعليقات باش يوقف التحريك وتقدر تقرا براحتك.</div>
         </div>
       </div>
 
-      <!-- المنتجات -->
+      <!-- ✅ المنتجات (31 صورة من الجذر) -->
       <div class="section">
         <div class="section-title">
           <h3>Our Products</h3>
-          <span style="color:rgba(255,255,255,.75); font-weight:800; font-size:13px;">صور حقيقية</span>
+          <span style="color:rgba(30,10,22,.70); font-weight:900; font-size:13px;">صور حقيقية</span>
         </div>
 
         <div class="grid">
@@ -763,18 +864,18 @@
 
       <div class="footer" id="privacy">
         <div style="margin-top:14px;">
-          <strong>تواصل</strong><br>
+          <strong style="color:#2b001e;">تواصل</strong><br>
           البريد: <a href="mailto:glame.chic31@gmail.com">glame.chic31@gmail.com</a><br>
           الهاتف: <a href="tel:+213671599739">0671599739</a><br>
           إنستغرام: <a href="https://www.instagram.com/glame_chic" target="_blank" rel="noopener">@glame_chic</a>
         </div>
 
-        <div style="margin-top:14px; opacity:.85;">
-          <strong>Privacy Policy</strong><br>
+        <div style="margin-top:14px; opacity:.92;">
+          <strong style="color:#2b001e;">Privacy Policy</strong><br>
           نحن لا نجمع بيانات حساسة. أي تواصل يتم عبر واتساب/تيكتوك/إنستغرام حسب اختيارك.
         </div>
 
-        <div style="margin-top:14px; opacity:.7;">
+        <div style="margin-top:14px; opacity:.75;">
           © <span id="year"></span> Glame chic — Oran
         </div>
       </div>
@@ -784,15 +885,15 @@
 
   <a class="float-wa" id="waFloat" href="#" rel="noopener">
     <span class="ico" aria-hidden="true">
-      <svg viewBox="0 0 32 32" fill="currentColor">
-        <path d="M16 .6C7.5.6.6 7.5.6 16c0 2.8.7 5.4 2 7.7L.5 31.4l8-2.1c2.2 1.2 4.7 1.8 7.5 1.8 8.5 0 15.4-6.9 15.4-15.4S24.5.6 16 .6zm0 28.3c-2.4 0-4.7-.7-6.7-1.9l-.5-.3-4.8 1.3 1.3-4.7-.3-.5C3.7 20.7 3 18.4 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 13-13 13zm7.1-9.8c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.6-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.2-.4.3-.6.1-.2 0-.4 0-.6 0-.2-.9-2.2-1.2-3-.3-.7-.6-.6-.9-.6h-.8c-.2 0-.6.1-.9.4-.3.4-1.2 1.2-1.2 3 0 1.8 1.3 3.6 1.5 3.9.2.2 2.6 4 6.3 5.5.9.4 1.6.6 2.2.8.9.3 1.7.3 2.3.2.7-.1 2.4-1 2.7-2 .3-1 .3-1.8.2-2-.1-.2-.4-.3-.8-.5z"/>
+      <svg viewBox="0 0 32 32">
+        <path fill="#25D366" d="M16 .6C7.5.6.6 7.5.6 16c0 2.8.7 5.4 2 7.7L.5 31.4l8-2.1c2.2 1.2 4.7 1.8 7.5 1.8 8.5 0 15.4-6.9 15.4-15.4S24.5.6 16 .6z"/>
+        <path fill="#fff" d="M16 3C8.8 3 3 8.8 3 16c0 2.4.7 4.7 1.9 6.7l.3.5-1.3 4.7 4.8-1.3.5.3c2 1.2 4.3 1.9 6.8 1.9 7.2 0 13-5.8 13-13S23.2 3 16 3z"/>
       </svg>
     </span>
     اطلب واتساب <small>+213779665820</small>
   </a>
 
   <script>
-    // كود آمن جداً: لا يوقف الصفحة حتى لو فشل شيء
     (function(){
       try{
         // ====== روابط الطلب ======
@@ -825,7 +926,6 @@
           }
           requestAnimationFrame(step);
         }
-
         setInterval(function(){
           const add = randInt(1,4);
           const next = current + add;
@@ -849,7 +949,7 @@
           function go(i){
             if(total <= 0) return;
             index = (i % total + total) % total;
-            slidesEl.style.transform = "translateX(" + (-index * 100) + "%)";
+            slidesEl.style.transform = "translate3d(" + (-index * 100) + "%,0,0)";
             if(dotsEl){
               const btns = dotsEl.querySelectorAll(".dotBtn");
               btns.forEach((b,bi)=> b.classList.toggle("active", bi === index));
@@ -874,9 +974,7 @@
 
           function startAuto(){
             stopAuto();
-            autoTimer = setInterval(function(){
-              go(index + 1);
-            }, 5000);
+            autoTimer = setInterval(function(){ go(index + 1); }, 5000);
           }
           function stopAuto(){
             if(autoTimer){ clearInterval(autoTimer); autoTimer = null; }
@@ -884,9 +982,7 @@
           function pauseAuto(ms){
             stopAuto();
             if(pauseTimer) clearTimeout(pauseTimer);
-            pauseTimer = setTimeout(function(){
-              startAuto();
-            }, ms || 9000);
+            pauseTimer = setTimeout(function(){ startAuto(); }, ms || 9000);
           }
 
           if(prevBtn) prevBtn.addEventListener("click", function(){ pauseAuto(9000); go(index - 1); });
@@ -912,7 +1008,6 @@
           }, {passive:true});
 
           slider.addEventListener("mouseenter", function(){ pauseAuto(15000); });
-          slider.addEventListener("mouseleave", function(){});
 
           buildDots();
           go(0);
