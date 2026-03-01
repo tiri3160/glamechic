@@ -58,7 +58,7 @@
       50%{ transform: translate(-18px, 14px) scale(1.03); }
     }
 
-    /* ====== PRELOADER (CSS فقط) ====== */
+    /* ====== PRELOADER (CSS فقط): يختفي بعد 3 ثواني حتى لو JS تعطل ====== */
     #preloader{
       position:fixed;
       inset:0;
@@ -69,11 +69,16 @@
       background:
         radial-gradient(900px 700px at 50% 40%, rgba(255,79,161,.25), transparent 55%),
         linear-gradient(135deg, #120013, #2b0022);
+
       animation: preHide 0.6s ease forwards;
       animation-delay: 3s;
     }
     @keyframes preHide{
-      to{ opacity:0; visibility:hidden; pointer-events:none; }
+      to{
+        opacity:0;
+        visibility:hidden;
+        pointer-events:none;
+      }
     }
 
     .loader-card{
@@ -89,7 +94,8 @@
       overflow:hidden;
     }
     .loader-logo{
-      width:90px; height:90px;
+      width:90px;
+      height:90px;
       border-radius: 22px;
       object-fit:cover;
       border: 1px solid rgba(255,255,255,.18);
@@ -97,8 +103,17 @@
       margin: 0 auto 14px;
       background: rgba(0,0,0,.1);
     }
-    .brand{ font-family: "Playfair Display", serif; margin: 0; font-size: 30px; }
-    .sub{ margin: 8px 0 16px; color: var(--muted); font-size: 15px; line-height: 1.7; }
+    .brand{
+      font-family: "Playfair Display", serif;
+      margin: 0;
+      font-size: 30px;
+    }
+    .sub{
+      margin: 8px 0 16px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+    }
     .ring{
       width:86px; height:86px;
       margin: 10px auto 8px;
@@ -156,7 +171,11 @@
       font-size: 28px;
       line-height:1.1;
     }
-    .name .loc{ margin-top:4px; color: var(--muted); font-size: 14px; }
+    .name .loc{
+      margin-top:4px;
+      color: var(--muted);
+      font-size: 14px;
+    }
 
     .actions{
       display:flex;
@@ -169,7 +188,7 @@
       cursor:pointer;
       padding: 12px 16px;
       border-radius: 16px;
-      font-weight:800;
+      font-weight:900;
       font-size: 15px;
       display:flex;
       align-items:center;
@@ -183,12 +202,49 @@
     .btn:active{ transform: translateY(1px) scale(.99); }
     .btn:hover{ filter: brightness(1.03); }
 
-    .btn-wa{ background: linear-gradient(135deg, #25D366, #1aa954); color:#08130d; }
-    .btn-tt{ background: linear-gradient(135deg, #111, #2a2a2a); color:#fff; border:1px solid rgba(255,255,255,.12); }
-    .btn-ig{ background: linear-gradient(135deg, #ff4fa1, #ffd27a); color:#2b0022; border: 1px solid rgba(255,255,255,.14); }
-    .btn-outline{ background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.16); color:#fff; box-shadow:none; }
+    .btn-wa{
+      background: linear-gradient(135deg, #25D366, #1aa954);
+      color:#08130d;
+    }
+    .btn-tt{
+      background: linear-gradient(135deg, #111, #2a2a2a);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .btn-ig{
+      background: linear-gradient(135deg, #ff4fa1, #ffd27a);
+      color:#2b0022;
+      border: 1px solid rgba(255,255,255,.14);
+    }
+    .btn-outline{
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      color:#fff;
+      box-shadow:none;
+    }
 
-    .divider{ height:1px; background: rgba(255,255,255,.14); margin: 16px 0; }
+    /* ✅ تعديل الأيقونات: يمين + نفس الحجم + متناسقة */
+    .btn .ico{
+      width:18px; height:18px;
+      border-radius:6px;
+      background: rgba(255,255,255,.22);
+      flex: 0 0 18px;
+    }
+    .btn .ico.wa{ background: rgba(8,19,13,.12); box-shadow: inset 0 0 0 2px rgba(8,19,13,.18); }
+    .btn .ico.tt{ background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 2px rgba(255,255,255,.14); }
+    .btn .ico.ig{ background: rgba(0,0,0,.08); box-shadow: inset 0 0 0 2px rgba(0,0,0,.10); }
+    .btn .ico.pv{ background: rgba(255,210,122,.10); box-shadow: inset 0 0 0 2px rgba(255,210,122,.25); }
+
+    /* ✅ خَلّي الأيقونة تكون أول عنصر من اليمين في RTL */
+    .btn{ flex-direction: row; }
+    .btn .ico{ order: 2; }
+    .btn span:not(.ico){ order: 1; }
+
+    .divider{
+      height:1px;
+      background: rgba(255,255,255,.14);
+      margin: 16px 0;
+    }
 
     .headline{
       margin-top: 10px;
@@ -207,7 +263,7 @@
       border: 1px solid rgba(255,255,255,.16);
       background: rgba(255,255,255,.08);
       color: rgba(255,255,255,.9);
-      font-weight:800;
+      font-weight:900;
       font-size: 13px;
     }
     .badge i{
@@ -231,7 +287,9 @@
     }
 
     /* ======= شاشة العرض (السلايد) ======= */
-    .showcase{ margin-top: 16px; }
+    .showcase{
+      margin-top: 16px;
+    }
     .showcase-title{
       display:flex;
       align-items:center;
@@ -239,8 +297,16 @@
       gap:10px;
       margin: 0 0 10px;
     }
-    .showcase-title h3{ margin:0; font-size: 20px; font-weight: 900; }
-    /* ✅ حذفنا عبارة "اسحب للتبديل..." نهائياً */
+    .showcase-title h3{
+      margin:0;
+      font-size: 20px;
+      font-weight: 900;
+    }
+    .showcase-title span{
+      color: rgba(255,255,255,.78);
+      font-weight:800;
+      font-size: 13px;
+    }
 
     .frame{
       position: relative;
@@ -282,17 +348,14 @@
       backdrop-filter: blur(10px);
     }
 
-    /* ✅ أهم إصلاح: السلايدر داخل RTL لازم نخليه LTR حتى الـ translateX يشتغل دائماً */
     .slides{
       display:flex;
       width:100%;
-      direction:ltr;
       transition: transform .65s cubic-bezier(.2,.9,.2,1);
       will-change: transform;
       touch-action: pan-y;
     }
     .slide{
-      flex: 0 0 100%;
       min-width:100%;
       position:relative;
     }
@@ -318,14 +381,19 @@
       pointer-events:none;
     }
 
-    .slider-controls{ position:absolute; inset: 0; pointer-events:none; }
+    .slider-controls{
+      position:absolute;
+      inset: 0;
+      pointer-events:none;
+    }
     .navBtn{
       position:absolute;
       top:50%;
       transform: translateY(-50%);
       pointer-events:auto;
       border:0;
-      width:44px; height:44px;
+      width:44px;
+      height:44px;
       border-radius: 999px;
       cursor:pointer;
       background: rgba(255,255,255,.14);
@@ -347,7 +415,8 @@
     .dots{
       position:absolute;
       bottom: 10px;
-      left: 0; right: 0;
+      left: 0;
+      right: 0;
       display:flex;
       justify-content:center;
       gap:8px;
@@ -400,7 +469,7 @@
       gap:10px;
       color: var(--muted);
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 800;
     }
     .dot{
       width:10px; height:10px;
@@ -428,7 +497,42 @@
       line-height: 1.8;
     }
 
-    .reviews{ display:grid; grid-template-columns: 1fr; gap:10px; }
+    /* ======= تعليقات متحركة (تلقائي) + توقف عند اللمس/الهوفر ======= */
+    .reviewsBox{
+      position: relative;
+      height: 278px; /* ثابت عشان الحركة تبان */
+      overflow:hidden;
+      border-radius: 18px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      padding: 10px;
+    }
+    .reviewsTrack{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      animation: reviewsScroll 22s linear infinite;
+      will-change: transform;
+    }
+    .reviewsBox:hover .reviewsTrack{ animation-play-state: paused; }
+    .reviewsBox:active .reviewsTrack{ animation-play-state: paused; }
+    .pauseHint{
+      position:absolute;
+      bottom:10px;
+      left:12px;
+      right:12px;
+      text-align:center;
+      font-size: 12px;
+      color: rgba(255,255,255,.70);
+      pointer-events:none;
+      opacity:.9;
+      text-shadow: 0 10px 25px rgba(0,0,0,.35);
+    }
+    @keyframes reviewsScroll{
+      from{ transform: translateY(0); }
+      to{ transform: translateY(-50%); } /* لأننا نكرر نفس المجموعة مرتين */
+    }
+
     .review{
       border-radius: 18px;
       background: rgba(255,255,255,.06);
@@ -509,11 +613,13 @@
       border: 1px solid rgba(255,255,255,.18);
     }
     .float-wa small{ font-weight:800; opacity:.9; }
-
-    .ico{ width:18px; height:18px; display:inline-block; border-radius:6px; background: rgba(255,255,255,.22); }
-    .ico.wa{ background: rgba(8,19,13,.12); box-shadow: inset 0 0 0 2px rgba(8,19,13,.18); }
-    .ico.tt{ background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 2px rgba(255,255,255,.14); }
-    .ico.ig{ background: rgba(0,0,0,.08); box-shadow: inset 0 0 0 2px rgba(0,0,0,.10); }
+    .float-wa .ico{
+      width:18px; height:18px;
+      border-radius:6px;
+      background: rgba(8,19,13,.12);
+      box-shadow: inset 0 0 0 2px rgba(8,19,13,.18);
+      flex:0 0 18px;
+    }
   </style>
 </head>
 
@@ -523,9 +629,10 @@
   <div class="bg-orb orb2"></div>
   <div class="bg-orb orb3"></div>
 
+  <!-- Preloader يختفي بعد 3 ثواني بـ CSS -->
   <div id="preloader" aria-label="Loading">
     <div class="loader-card">
-      <img class="loader-logo" src="logo.png?v=20260301" alt="Glame chic logo" onerror="this.style.display='none'">
+      <img class="loader-logo" src="logo.png" alt="Glame chic logo" onerror="this.style.display='none'">
       <div class="ring" aria-hidden="true"></div>
       <h2 class="brand">Glame chic</h2>
       <p class="sub">فخامة أنوثة… مثل الشركات العالمية ✨<br/>التحميل جاري…</p>
@@ -536,7 +643,7 @@
     <section class="hero">
       <div class="top-row">
         <div class="logo-title">
-          <img class="logo" src="logo.png?v=20260301" alt="Glame chic" onerror="this.style.display='none'">
+          <img class="logo" src="logo.png" alt="Glame chic" onerror="this.style.display='none'">
           <div class="name">
             <h1>Glame chic</h1>
             <div class="loc">Oran • Algeria</div>
@@ -545,18 +652,20 @@
 
         <div class="actions">
           <a class="btn btn-wa" id="waBtn" href="#" rel="noopener">
-            <span class="ico wa"></span> اطلب عبر واتساب
+            <span class="ico wa"></span><span>اطلب عبر واتساب</span>
           </a>
 
           <a class="btn btn-tt" href="https://www.tiktok.com/@glame.chic?_r=1&_t=ZS-94GArdkxSwm" target="_blank" rel="noopener">
-            <span class="ico tt"></span> اطلب عبر تيكتوك
+            <span class="ico tt"></span><span>اطلب عبر تيكتوك</span>
           </a>
 
           <a class="btn btn-ig" href="https://www.instagram.com/glame_chic" target="_blank" rel="noopener">
-            <span class="ico ig"></span> اطلب عبر إنستغرام
+            <span class="ico ig"></span><span>اطلب عبر إنستغرام</span>
           </a>
 
-          <a class="btn btn-outline" href="#privacy">Privacy Policy</a>
+          <a class="btn btn-outline" href="#privacy">
+            <span class="ico pv"></span><span>Privacy Policy</span>
+          </a>
         </div>
       </div>
 
@@ -575,19 +684,21 @@
       <div class="showcase">
         <div class="showcase-title">
           <h3>✨ شاشة العرض</h3>
+          <span>تلقائي + يدوي</span>
         </div>
 
         <div class="frame">
           <div class="slider" id="slider" aria-label="Glame chic slideshow">
             <div class="slides" id="slides">
-              <div class="slide"><img src="slides/slide1.jpg?v=20260301" alt="Glame chic slide 1" loading="eager"></div>
-              <div class="slide"><img src="slides/slide2.jpg?v=20260301" alt="Glame chic slide 2" loading="lazy"></div>
-              <div class="slide"><img src="slides/slide3.jpg?v=20260301" alt="Glame chic slide 3" loading="lazy"></div>
-              <div class="slide"><img src="slides/slide4.jpg?v=20260301" alt="Glame chic slide 4" loading="lazy"></div>
-              <div class="slide"><img src="slides/slide5.jpg?v=20260301" alt="Glame chic slide 5" loading="lazy"></div>
-              <div class="slide"><img src="slides/slide6.jpg?v=20260301" alt="Glame chic slide 6" loading="lazy"></div>
-              <div class="slide"><img src="slides/slide7.jpg?v=20260301" alt="Glame chic slide 7" loading="lazy"></div>
-              <div class="slide"><img src="slides/slide8.jpg?v=20260301" alt="Glame chic slide 8" loading="lazy"></div>
+              <!-- صور السلايد داخل مجلد slides -->
+              <div class="slide"><img src="slides/slide1.jpg" alt="Glame chic slide 1" loading="eager" onerror="this.style.display='none'"></div>
+              <div class="slide"><img src="slides/slide2.jpg" alt="Glame chic slide 2" loading="lazy" onerror="this.style.display='none'"></div>
+              <div class="slide"><img src="slides/slide3.jpg" alt="Glame chic slide 3" loading="lazy" onerror="this.style.display='none'"></div>
+              <div class="slide"><img src="slides/slide4.jpg" alt="Glame chic slide 4" loading="lazy" onerror="this.style.display='none'"></div>
+              <div class="slide"><img src="slides/slide5.jpg" alt="Glame chic slide 5" loading="lazy" onerror="this.style.display='none'"></div>
+              <div class="slide"><img src="slides/slide6.jpg" alt="Glame chic slide 6" loading="lazy" onerror="this.style.display='none'"></div>
+              <div class="slide"><img src="slides/slide7.jpg" alt="Glame chic slide 7" loading="lazy" onerror="this.style.display='none'"></div>
+              <div class="slide"><img src="slides/slide8.jpg" alt="Glame chic slide 8" loading="lazy" onerror="this.style.display='none'"></div>
             </div>
 
             <div class="slider-controls" aria-hidden="false">
@@ -613,19 +724,35 @@
 
         <div class="card">
           <h3>💬 تعليقات الزبائن</h3>
-          <div class="reviews">
-            <div class="review">
-              <div class="top"><div class="who">أمينة بن حمو</div><div class="stars">★★★★★</div></div>
-              <p>الروائح و الجودة روعة… حسّيت روحي شارية من برا ✨</p>
+
+          <div class="reviewsBox" id="reviewsBox">
+            <!-- مجموعة 1 -->
+            <div class="reviewsTrack" id="reviewsTrack">
+              <div class="review"><div class="top"><div class="who">أمينة بن حمو</div><div class="stars">★★★★★</div></div><p>سيرڤيس ولا أروع… وكي وصلني البوكس حسّيت روحي فهادية 💗</p></div>
+              <div class="review"><div class="top"><div class="who">ليلى بوعلام</div><div class="stars">★★★★★</div></div><p>كاين تنوع كبير… كل مرة نلقى حاجة جديدة، صحّة 👌</p></div>
+              <div class="review"><div class="top"><div class="who">نسـرين لعماري</div><div class="stars">★★★★★</div></div><p>أصليين 100%… هذا هو لي حبيتـو، ماشي تقليد ✨</p></div>
+              <div class="review"><div class="top"><div class="who">مريم قادري</div><div class="stars">★★★★★</div></div><p>البارفان فواح و ثابت… و التغليف يجي فخم بزاف 🎁</p></div>
+              <div class="review"><div class="top"><div class="who">هبة شريف</div><div class="stars">★★★★★</div></div><p>يعطيكم الصحة على النصائح… لقيت لي يجي مع بشرتي 🤍</p></div>
+              <div class="review"><div class="top"><div class="who">سارة بن داود</div><div class="stars">★★★★★</div></div><p>الطلب جا بسرعة و كلش منظم… فخامة بصح 💎</p></div>
+              <div class="review"><div class="top"><div class="who">ريم بوشامة</div><div class="stars">★★★★★</div></div><p>بوكساتكم يجننو… يصلح كهدية راقية بزاف 🌸</p></div>
+              <div class="review"><div class="top"><div class="who">إيمان قندوز</div><div class="stars">★★★★★</div></div><p>يعطيكم الصحة على الصدق… لقيت لي يجي مع بشرتي 🤍</p></div>
+              <div class="review"><div class="top"><div class="who">فاطمة زهراء طايبي</div><div class="stars">★★★★★</div></div><p>الأسعار معقولة مقابل الجودة… راني ولّيت دايمة نطلب ✨</p></div>
+              <div class="review"><div class="top"><div class="who">كوثر بن عيسى</div><div class="stars">★★★★★</div></div><p>خدمة نظيفة و تعامل راقي… والله غير يشرّفكم 🥰</p></div>
+
+              <!-- مجموعة 2 (نفسها) للتكرار السلس -->
+              <div class="review"><div class="top"><div class="who">أمينة بن حمو</div><div class="stars">★★★★★</div></div><p>سيرڤيس ولا أروع… وكي وصلني البوكس حسّيت روحي فهادية 💗</p></div>
+              <div class="review"><div class="top"><div class="who">ليلى بوعلام</div><div class="stars">★★★★★</div></div><p>كاين تنوع كبير… كل مرة نلقى حاجة جديدة، صحّة 👌</p></div>
+              <div class="review"><div class="top"><div class="who">نسـرين لعماري</div><div class="stars">★★★★★</div></div><p>أصليين 100%… هذا هو لي حبيتـو، ماشي تقليد ✨</p></div>
+              <div class="review"><div class="top"><div class="who">مريم قادري</div><div class="stars">★★★★★</div></div><p>البارفان فواح و ثابت… و التغليف يجي فخم بزاف 🎁</p></div>
+              <div class="review"><div class="top"><div class="who">هبة شريف</div><div class="stars">★★★★★</div></div><p>يعطيكم الصحة على النصائح… لقيت لي يجي مع بشرتي 🤍</p></div>
+              <div class="review"><div class="top"><div class="who">سارة بن داود</div><div class="stars">★★★★★</div></div><p>الطلب جا بسرعة و كلش منظم… فخامة بصح 💎</p></div>
+              <div class="review"><div class="top"><div class="who">ريم بوشامة</div><div class="stars">★★★★★</div></div><p>بوكساتكم يجننو… يصلح كهدية راقية بزاف 🌸</p></div>
+              <div class="review"><div class="top"><div class="who">إيمان قندوز</div><div class="stars">★★★★★</div></div><p>يعطيكم الصحة على الصدق… لقيت لي يجي مع بشرتي 🤍</p></div>
+              <div class="review"><div class="top"><div class="who">فاطمة زهراء طايبي</div><div class="stars">★★★★★</div></div><p>الأسعار معقولة مقابل الجودة… راني ولّيت دايمة نطلب ✨</p></div>
+              <div class="review"><div class="top"><div class="who">كوثر بن عيسى</div><div class="stars">★★★★★</div></div><p>خدمة نظيفة و تعامل راقي… والله غير يشرّفكم 🥰</p></div>
             </div>
-            <div class="review">
-              <div class="top"><div class="who">ليلى بوعلام</div><div class="stars">★★★★★</div></div>
-              <p>كاين تنوع كبير… كل مرة نلقى حاجة جديدة، صحّة 👌</p>
-            </div>
-            <div class="review">
-              <div class="top"><div class="who">نسـرين لعماري</div><div class="stars">★★★★★</div></div>
-              <p>أصليين 100%… هذا هو لي حبيتـو، ماشي تقليد 💗</p>
-            </div>
+
+            <div class="pauseHint">لمس/هوفر يوقف الحركة باش تقرا براحتك</div>
           </div>
         </div>
       </div>
@@ -638,38 +765,38 @@
         </div>
 
         <div class="grid">
-          <!-- صورك في الجذر: product1.jpg ... product31.jpg -->
-          <article class="product"><img src="product1.jpg?v=20260301" alt="Glame chic product 1" loading="lazy"><div class="cap"><p class="pname">Product 1</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product2.jpg?v=20260301" alt="Glame chic product 2" loading="lazy"><div class="cap"><p class="pname">Product 2</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product3.jpg?v=20260301" alt="Glame chic product 3" loading="lazy"><div class="cap"><p class="pname">Product 3</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product4.jpg?v=20260301" alt="Glame chic product 4" loading="lazy"><div class="cap"><p class="pname">Product 4</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product5.jpg?v=20260301" alt="Glame chic product 5" loading="lazy"><div class="cap"><p class="pname">Product 5</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product6.jpg?v=20260301" alt="Glame chic product 6" loading="lazy"><div class="cap"><p class="pname">Product 6</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product7.jpg?v=20260301" alt="Glame chic product 7" loading="lazy"><div class="cap"><p class="pname">Product 7</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product8.jpg?v=20260301" alt="Glame chic product 8" loading="lazy"><div class="cap"><p class="pname">Product 8</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product9.jpg?v=20260301" alt="Glame chic product 9" loading="lazy"><div class="cap"><p class="pname">Product 9</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product10.jpg?v=20260301" alt="Glame chic product 10" loading="lazy"><div class="cap"><p class="pname">Product 10</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product11.jpg?v=20260301" alt="Glame chic product 11" loading="lazy"><div class="cap"><p class="pname">Product 11</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product12.jpg?v=20260301" alt="Glame chic product 12" loading="lazy"><div class="cap"><p class="pname">Product 12</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product13.jpg?v=20260301" alt="Glame chic product 13" loading="lazy"><div class="cap"><p class="pname">Product 13</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product14.jpg?v=20260301" alt="Glame chic product 14" loading="lazy"><div class="cap"><p class="pname">Product 14</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product15.jpg?v=20260301" alt="Glame chic product 15" loading="lazy"><div class="cap"><p class="pname">Product 15</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product16.jpg?v=20260301" alt="Glame chic product 16" loading="lazy"><div class="cap"><p class="pname">Product 16</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product17.jpg?v=20260301" alt="Glame chic product 17" loading="lazy"><div class="cap"><p class="pname">Product 17</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product18.jpg?v=20260301" alt="Glame chic product 18" loading="lazy"><div class="cap"><p class="pname">Product 18</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product19.jpg?v=20260301" alt="Glame chic product 19" loading="lazy"><div class="cap"><p class="pname">Product 19</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product20.jpg?v=20260301" alt="Glame chic product 20" loading="lazy"><div class="cap"><p class="pname">Product 20</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product21.jpg?v=20260301" alt="Glame chic product 21" loading="lazy"><div class="cap"><p class="pname">Product 21</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product22.jpg?v=20260301" alt="Glame chic product 22" loading="lazy"><div class="cap"><p class="pname">Product 22</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product23.jpg?v=20260301" alt="Glame chic product 23" loading="lazy"><div class="cap"><p class="pname">Product 23</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product24.jpg?v=20260301" alt="Glame chic product 24" loading="lazy"><div class="cap"><p class="pname">Product 24</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product25.jpg?v=20260301" alt="Glame chic product 25" loading="lazy"><div class="cap"><p class="pname">Product 25</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product26.jpg?v=20260301" alt="Glame chic product 26" loading="lazy"><div class="cap"><p class="pname">Product 26</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product27.jpg?v=20260301" alt="Glame chic product 27" loading="lazy"><div class="cap"><p class="pname">Product 27</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product28.jpg?v=20260301" alt="Glame chic product 28" loading="lazy"><div class="cap"><p class="pname">Product 28</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product29.jpg?v=20260301" alt="Glame chic product 29" loading="lazy"><div class="cap"><p class="pname">Product 29</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product30.jpg?v=20260301" alt="Glame chic product 30" loading="lazy"><div class="cap"><p class="pname">Product 30</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product31.jpg?v=20260301" alt="Glame chic product 31" loading="lazy"><div class="cap"><p class="pname">Product 31</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <!-- يعتمد على صورك في الجذر: product1.jpg ... product31.jpg -->
+          <article class="product"><img src="product1.jpg" alt="Glame chic product 1" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 1</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product2.jpg" alt="Glame chic product 2" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 2</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product3.jpg" alt="Glame chic product 3" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 3</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product4.jpg" alt="Glame chic product 4" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 4</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product5.jpg" alt="Glame chic product 5" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 5</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product6.jpg" alt="Glame chic product 6" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 6</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product7.jpg" alt="Glame chic product 7" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 7</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product8.jpg" alt="Glame chic product 8" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 8</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product9.jpg" alt="Glame chic product 9" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 9</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product10.jpg" alt="Glame chic product 10" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 10</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product11.jpg" alt="Glame chic product 11" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 11</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product12.jpg" alt="Glame chic product 12" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 12</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product13.jpg" alt="Glame chic product 13" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 13</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product14.jpg" alt="Glame chic product 14" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 14</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product15.jpg" alt="Glame chic product 15" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 15</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product16.jpg" alt="Glame chic product 16" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 16</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product17.jpg" alt="Glame chic product 17" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 17</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product18.jpg" alt="Glame chic product 18" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 18</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product19.jpg" alt="Glame chic product 19" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 19</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product20.jpg" alt="Glame chic product 20" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 20</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product21.jpg" alt="Glame chic product 21" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 21</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product22.jpg" alt="Glame chic product 22" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 22</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product23.jpg" alt="Glame chic product 23" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 23</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product24.jpg" alt="Glame chic product 24" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 24</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product25.jpg" alt="Glame chic product 25" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 25</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product26.jpg" alt="Glame chic product 26" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 26</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product27.jpg" alt="Glame chic product 27" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 27</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product28.jpg" alt="Glame chic product 28" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 28</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product29.jpg" alt="Glame chic product 29" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 29</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product30.jpg" alt="Glame chic product 30" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 30</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product31.jpg" alt="Glame chic product 31" loading="lazy" onerror="this.closest('.product').style.display='none'"><div class="cap"><p class="pname">Product 31</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
         </div>
       </div>
 
@@ -695,13 +822,14 @@
   </main>
 
   <a class="float-wa" id="waFloat" href="#" rel="noopener">
-    <span class="ico wa"></span>
+    <span class="ico"></span>
     اطلب واتساب <small>+213779665820</small>
   </a>
 
   <script>
     (function(){
       try{
+        // ====== روابط الطلب ======
         const WHATSAPP_NUMBER_INT = "213779665820";
         const WA_MESSAGE = "مرحباً Glame chic ✨ أريد الطلب / الاستفسار من فضلك.";
         const wa = "https://wa.me/" + WHATSAPP_NUMBER_INT + "?text=" + encodeURIComponent(WA_MESSAGE);
@@ -748,20 +876,12 @@
 
         if(slider && slidesEl){
           const total = slidesEl.children.length;
-
-          // ✅ لو صورة واحدة فقط: نخبي التحكم (احتياط)
-          if(total <= 1){
-            if(prevBtn) prevBtn.style.display = "none";
-            if(nextBtn) nextBtn.style.display = "none";
-            if(dotsEl) dotsEl.style.display = "none";
-            return;
-          }
-
           let index = 0;
           let autoTimer = null;
           let pauseTimer = null;
 
           function go(i){
+            if(total <= 0) return;
             index = (i % total + total) % total;
             slidesEl.style.transform = "translateX(" + (-index * 100) + "%)";
             if(dotsEl){
@@ -788,7 +908,9 @@
 
           function startAuto(){
             stopAuto();
-            autoTimer = setInterval(function(){ go(index + 1); }, 5000);
+            autoTimer = setInterval(function(){
+              go(index + 1);
+            }, 5000);
           }
           function stopAuto(){
             if(autoTimer){ clearInterval(autoTimer); autoTimer = null; }
@@ -816,7 +938,6 @@
             const endX = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0].clientX : startX;
             const dx = endX - startX;
             if(Math.abs(dx) > 40){
-              // RTL إحساس طبيعي
               if(dx > 0) go(index - 1);
               else go(index + 1);
             }
@@ -830,7 +951,19 @@
           startAuto();
         }
 
-      }catch(e){}
+        // ====== إيقاف حركة التعليقات عند اللمس (موبايل) ======
+        const reviewsBox = document.getElementById("reviewsBox");
+        const track = document.getElementById("reviewsTrack");
+        if(reviewsBox && track){
+          function pause(){ track.style.animationPlayState = "paused"; }
+          function play(){ track.style.animationPlayState = "running"; }
+          reviewsBox.addEventListener("touchstart", pause, {passive:true});
+          reviewsBox.addEventListener("touchend", function(){ setTimeout(play, 1500); }, {passive:true});
+        }
+
+      }catch(e){
+        // لا شيء
+      }
     })();
   </script>
 
