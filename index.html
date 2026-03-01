@@ -58,7 +58,7 @@
       50%{ transform: translate(-18px, 14px) scale(1.03); }
     }
 
-    /* ====== PRELOADER (CSS فقط): يختفي بعد 3 ثواني حتى لو JS تعطل ====== */
+    /* ====== PRELOADER (CSS فقط) ====== */
     #preloader{
       position:fixed;
       inset:0;
@@ -69,7 +69,6 @@
       background:
         radial-gradient(900px 700px at 50% 40%, rgba(255,79,161,.25), transparent 55%),
         linear-gradient(135deg, #120013, #2b0022);
-
       animation: preHide 0.6s ease forwards;
       animation-delay: 3s;
     }
@@ -270,9 +269,7 @@
     }
 
     /* ======= شاشة العرض (السلايد) ======= */
-    .showcase{
-      margin-top: 16px;
-    }
+    .showcase{ margin-top: 16px; }
     .showcase-title{
       display:flex;
       align-items:center;
@@ -280,16 +277,8 @@
       gap:10px;
       margin: 0 0 10px;
     }
-    .showcase-title h3{
-      margin:0;
-      font-size: 20px;
-      font-weight: 900;
-    }
-    .showcase-title span{
-      color: rgba(255,255,255,.78);
-      font-weight:800;
-      font-size: 13px;
-    }
+    .showcase-title h3{ margin:0; font-size: 20px; font-weight: 900; }
+    .showcase-title span{ color: rgba(255,255,255,.78); font-weight:800; font-size: 13px; }
 
     .frame{
       position: relative;
@@ -300,7 +289,6 @@
       box-shadow: 0 18px 60px rgba(0,0,0,.30);
       overflow:hidden;
     }
-    /* لمعان فاخر على الإطار */
     .frame::before{
       content:"";
       position:absolute;
@@ -339,10 +327,7 @@
       will-change: transform;
       touch-action: pan-y;
     }
-    .slide{
-      min-width:100%;
-      position:relative;
-    }
+    .slide{ min-width:100%; position:relative; }
     .slide img{
       width:100%;
       height: 360px;
@@ -350,12 +335,12 @@
       display:block;
       transform: scale(1.01);
       filter: saturate(1.05) contrast(1.03);
+      background: rgba(0,0,0,.10);
     }
     @media(min-width:760px){
       .slide img{ height: 420px; }
     }
 
-    /* طبقة نعومة + فخامة داخل الصورة */
     .slide::after{
       content:"";
       position:absolute;
@@ -367,11 +352,7 @@
       pointer-events:none;
     }
 
-    .slider-controls{
-      position:absolute;
-      inset: 0;
-      pointer-events:none;
-    }
+    .slider-controls{ position:absolute; inset: 0; pointer-events:none; }
     .navBtn{
       position:absolute;
       top:50%;
@@ -423,6 +404,8 @@
       transform: scale(1.15);
     }
 
+    /* ====== إثباتات + حماية عدم الاختفاء ====== */
+    .proof, .section, .footer{ position:relative; z-index: 2; }
     .proof{
       margin-top: 18px;
       display:grid;
@@ -432,6 +415,7 @@
     @media(min-width:760px){
       .proof{ grid-template-columns: 1.2fr .8fr; }
     }
+
     .card{
       border-radius: 22px;
       background: linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
@@ -439,6 +423,7 @@
       box-shadow: 0 14px 40px rgba(0,0,0,.22);
       backdrop-filter: blur(10px);
       padding: 16px;
+      min-height: 110px;
     }
     .card h3{ margin: 0 0 10px; font-size: 18px; font-weight: 900; }
 
@@ -578,7 +563,6 @@
   <div class="bg-orb orb2"></div>
   <div class="bg-orb orb3"></div>
 
-  <!-- Preloader يختفي بعد 3 ثواني بـ CSS -->
   <div id="preloader" aria-label="Loading">
     <div class="loader-card">
       <img class="loader-logo" src="logo.png" alt="Glame chic logo" onerror="this.style.display='none'">
@@ -637,7 +621,6 @@
         <div class="frame">
           <div class="slider" id="slider" aria-label="Glame chic slideshow">
             <div class="slides" id="slides">
-              <!-- ضع صورك هنا (موجودة عندك: slides/slide1.jpg ... slides/slide8.jpg) -->
               <div class="slide"><img src="slides/slide1.jpg" alt="Glame chic slide 1" loading="eager" onerror="this.style.display='none'"></div>
               <div class="slide"><img src="slides/slide2.jpg" alt="Glame chic slide 2" loading="lazy" onerror="this.style.display='none'"></div>
               <div class="slide"><img src="slides/slide3.jpg" alt="Glame chic slide 3" loading="lazy" onerror="this.style.display='none'"></div>
@@ -648,8 +631,254 @@
               <div class="slide"><img src="slides/slide8.jpg" alt="Glame chic slide 8" loading="lazy" onerror="this.style.display='none'"></div>
             </div>
 
-            <div class="slider-controls" aria-hidden="false">
+            <div class="slider-controls">
               <button class="navBtn prev" id="prevBtn" aria-label="السابق">›</button>
               <button class="navBtn next" id="nextBtn" aria-label="التالي">‹</button>
+              <div class="dots" id="dots" aria-label="اختيار السلايد"></div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-              <div class="do
+      <div class="proof">
+        <div class="card">
+          <div class="live">
+            <div>
+              <h3 style="margin:0 0 6px">📈 مؤشر الطلبات المباشر</h3>
+              <div class="meta"><span class="dot"></span> مباشر الآن • يتحدث تلقائياً</div>
+            </div>
+            <div class="counter" id="ordersCounter">1,287</div>
+          </div>
+          <div class="hint">يزيد كل دقيقة بزيادة عشوائية صغيرة (تصاعدي) ليبان النشاط طبيعي.</div>
+        </div>
+
+        <div class="card">
+          <h3>💬 تعليقات الزبائن</h3>
+          <div class="reviews">
+            <div class="review">
+              <div class="top"><div class="who">أمينة بن حمو</div><div class="stars">★★★★★</div></div>
+              <p>الروائح و الجودة روعة… حسّيت روحي شارية من برا ✨</p>
+            </div>
+            <div class="review">
+              <div class="top"><div class="who">ليلى بوعلام</div><div class="stars">★★★★★</div></div>
+              <p>كاين تنوع كبير… كل مرة نلقى حاجة جديدة، صحّة 👌</p>
+            </div>
+            <div class="review">
+              <div class="top"><div class="who">نسـرين لعماري</div><div class="stars">★★★★★</div></div>
+              <p>أصليين 100%… هذا هو لي حبيتـو، ماشي تقليد 💗</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- المنتجات -->
+      <div class="section">
+        <div class="section-title">
+          <h3>Our Products</h3>
+          <span style="color:rgba(255,255,255,.75); font-weight:800; font-size:13px;">صور حقيقية</span>
+        </div>
+
+        <div class="grid">
+          <!-- ملاحظة: لو صورة ناقصة ما يطيحش التصميم -->
+          <article class="product"><img src="product1.jpg"  alt="Glame chic product 1"  loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 1</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product2.jpg"  alt="Glame chic product 2"  loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 2</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product3.jpg"  alt="Glame chic product 3"  loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 3</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product4.jpg"  alt="Glame chic product 4"  loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 4</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product5.jpg"  alt="Glame chic product 5"  loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 5</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product6.jpg"  alt="Glame chic product 6"  loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 6</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product7.jpg"  alt="Glame chic product 7"  loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 7</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product8.jpg"  alt="Glame chic product 8"  loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 8</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product9.jpg"  alt="Glame chic product 9"  loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 9</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product10.jpg" alt="Glame chic product 10" loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 10</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product11.jpg" alt="Glame chic product 11" loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 11</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product12.jpg" alt="Glame chic product 12" loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 12</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product13.jpg" alt="Glame chic product 13" loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 13</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product14.jpg" alt="Glame chic product 14" loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 14</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product15.jpg" alt="Glame chic product 15" loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 15</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product16.jpg" alt="Glame chic product 16" loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 16</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product17.jpg" alt="Glame chic product 17" loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 17</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product18.jpg" alt="Glame chic product 18" loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 18</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product19.jpg" alt="Glame chic product 19" loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 19</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product20.jpg" alt="Glame chic product 20" loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 20</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product21.jpg" alt="Glame chic product 21" loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 21</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product22.jpg" alt="Glame chic product 22" loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 22</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product23.jpg" alt="Glame chic product 23" loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 23</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product24.jpg" alt="Glame chic product 24" loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 24</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product25.jpg" alt="Glame chic product 25" loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 25</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product26.jpg" alt="Glame chic product 26" loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 26</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product27.jpg" alt="Glame chic product 27" loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 27</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product28.jpg" alt="Glame chic product 28" loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 28</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product29.jpg" alt="Glame chic product 29" loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 29</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product30.jpg" alt="Glame chic product 30" loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 30</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product31.jpg" alt="Glame chic product 31" loading="lazy" onerror="this.src='logo.png'"><div class="cap"><p class="pname">Product 31</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+        </div>
+      </div>
+
+      <div class="footer" id="privacy">
+        <div style="margin-top:14px;">
+          <strong>تواصل</strong><br>
+          البريد: <a href="mailto:glame.chic31@gmail.com">glame.chic31@gmail.com</a><br>
+          الهاتف: <a href="tel:+213671599739">0671599739</a><br>
+          إنستغرام: <a href="https://www.instagram.com/glame_chic" target="_blank" rel="noopener">@glame_chic</a>
+        </div>
+
+        <div style="margin-top:14px; opacity:.85;">
+          <strong>Privacy Policy</strong><br>
+          نحن لا نجمع بيانات حساسة. أي تواصل يتم عبر واتساب/تيكتوك/إنستغرام حسب اختيارك.
+        </div>
+
+        <div style="margin-top:14px; opacity:.7;">
+          © <span id="year"></span> Glame chic — Oran
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <a class="float-wa" id="waFloat" href="#" rel="noopener">
+    <span class="ico wa"></span>
+    اطلب واتساب <small>+213779665820</small>
+  </a>
+
+  <script>
+    (function(){
+      try{
+        // ====== روابط الطلب ======
+        const WHATSAPP_NUMBER_INT = "213779665820";
+        const WA_MESSAGE = "مرحباً Glame chic ✨ أريد الطلب / الاستفسار من فضلك.";
+        const wa = "https://wa.me/" + WHATSAPP_NUMBER_INT + "?text=" + encodeURIComponent(WA_MESSAGE);
+
+        const waBtn = document.getElementById("waBtn");
+        const waFloat = document.getElementById("waFloat");
+        if(waBtn) waBtn.href = wa;
+        if(waFloat) waFloat.href = wa;
+
+        const year = document.getElementById("year");
+        if(year) year.textContent = new Date().getFullYear();
+
+        // ====== عداد الطلبات (تصاعدي) ======
+        const counterEl = document.getElementById("ordersCounter");
+        let current = 1287;
+
+        function randInt(min,max){ return Math.floor(Math.random()*(max-min+1))+min; }
+        function animate(from,to,duration){
+          const start = (window.performance && performance.now) ? performance.now() : Date.now();
+          const diff = to - from;
+
+          function step(){
+            const now = (window.performance && performance.now) ? performance.now() : Date.now();
+            const t = Math.min(1, (now - start)/duration);
+            const eased = 1 - Math.pow(1 - t, 3);
+            const val = Math.round(from + diff*eased);
+            if(counterEl) counterEl.textContent = val.toLocaleString("ar-DZ");
+            if(t < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        }
+
+        setInterval(function(){
+          const add = randInt(1,4);
+          const next = current + add;
+          animate(current, next, 650);
+          current = next;
+        }, 60000);
+
+        // ====== السلايدر (Auto + Manual + Swipe) ======
+        const slider = document.getElementById("slider");
+        const slidesEl = document.getElementById("slides");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const dotsEl = document.getElementById("dots");
+
+        if(slider && slidesEl){
+          const total = slidesEl.children.length;
+          let index = 0;
+          let autoTimer = null;
+          let pauseTimer = null;
+
+          function setTransform(){
+            // translate3d = أكثر ثبات على الموبايل
+            slidesEl.style.transform = "translate3d(" + (-index * 100) + "%,0,0)";
+          }
+
+          function go(i){
+            if(total <= 0) return;
+            index = (i % total + total) % total;
+            setTransform();
+
+            if(dotsEl){
+              const btns = dotsEl.querySelectorAll(".dotBtn");
+              btns.forEach((b,bi)=> b.classList.toggle("active", bi === index));
+            }
+          }
+
+          function buildDots(){
+            if(!dotsEl) return;
+            dotsEl.innerHTML = "";
+            for(let i=0;i<total;i++){
+              const b = document.createElement("button");
+              b.className = "dotBtn" + (i===0 ? " active":"");
+              b.type = "button";
+              b.setAttribute("aria-label", "سلايد " + (i+1));
+              b.addEventListener("click", function(){
+                pauseAuto(9000);
+                go(i);
+              });
+              dotsEl.appendChild(b);
+            }
+          }
+
+          function startAuto(){
+            stopAuto();
+            autoTimer = setInterval(function(){ go(index + 1); }, 5000);
+          }
+          function stopAuto(){
+            if(autoTimer){ clearInterval(autoTimer); autoTimer = null; }
+          }
+          function pauseAuto(ms){
+            stopAuto();
+            if(pauseTimer) clearTimeout(pauseTimer);
+            pauseTimer = setTimeout(function(){ startAuto(); }, ms || 9000);
+          }
+
+          if(prevBtn) prevBtn.addEventListener("click", function(){ pauseAuto(9000); go(index - 1); });
+          if(nextBtn) nextBtn.addEventListener("click", function(){ pauseAuto(9000); go(index + 1); });
+
+          // swipe
+          let startX = 0, dragging = false;
+          slider.addEventListener("touchstart", function(e){
+            if(!e.touches || !e.touches[0]) return;
+            dragging = true;
+            startX = e.touches[0].clientX;
+            pauseAuto(12000);
+          }, {passive:true});
+
+          slider.addEventListener("touchend", function(e){
+            if(!dragging) return;
+            dragging = false;
+            const endX = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0].clientX : startX;
+            const dx = endX - startX;
+            if(Math.abs(dx) > 40){
+              // RTL طبيعي: سحب يمين = السابق، سحب يسار = التالي
+              if(dx > 0) go(index - 1);
+              else go(index + 1);
+            }
+          }, {passive:true});
+
+          slider.addEventListener("mouseenter", function(){ pauseAuto(15000); });
+
+          buildDots();
+          go(0);
+
+          // ابدأ تلقائي بعد نصف ثانية (حتى يثبت الرسم)
+          setTimeout(startAuto, 500);
+        }
+
+      }catch(e){
+        // لا شيء
+      }
+    })();
+  </script>
+
+</body>
+</html>
