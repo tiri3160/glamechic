@@ -22,7 +22,6 @@
       --pink2:#ff77bd;
       --gold:#d9b25f;
 
-      /* ✅ خلفية وردي فاتح فاخر */
       --bg1:#fff1f6;
       --bg2:#ffe6f0;
 
@@ -45,7 +44,6 @@
       overflow:auto;
     }
 
-    /* خلفيات ناعمة متحركة */
     .bg-orb{
       position:fixed;
       width:520px; height:520px;
@@ -63,7 +61,6 @@
       50%{ transform: translate(-18px, 14px) scale(1.03); }
     }
 
-    /* PRELOADER */
     #preloader{
       position:fixed;
       inset:0;
@@ -75,7 +72,7 @@
         radial-gradient(900px 700px at 50% 40%, rgba(255,79,161,.18), transparent 55%),
         linear-gradient(135deg, var(--bg1), var(--bg2));
       animation: preHide 0.6s ease forwards;
-      animation-delay: 2.4s;
+      animation-delay: 2.2s;
     }
     @keyframes preHide{
       to{ opacity:0; visibility:hidden; pointer-events:none; }
@@ -89,8 +86,6 @@
       box-shadow: var(--shadow);
       backdrop-filter: blur(10px);
       text-align:center;
-      position:relative;
-      overflow:hidden;
       color: var(--text);
     }
     .loader-logo{
@@ -203,18 +198,9 @@
     .btn:active{ transform: translateY(1px) scale(.99); }
     .btn:hover{ filter: brightness(1.03); }
 
-    .btn-wa{
-      background: linear-gradient(135deg, #25D366, #1aa954);
-      color:#08130d;
-    }
-    .btn-tt{
-      background: linear-gradient(135deg, #111, #2a2a2a);
-      color:#fff;
-    }
-    .btn-ig{
-      background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
-      color:#fff;
-    }
+    .btn-wa{ background: linear-gradient(135deg, #25D366, #1aa954); color:#08130d; }
+    .btn-tt{ background: linear-gradient(135deg, #111, #2a2a2a); color:#fff; }
+    .btn-ig{ background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af); color:#fff; }
     .btn-outline{
       background: rgba(255,255,255,.55);
       border: 1px solid rgba(0,0,0,.08);
@@ -222,12 +208,7 @@
       box-shadow:none;
       font-weight:900;
     }
-
-    .divider{
-      height:1px;
-      background: rgba(0,0,0,.08);
-      margin: 16px 0;
-    }
+    .divider{ height:1px; background: rgba(0,0,0,.08); margin: 16px 0; }
 
     .headline{
       margin-top: 10px;
@@ -277,9 +258,7 @@
       grid-template-columns: 1fr;
       gap:12px;
     }
-    @media(min-width:760px){
-      .proof{ grid-template-columns: 1.2fr .8fr; }
-    }
+    @media(min-width:760px){ .proof{ grid-template-columns: 1.2fr .8fr; } }
     .card{
       border-radius: 22px;
       background: linear-gradient(135deg, rgba(255,255,255,.82), rgba(255,255,255,.58));
@@ -289,7 +268,7 @@
       padding: 16px;
       color: var(--text);
     }
-    .card h3{ margin: 0 0 10px; font-size: 18px; font-weight: 900; color: var(--text); }
+    .card h3{ margin: 0 0 10px; font-size: 18px; font-weight: 1000; color: var(--text); }
 
     .live{
       display:flex;
@@ -304,7 +283,7 @@
       gap:10px;
       color: var(--muted);
       font-size: 14px;
-      font-weight: 800;
+      font-weight: 900;
     }
     .dot{
       width:10px; height:10px;
@@ -313,14 +292,10 @@
       box-shadow: 0 0 0 7px rgba(34,255,136,.16);
       animation: pulse 1.2s ease-in-out infinite;
     }
-    @keyframes pulse{
-      0%,100%{ transform: scale(1); opacity:.9; }
-      50%{ transform: scale(1.2); opacity:1; }
-    }
-
+    @keyframes pulse{ 0%,100%{ transform: scale(1); opacity:.9; } 50%{ transform: scale(1.2); opacity:1; } }
     .counter{
       font-size: 36px;
-      font-weight: 1000;
+      font-weight: 1100;
       letter-spacing: .4px;
       color: var(--text);
       text-shadow: 0 10px 30px rgba(0,0,0,.08);
@@ -330,10 +305,10 @@
       color: var(--muted);
       font-size: 13px;
       line-height: 1.8;
-      font-weight:700;
+      font-weight:800;
     }
 
-    /* ======= التعليقات (Scroll تلقائي) ======= */
+    /* ✅ التعليقات بدون JS */
     .reviewsBox{
       position:relative;
       height: 320px;
@@ -348,11 +323,9 @@
       flex-direction:column;
       gap:10px;
       will-change: transform;
-      animation: scrollReviews 32s linear infinite;
+      animation: scrollReviews 34s linear infinite;
     }
-    .reviewsBox:hover .reviewsTrack{
-      animation-play-state: paused;
-    }
+    .reviewsBox:hover .reviewsTrack{ animation-play-state: paused; }
     @keyframes scrollReviews{
       0%{ transform: translateY(0); }
       100%{ transform: translateY(-50%); }
@@ -371,9 +344,9 @@
       gap:10px;
       margin-bottom: 6px;
     }
-    .review .who{ font-weight: 1000; font-size: 14px; color: var(--text); }
+    .review .who{ font-weight: 1100; font-size: 14px; color: var(--text); }
     .stars{ color: var(--gold); font-size: 14px; letter-spacing: 1px; }
-    .review p{ margin:0; color: rgba(42,11,28,.86); line-height:1.8; font-size: 14px; font-weight:650; }
+    .review p{ margin:0; color: rgba(42,11,28,.86); line-height:1.8; font-size: 14px; font-weight:750; }
 
     .section{ margin-top: 18px; }
     .section-title{
@@ -383,7 +356,7 @@
       gap:10px;
       margin: 0 0 10px;
     }
-    .section-title h3{ margin:0; font-size: 20px; font-weight: 1000; color: var(--text); }
+    .section-title h3{ margin:0; font-size: 20px; font-weight: 1100; color: var(--text); }
 
     .grid{ display:grid; grid-template-columns: 1fr; gap: 12px; }
     @media(min-width:560px){ .grid{ grid-template-columns: 1fr 1fr; } }
@@ -408,8 +381,8 @@
     }
     .product:hover img{ transform: scale(1.07); }
     .cap{ padding: 12px 12px 14px; }
-    .pname{ font-weight: 1000; margin:0 0 4px; color: var(--text); }
-    .pdesc{ margin:0; color: var(--muted); font-size: 13px; line-height: 1.7; font-weight:650; }
+    .pname{ font-weight: 1100; margin:0 0 4px; color: var(--text); }
+    .pdesc{ margin:0; color: var(--muted); font-size: 13px; line-height: 1.7; font-weight:750; }
 
     .footer{
       margin-top: 18px;
@@ -417,9 +390,13 @@
       color: rgba(42,11,28,.76);
       font-size: 13px;
       line-height: 1.9;
-      font-weight:700;
+      font-weight:850;
     }
-    .footer a{ color: var(--text); text-decoration: none; border-bottom: 1px dotted rgba(42,11,28,.35); }
+    .footer a{
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(42,11,28,.35);
+    }
 
     .float-wa{
       position:fixed;
@@ -434,21 +411,15 @@
       background: linear-gradient(135deg, #25D366, #1aa954);
       color:#08130d;
       text-decoration:none;
-      font-weight: 1000;
+      font-weight: 1100;
       box-shadow: 0 18px 45px rgba(0,0,0,.18);
       border: 1px solid rgba(255,255,255,.22);
     }
-    .float-wa small{ font-weight:900; opacity:.9; }
-
-    .ico{ width:18px; height:18px; display:inline-block; border-radius:6px; background: rgba(0,0,0,.08); }
-    .ico.wa{ background: rgba(8,19,13,.12); box-shadow: inset 0 0 0 2px rgba(8,19,13,.12); }
-    .ico.tt{ background: rgba(255,255,255,.14); box-shadow: inset 0 0 0 2px rgba(255,255,255,.12); }
-    .ico.ig{ background: rgba(255,255,255,.18); box-shadow: inset 0 0 0 2px rgba(255,255,255,.14); }
+    .float-wa small{ font-weight:950; opacity:.9; }
   </style>
 </head>
 
 <body>
-
   <div class="bg-orb orb1"></div>
   <div class="bg-orb orb2"></div>
   <div class="bg-orb orb3"></div>
@@ -474,18 +445,9 @@
         </div>
 
         <div class="actions">
-          <a class="btn btn-wa" id="waBtn" href="#" rel="noopener">
-            <span class="ico wa"></span> اطلب عبر واتساب
-          </a>
-
-          <a class="btn btn-tt" href="https://www.tiktok.com/@glame.chic?_r=1&_t=ZS-94GArdkxSwm" target="_blank" rel="noopener">
-            <span class="ico tt"></span> اطلب عبر تيكتوك
-          </a>
-
-          <a class="btn btn-ig" href="https://www.instagram.com/glame_chic" target="_blank" rel="noopener">
-            <span class="ico ig"></span> اطلب عبر إنستغرام
-          </a>
-
+          <a class="btn btn-wa" id="waBtn" href="#" rel="noopener">اطلب عبر واتساب</a>
+          <a class="btn btn-tt" href="https://www.tiktok.com/@glame.chic?_r=1&_t=ZS-94GArdkxSwm" target="_blank" rel="noopener">اطلب عبر تيكتوك</a>
+          <a class="btn btn-ig" href="https://www.instagram.com/glame_chic" target="_blank" rel="noopener">اطلب عبر إنستغرام</a>
           <a class="btn btn-outline" href="#privacy">Privacy Policy</a>
         </div>
       </div>
@@ -517,106 +479,35 @@
           <h3 style="display:flex; align-items:center; gap:8px;">💬 تعليقات الزبائن</h3>
 
           <div class="reviewsBox" aria-label="Customer reviews">
-            <div class="reviewsTrack" id="reviewsTrack">
-              <!-- تُملأ بالـ JS -->
-            </div>
-          </div>
-
-          <div class="hint" style="margin-top:10px;">مرّر بإصبعك أو خليها تمشي وحدها… وإذا حبّيت توقفها حط يدك فوقها.</div>
-        </div>
-      </div>
-
-      <div class="section" id="products">
-        <div class="section-title">
-          <h3>Our Products</h3>
-          <span style="color:rgba(42,11,28,.65); font-weight:900; font-size:13px;">صور حقيقية</span>
-        </div>
-
-        <div class="grid" id="productsGrid">
-          <!-- المنتجات تخرج تلقائياً من product1.jpg إلى product31.jpg -->
-        </div>
-      </div>
-
-      <div class="footer" id="privacy">
-        <div style="margin-top:14px;">
-          <strong>تواصل</strong><br>
-          البريد: <a href="mailto:glame.chic31@gmail.com">glame.chic31@gmail.com</a><br>
-          الهاتف: <a href="tel:+213671599739">0671599739</a><br>
-          إنستغرام: <a href="https://www.instagram.com/glame_chic" target="_blank" rel="noopener">glame_chic</a>
-        </div>
-
-        <div style="margin-top:14px; opacity:.85;">
-          <strong>Privacy Policy</strong><br>
-          نحن لا نجمع بيانات حساسة. أي تواصل يتم عبر واتساب/تيكتوك/إنستغرام حسب اختيارك.
-        </div>
-
-        <div style="margin-top:14px; opacity:.7;">
-          © <span id="year"></span> Glame chic — Oran
-        </div>
-      </div>
-
-    </section>
-  </main>
-
-  <a class="float-wa" id="waFloat" href="#" rel="noopener">
-    <span class="ico wa"></span>
-    اطلب واتساب <small>+213779665820</small>
-  </a>
-
-  <script>
-    (function(){
-      try{
-        // ===== روابط =====
-        const WHATSAPP_NUMBER_INT = "213779665820";
-        const WA_MESSAGE = "مرحباً Glame chic ✨ أريد الطلب / الاستفسار من فضلك.";
-        const wa = "https://wa.me/" + WHATSAPP_NUMBER_INT + "?text=" + encodeURIComponent(WA_MESSAGE);
-
-        const waBtn = document.getElementById("waBtn");
-        const waFloat = document.getElementById("waFloat");
-        if(waBtn) waBtn.href = wa;
-        if(waFloat) waFloat.href = wa;
-
-        const year = document.getElementById("year");
-        if(year) year.textContent = new Date().getFullYear();
-
-        // ===== عداد الطلبات (تصاعدي) =====
-        const counterEl = document.getElementById("ordersCounter");
-        let current = 1287;
-
-        function randInt(min,max){ return Math.floor(Math.random()*(max-min+1))+min; }
-        function animate(from,to,duration){
-          const start = performance.now();
-          const diff = to - from;
-          function step(now){
-            const t = Math.min(1, (now - start)/duration);
-            const eased = 1 - Math.pow(1 - t, 3);
-            const val = Math.round(from + diff*eased);
-            if(counterEl) counterEl.textContent = val.toLocaleString("en-US");
-            if(t < 1) requestAnimationFrame(step);
-          }
-          requestAnimationFrame(step);
-        }
-
-        setInterval(function(){
-          const add = randInt(1, 4); // زيادة صغيرة
-          const next = current + add;
-          animate(current, next, 650);
-          current = next;
-        }, 60000);
-
-        // ===== التعليقات (30 تعليق واقعي) =====
-        const reviews = [
-          {name:"هبة شريف", text:"الروائح و الجودة روعة… حسّيت روحي شاريا من برا ✨", stars:5},
-          {name:"إيمان قندوز", text:"يعطيكم الصحة على النصائح… لقيت اللي يجي مع بشرتي 🤍", stars:5},
-          {name:"مروة خالدي", text:"سعر معقول قدّام الجودة… والبوكس يجي هدية جاهزة 🎁", stars:5},
-          {name:"نسرين لعماري", text:"أصليين 100%… هذا هو لي حبيت، ماشي تقليد.", stars:5},
-          {name:"سمية بن عيسى", text:"التغليف فخم بزاف… يبان براند عالمي بصح جزايري 💗", stars:5},
-          {name:"خديجة بلعابد", text:"وصلني بسرعة و كلش مرتب… شكراً بزاف.", stars:5},
-          {name:"ريم زروقي", text:"بوكساتكم يجيبو القلب… ريحة و ستايل 👌", stars:5},
-          {name:"أحلام بوزيان", text:"تعامل راقي و ذوق في الاختيار… راني نعاود نطلب.", stars:5},
-          {name:"سارة بن موسى", text:"المنتجات باينة أصلية… و النتائج ظهرت من أول استعمال.", stars:5},
-          {name:"مريم ڨريشي", text:"خدمتكم هايلة… و حتى النصائح تاع البشرة صح 💕", stars:5},
-          {name:"شيماء بوغزالة", text:"حبيت بزاف لمسة الفخامة في البوكس… يعطيكم الصحة.", stars:5},
-          {name:"أمينة بن حمو", text:"سيريييو كي شريت حسّيت روحي في Dior 😍", stars:5},
-          {name:"ليلى بوعلام", text:"كاين تنوع كبير… كل مرة نلقى حاجة جديدة.", stars:5},
-          {name:"جميلة قاسمي", text:"الريڨل عندكم سريع
+            <div class="reviewsTrack">
+              <!-- ✅ 30 تعليق + نعاودهم مرة ثانية باش تكون الحركة بلا انقطاع -->
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">هبة شريف</div></div><p>الروائح و الجودة روعة… حسّيت روحي شاريا من برا ✨</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">إيمان قندوز</div></div><p>يعطيكم الصحة على النصائح… لقيت اللي يجي مع بشرتي 🤍</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">مروة خالدي</div></div><p>سعر معقول قدّام الجودة… والبوكس يجي هدية جاهزة 🎁</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">نسرين لعماري</div></div><p>أصليين 100%… هذا هو لي حبيت، ماشي تقليد.</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">سمية بن عيسى</div></div><p>التغليف فخم بزاف… يبان براند عالمي بصح جزايري 💗</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">خديجة بلعابد</div></div><p>وصلني بسرعة و كلش مرتب… شكراً بزاف.</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">ريم زروقي</div></div><p>بوكساتكم يجيبو القلب… ريحة و ستايل 👌</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">أحلام بوزيان</div></div><p>تعامل راقي و ذوق في الاختيار… راني نعاود نطلب.</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">سارة بن موسى</div></div><p>المنتجات باينة أصلية… و النتائج ظهرت من أول استعمال.</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">مريم ڨريشي</div></div><p>خدمتكم هايلة… و حتى النصائح تاع البشرة صح 💕</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">شيماء بوغزالة</div></div><p>حبيت بزاف لمسة الفخامة في البوكس… يعطيكم الصحة.</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">أمينة بن حمو</div></div><p>سيريييو كي شريت حسّيت روحي في Dior 😍</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">ليلى بوعلام</div></div><p>كاين تنوع كبير… كل مرة نلقى حاجة جديدة.</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">جميلة قاسمي</div></div><p>الريڨل عندكم سريع… و كلش واضح في التعامل.</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">سهيلة بوحفص</div></div><p>أجمل بوكس هدية درتو لصحبتي… فرحت بزاف 💝</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">رانية بن يحيى</div></div><p>ريحة ثابتة و ناعمة… تبارك الله.</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">ياسمين بوعزة</div></div><p>الاختيار تاعكم راقي… يبان براند فاخر.</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">حنان بوشامة</div></div><p>ما كنتش متأكدة بصح كي جربت… ولات عندي ثقة كاملة.</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">أسماء بوزيد</div></div><p>تغليف نظيف و خدمة مليحة… ربي يبارك.</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">نورهان عماري</div></div><p>كاين اهتمام بالتفاصيل… هذا اللي عجبني بزاف.</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">دنيا زكري</div></div><p>المنتج يجي كما في الصور… ماشي كلام وخلاص.</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">بسمة بن طاهر</div></div><p>يعطيكم الصحة… نصحت بيه خويا حتى هو 😄</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">فاطمة الزهراء بن عمر</div></div><p>بشرتي تحسّنت… و الريحة تبقى بزاف.</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">كوثر بن سالم</div></div><p>الأسعار مقارنة بالجودة ممتازة… بصح الفخامة باينة.</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">سلمى بوڨرة</div></div><p>خدمة الزبون عندكم فوق المستوى… شكراً.</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">منى شلالي</div></div><p>روعة روعة… ما نكذبش عليكم، يبان ماركة كبيرة.</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">آية بن شيبة</div></div><p>حبيت بزاف كيفاش تفسرو الاستعمال… ما خليتو والو.</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">مليكة بوسعد</div></div><p>كاين صدق في التعامل… و هذا أهم حاجة.</p></div>
+              <div class="review"><div class="top"><div class="stars">★★★★★</div><div class="who">رجاء بوحنية</div></div><p>طلبت مرتين و كل مرة نفس الجودة… ثابتين 👏</p></div>
+              <div class="r
