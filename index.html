@@ -43,7 +43,6 @@
       font-family:"Tajawal", system-ui, -apple-system, Segoe UI, Roboto, Arial;
       color: var(--text);
 
-      /* ✅ خلفية وردي فاتح + لمسات ذهبية */
       background:
         radial-gradient(1000px 700px at 18% 12%, rgba(255,79,161,.22), transparent 60%),
         radial-gradient(900px 650px at 86% 22%, rgba(255,210,122,.26), transparent 58%),
@@ -169,7 +168,6 @@
       z-index:1;
     }
 
-    /* ✅ كرت رئيسي فاخر فاتح */
     .hero{
       background: linear-gradient(135deg, rgba(255,255,255,.78), rgba(255,255,255,.42));
       border: 1px solid rgba(255,79,161,.16);
@@ -227,7 +225,7 @@
       font-weight: 800;
     }
 
-    /* ✅ أزرار 2×2 متناسقة */
+    /* ✅ أزرار 2×2 متناسقة + أيقونات ملونة */
     .actions{
       display:grid;
       grid-template-columns: repeat(2, minmax(160px, 1fr));
@@ -365,7 +363,7 @@
       border: 1px solid rgba(255,79,161,.16);
       overflow:hidden;
       backdrop-filter: blur(10px);
-      direction:ltr; /* ✅ حل نهائي لمشكلة RTL */
+      direction:ltr;
     }
 
     .slides{
@@ -508,43 +506,34 @@
       color: #2b001e;
       text-shadow: 0 10px 30px rgba(255,210,122,.20);
     }
-    .hint{
-      margin-top: 8px;
-      color: rgba(30,10,22,.70);
-      font-size: 13px;
-      line-height: 1.85;
-      font-weight: 800;
-    }
 
-    /* ====== آراء متحركة (فاخر) ====== */
-    .reviews-marquee{
+    /* ✅ آراء متحركة للأعلى (مثل النسخة السابقة) */
+    .reviews-vert{
       position:relative;
       overflow:hidden;
       border-radius: 18px;
-      padding: 6px 0;
       background: rgba(255,255,255,.35);
       border: 1px solid rgba(255,210,122,.35);
+      height: 265px;
+      padding: 10px;
     }
-    .reviews-track{
-      display:flex;
-      gap:10px;
-      width:max-content;
-      will-change: transform;
-      animation: marquee 22s linear infinite;
-      direction:ltr;
-      padding: 6px 10px;
-    }
-    .reviews-marquee:active .reviews-track,
-    .reviews-marquee:hover .reviews-track{
+    .reviews-vert:hover .reviews-col,
+    .reviews-vert:active .reviews-col{
       animation-play-state: paused;
     }
-    @keyframes marquee{
-      from{ transform: translateX(0); }
-      to{ transform: translateX(-50%); }
+    .reviews-col{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      animation: upscroll 18s linear infinite;
+      will-change: transform;
+    }
+    @keyframes upscroll{
+      from{ transform: translateY(0); }
+      to{ transform: translateY(-50%); }
     }
 
     .review{
-      min-width: min(320px, 78vw);
       border-radius: 18px;
       background: rgba(255,255,255,.62);
       border: 1px solid rgba(255,79,161,.14);
@@ -640,8 +629,6 @@
       flex: 0 0 24px;
     }
     .ico svg{ width:100%; height:100%; display:block; filter: drop-shadow(0 6px 14px rgba(0,0,0,.12)); }
-
-    /* ترتيب داخل الزر (RTL) */
     .btn .ico{ margin-left: 2px; }
 
   </style>
@@ -673,11 +660,9 @@
           </div>
         </div>
 
-        <!-- ✅ أزرار 2×2 متناسقة + أيقونات ملونة -->
         <div class="actions">
           <a class="btn btn-wa" id="waBtn" href="#" rel="noopener">
             <span class="ico" aria-hidden="true">
-              <!-- WhatsApp -->
               <svg viewBox="0 0 32 32">
                 <path fill="#25D366" d="M16 .6C7.5.6.6 7.5.6 16c0 2.8.7 5.4 2 7.7L.5 31.4l8-2.1c2.2 1.2 4.7 1.8 7.5 1.8 8.5 0 15.4-6.9 15.4-15.4S24.5.6 16 .6z"/>
                 <path fill="#fff" d="M16 3C8.8 3 3 8.8 3 16c0 2.4.7 4.7 1.9 6.7l.3.5-1.3 4.7 4.8-1.3.5.3c2 1.2 4.3 1.9 6.8 1.9 7.2 0 13-5.8 13-13S23.2 3 16 3zm7.3 18.1c-.3 1-2 1.9-2.7 2-.6.1-1.4.1-2.3-.2-.6-.2-1.3-.4-2.2-.8-3.7-1.6-6.1-5.3-6.3-5.5-.2-.3-1.5-2.1-1.5-3.9 0-1.8.9-2.6 1.2-3 .3-.3.7-.4.9-.4h.8c.3 0 .6-.1.9.6.3.8 1.2 2.8 1.2 3 0 .2.1.4 0 .6-.1.2-.1.4-.3.6-.2.3-.4.5-.6.7-.2.2-.4.4-.2.8.2.4 1 1.6 2.1 2.6 1.4 1.3 2.6 1.7 3 1.9.4.2.6.1.8-.1.3-.3 1-1.2 1.3-1.6.3-.4.5-.3.9-.2.3.1 2.3 1.1 2.7 1.3.4.2.7.3.8.5.1.2.1 1-.2 2z"/>
@@ -688,7 +673,6 @@
 
           <a class="btn btn-tt" href="https://www.tiktok.com/@glame.chic?_r=1&_t=ZS-94GArdkxSwm" target="_blank" rel="noopener">
             <span class="ico" aria-hidden="true">
-              <!-- TikTok -->
               <svg viewBox="0 0 24 24">
                 <path fill="#25F4EE" d="M14.6 3.1c.6 2.1 2.4 3.7 4.6 3.9v2.7c-1.6-.1-3-.6-4.2-1.6v6.2a5.9 5.9 0 1 1-5.9-5.9c.5 0 1 .1 1.5.2v2.8a3.2 3.2 0 1 0 2.2 3V3.1h1.8z"/>
                 <path fill="#FE2C55" d="M13.6 2v14.2a3.8 3.8 0 1 1-3-3.7v2.2a1.6 1.6 0 1 0 1.2 1.5V2h1.8z" opacity=".92"/>
@@ -700,7 +684,6 @@
 
           <a class="btn btn-ig" href="https://www.instagram.com/glame_chic" target="_blank" rel="noopener">
             <span class="ico" aria-hidden="true">
-              <!-- Instagram -->
               <svg viewBox="0 0 24 24">
                 <defs>
                   <linearGradient id="igG" x1="0" x2="1" y1="1" y2="0">
@@ -719,7 +702,6 @@
 
           <a class="btn btn-outline" href="#privacy">
             <span class="ico" aria-hidden="true">
-              <!-- Privacy (ذهبي) -->
               <svg viewBox="0 0 24 24">
                 <path fill="#ffd27a" d="M12 2l8 4v6c0 5.7-3.9 10.3-8 10.9C7.9 22.3 4 17.7 4 12V6l8-4z"/>
                 <path fill="rgba(43,0,30,.35)" d="M12 6.8c1.6 0 2.9 1.3 2.9 2.9v1.1h.7c.5 0 .9.4.9.9v3.8c0 .5-.4.9-.9.9H8.4c-.5 0-.9-.4-.9-.9v-3.8c0-.5.4-.9.9-.9h.7V9.7c0-1.6 1.3-2.9 2.9-2.9zm-1.2 4h2.4V9.7c0-.7-.5-1.2-1.2-1.2s-1.2.5-1.2 1.2v1.1z"/>
@@ -741,11 +723,11 @@
         </p>
       </div>
 
-      <!-- ✅ السلايدر -->
       <div class="showcase">
         <div class="showcase-title">
           <h3>✨ شاشة العرض</h3>
-          <span>اسحب للتبديل • تلقائي + يدوي</span>
+          <!-- ✅ تم حذف عبارة: اسحب للتبديل • تلقائي + ... -->
+          <span></span>
         </div>
 
         <div class="frame">
@@ -770,7 +752,6 @@
         </div>
       </div>
 
-      <!-- ✅ عداد + آراء متحركة -->
       <div class="proof">
         <div class="card">
           <div class="live">
@@ -780,13 +761,15 @@
             </div>
             <div class="counter" id="ordersCounter">1,287</div>
           </div>
-          <div class="hint">يزيد كل دقيقة بزيادة عشوائية صغيرة (تصاعدي) ليبان النشاط طبيعي.</div>
+          <!-- ✅ تم حذف الجملة: يزيد كل دقيقة بزيادة عشوائية صغيرة... -->
         </div>
 
         <div class="card">
-          <h3>💬 تعليقات الزبائن (متحركة)</h3>
-          <div class="reviews-marquee" aria-label="تعليقات متحركة">
-            <div class="reviews-track" id="reviewsTrack">
+          <h3>💬 تعليقات الزبائن</h3>
+
+          <!-- ✅ رجعنا لوحة التعليقات مثل السابقة: تصعد للأعلى -->
+          <div class="reviews-vert" aria-label="تعليقات متحركة للأعلى">
+            <div class="reviews-col" id="reviewsCol">
               <!-- مجموعة 1 -->
               <div class="review">
                 <div class="top"><div class="who">أمينة بن حمو</div><div class="stars">★★★★★</div></div>
@@ -800,8 +783,16 @@
                 <div class="top"><div class="who">نسـرين لعماري</div><div class="stars">★★★★★</div></div>
                 <p>أصليين 100%… هذا هو لي حبيتـو، ماشي تقليد 💗</p>
               </div>
+              <div class="review">
+                <div class="top"><div class="who">سميرة قروج</div><div class="stars">★★★★★</div></div>
+                <p>التغليف يحمّق 😍 و ريحتو تبقى مدة… يعطيكم الصحة.</p>
+              </div>
+              <div class="review">
+                <div class="top"><div class="who">حنان دريسي</div><div class="stars">★★★★★</div></div>
+                <p>خدمة سريعة و تعامل راقي… راني نعاود نطلب أكيد 💞</p>
+              </div>
 
-              <!-- مجموعة 2 (تكرار للّوب) -->
+              <!-- مجموعة 2 (تكرار للّوب باش تطلع بلا توقف) -->
               <div class="review" aria-hidden="true">
                 <div class="top"><div class="who">أمينة بن حمو</div><div class="stars">★★★★★</div></div>
                 <p>الروائح و الجودة روعة… حسّيت روحي شارية من برا ✨</p>
@@ -814,13 +805,20 @@
                 <div class="top"><div class="who">نسـرين لعماري</div><div class="stars">★★★★★</div></div>
                 <p>أصليين 100%… هذا هو لي حبيتـو، ماشي تقليد 💗</p>
               </div>
+              <div class="review" aria-hidden="true">
+                <div class="top"><div class="who">سميرة قروج</div><div class="stars">★★★★★</div></div>
+                <p>التغليف يحمّق 😍 و ريحتو تبقى مدة… يعطيكم الصحة.</p>
+              </div>
+              <div class="review" aria-hidden="true">
+                <div class="top"><div class="who">حنان دريسي</div><div class="stars">★★★★★</div></div>
+                <p>خدمة سريعة و تعامل راقي… راني نعاود نطلب أكيد 💞</p>
+              </div>
             </div>
           </div>
-          <div class="hint">المس/اضغط على التعليقات باش يوقف التحريك وتقدر تقرا براحتك.</div>
+
         </div>
       </div>
 
-      <!-- ✅ المنتجات (31 صورة من الجذر) -->
       <div class="section">
         <div class="section-title">
           <h3>Our Products</h3>
@@ -896,7 +894,6 @@
   <script>
     (function(){
       try{
-        // ====== روابط الطلب ======
         const WHATSAPP_NUMBER_INT = "213779665820";
         const WA_MESSAGE = "مرحباً Glame chic ✨ أريد الطلب / الاستفسار من فضلك.";
         const wa = "https://wa.me/" + WHATSAPP_NUMBER_INT + "?text=" + encodeURIComponent(WA_MESSAGE);
@@ -909,7 +906,7 @@
         const year = document.getElementById("year");
         if(year) year.textContent = new Date().getFullYear();
 
-        // ====== عداد الطلبات (تصاعدي) ======
+        // عداد الطلبات (تصاعدي)
         const counterEl = document.getElementById("ordersCounter");
         let current = 1287;
 
@@ -933,7 +930,7 @@
           current = next;
         }, 60000);
 
-        // ====== السلايدر (Auto + Manual + Swipe) ======
+        // السلايدر (Auto + Manual + Swipe)
         const slider = document.getElementById("slider");
         const slidesEl = document.getElementById("slides");
         const prevBtn = document.getElementById("prevBtn");
