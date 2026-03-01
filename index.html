@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#ff4fa1" />
+  <meta name="theme-color" content="#f7b7cf" />
   <title>Glame chic — فخامة أنوثة</title>
-  <meta name="description" content="Glame chic — علامة تجميل راقية في وهران. اطلب عبر واتساب أو تيكتوك أو إنستغرام." />
+  <meta name="description" content="Glame chic — علامة تجميل راقية في وهران. اطلب عبر واتساب أو إنستغرام أو تيكتوك." />
 
   <meta property="og:title" content="Glame chic — Luxury Beauty Brand" />
-  <meta property="og:description" content="Glame chic — علامة تجميل راقية في وهران. اطلب عبر واتساب أو تيكتوك أو إنستغرام." />
+  <meta property="og:description" content="Glame chic — علامة تجميل راقية في وهران. اطلب عبر واتساب أو إنستغرام أو تيكتوك." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="logo.png" />
 
@@ -18,285 +18,470 @@
 
   <style>
     :root{
-      --pink:#ff4fa1;
-      --pink2:#ff77bd;
-      --gold:#ffd27a;
-      --bg1:#120013;
-      --bg2:#2b0022;
-      --muted: rgba(255,255,255,.78);
-      --shadow: 0 20px 60px rgba(0,0,0,.35);
+      --pink:#f7b7cf;
+      --pink2:#ffd6e7;
+      --pink3:#f4a8c6;
+      --gold:#d9b25f;
+      --gold2:#f3e2b4;
+
+      --text:#2a0f1f;
+      --muted: rgba(42,15,31,.72);
+
+      --card: rgba(255,255,255,.55);
+      --card2: rgba(255,255,255,.38);
+      --stroke: rgba(255,255,255,.55);
+
+      --shadow: 0 18px 55px rgba(36, 10, 25, .18);
       --radius: 26px;
     }
+
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
     body{
       margin:0;
       font-family:"Tajawal", system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      color:#fff;
+      color: var(--text);
       background:
-        radial-gradient(1200px 800px at 20% 10%, rgba(255,79,161,.35), transparent 60%),
-        radial-gradient(900px 600px at 80% 30%, rgba(255,210,122,.20), transparent 55%),
-        radial-gradient(900px 700px at 40% 90%, rgba(255,119,189,.22), transparent 60%),
-        linear-gradient(135deg, var(--bg1), var(--bg2));
+        radial-gradient(900px 650px at 15% 10%, rgba(217,178,95,.22), transparent 60%),
+        radial-gradient(900px 650px at 80% 30%, rgba(244,168,198,.35), transparent 60%),
+        radial-gradient(900px 650px at 40% 90%, rgba(255,214,231,.65), transparent 65%),
+        linear-gradient(135deg, var(--pink2), var(--pink));
       overflow:auto;
     }
 
-    .bg-orb{
+    /* لمعات ناعمة */
+    .sparkle{
       position:fixed;
-      width:520px; height:520px;
-      border-radius:50%;
-      filter: blur(40px);
-      opacity:.35;
-      z-index:-2;
-      animation: floaty 10s ease-in-out infinite;
-    }
-    .orb1{ background: radial-gradient(circle at 30% 30%, rgba(255,79,161,.9), transparent 60%); top:-120px; right:-140px; }
-    .orb2{ background: radial-gradient(circle at 40% 40%, rgba(255,210,122,.8), transparent 60%); bottom:-160px; left:-160px; animation-duration: 12s; }
-    .orb3{ background: radial-gradient(circle at 45% 45%, rgba(255,119,189,.85), transparent 60%); top:40%; left:65%; width:420px; height:420px; animation-duration: 14s; }
-    @keyframes floaty{
-      0%,100%{ transform: translate(0,0) scale(1); }
-      50%{ transform: translate(-18px, 14px) scale(1.03); }
+      inset:0;
+      pointer-events:none;
+      opacity:.55;
+      background:
+        radial-gradient(2px 2px at 15% 20%, rgba(217,178,95,.55), transparent 60%),
+        radial-gradient(2px 2px at 65% 35%, rgba(217,178,95,.45), transparent 60%),
+        radial-gradient(2px 2px at 35% 80%, rgba(217,178,95,.55), transparent 60%),
+        radial-gradient(2px 2px at 80% 75%, rgba(217,178,95,.35), transparent 60%);
+      filter: blur(.2px);
     }
 
-    /* Preloader */
+    /* ====== PRELOADER (CSS) ====== */
     #preloader{
-      position:fixed; inset:0;
-      display:flex; align-items:center; justify-content:center;
+      position:fixed;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       z-index:9999;
       background:
-        radial-gradient(900px 700px at 50% 40%, rgba(255,79,161,.25), transparent 55%),
-        linear-gradient(135deg, #120013, #2b0022);
+        radial-gradient(900px 650px at 50% 45%, rgba(217,178,95,.18), transparent 60%),
+        linear-gradient(135deg, var(--pink2), var(--pink));
       animation: preHide .6s ease forwards;
       animation-delay: 1.8s;
     }
-    @keyframes preHide{ to{ opacity:0; visibility:hidden; pointer-events:none; } }
+    @keyframes preHide{
+      to{ opacity:0; visibility:hidden; pointer-events:none; }
+    }
     .loader-card{
-      width:min(540px, 92vw);
+      width:min(560px, 92vw);
       padding:28px 22px;
-      border-radius: 28px;
-      background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
-      border:1px solid rgba(255,255,255,.16);
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(255,255,255,.62), rgba(255,255,255,.38));
+      border:1px solid rgba(255,255,255,.7);
       box-shadow: var(--shadow);
       backdrop-filter: blur(10px);
       text-align:center;
+      position:relative;
+      overflow:hidden;
     }
     .loader-logo{
-      width:90px; height:90px;
+      width:92px;
+      height:92px;
       border-radius: 22px;
       object-fit:cover;
-      border: 1px solid rgba(255,255,255,.18);
-      box-shadow: 0 12px 35px rgba(0,0,0,.35);
-      margin: 0 auto 14px;
-      background: rgba(0,0,0,.1);
+      border: 1px solid rgba(255,255,255,.75);
+      box-shadow: 0 12px 35px rgba(36, 10, 25, .18);
+      margin: 0 auto 12px;
+      background: rgba(255,255,255,.5);
+    }
+    .brand{
+      font-family: "Playfair Display", serif;
+      margin: 0;
+      font-size: 32px;
+      letter-spacing: .2px;
+    }
+    .sub{
+      margin: 10px 0 16px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.9;
     }
     .ring{
       width:86px; height:86px;
-      margin: 10px auto 8px;
+      margin: 8px auto 10px;
       border-radius:50%;
-      border: 3px solid rgba(255,255,255,.18);
+      border: 3px solid rgba(255,255,255,.55);
       border-top-color: var(--gold);
-      border-right-color: rgba(255,79,161,.85);
+      border-right-color: rgba(244,168,198,.9);
       animation: spin 1s linear infinite;
-      box-shadow: 0 0 0 10px rgba(255,79,161,.08);
+      box-shadow: 0 0 0 10px rgba(217,178,95,.10);
     }
     @keyframes spin{ to{ transform: rotate(360deg); } }
-    .brand{ font-family:"Playfair Display", serif; margin:0; font-size:30px; }
-    .sub{ margin: 8px 0 0; color: var(--muted); font-size: 15px; line-height: 1.7; }
 
-    .wrap{ width:min(980px, 92vw); margin:0 auto; padding:26px 0 42px; position:relative; z-index:1; }
+    .wrap{
+      width:min(1040px, 92vw);
+      margin: 0 auto;
+      padding: 26px 0 60px;
+      position:relative;
+      z-index:1;
+    }
+
     .hero{
-      background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
-      border: 1px solid rgba(255,255,255,.16);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
+      background: linear-gradient(135deg, rgba(255,255,255,.62), rgba(255,255,255,.38));
+      border: 1px solid rgba(255,255,255,.72);
+      backdrop-filter: blur(10px);
       overflow:hidden;
       padding: 18px;
+      position:relative;
     }
-    .top-row{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
-    .logo-title{ display:flex; align-items:center; gap:12px; min-width:220px; }
-    .logo{
-      width:58px; height:58px; border-radius:16px;
-      object-fit:cover;
-      border:1px solid rgba(255,255,255,.18);
-      box-shadow: 0 12px 30px rgba(0,0,0,.28);
-      background: rgba(0,0,0,.1);
-    }
-    .name h1{ margin:0; font-family:"Playfair Display", serif; font-size:28px; line-height:1.1; }
-    .name .loc{ margin-top:4px; color: var(--muted); font-size:14px; }
 
-    .actions{ display:flex; gap:10px; flex-wrap:wrap; }
+    .top-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .logo-title{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 220px;
+    }
+    .logo{
+      width:58px; height:58px;
+      border-radius: 16px;
+      object-fit:cover;
+      border: 1px solid rgba(255,255,255,.8);
+      box-shadow: 0 12px 30px rgba(36, 10, 25, .16);
+      background: rgba(255,255,255,.45);
+    }
+    .name h1{
+      margin:0;
+      font-family:"Playfair Display", serif;
+      font-size: 30px;
+      line-height:1.1;
+      color: #2a0f1f;
+    }
+    .name .loc{
+      margin-top:4px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-start;
+    }
+
     .btn{
-      border:0; cursor:pointer;
+      border:0;
+      cursor:pointer;
       padding: 12px 16px;
       border-radius: 16px;
-      font-weight:800;
+      font-weight:900;
       font-size: 15px;
-      display:flex; align-items:center; gap:10px;
+      display:flex;
+      align-items:center;
+      gap:10px;
       text-decoration:none;
+      user-select:none;
       white-space:nowrap;
       transition: transform .15s ease, filter .15s ease;
-      box-shadow: 0 12px 30px rgba(0,0,0,.25);
-      user-select:none;
+      box-shadow: 0 12px 30px rgba(36, 10, 25, .12);
     }
     .btn:active{ transform: translateY(1px) scale(.99); }
-    .btn:hover{ filter: brightness(1.03); }
+    .btn:hover{ filter: brightness(1.02); }
 
-    .btn-wa{ background: linear-gradient(135deg, #25D366, #1aa954); color:#08130d; }
-    .btn-tt{ background: linear-gradient(135deg, #111, #2a2a2a); color:#fff; border:1px solid rgba(255,255,255,.12); }
-    .btn-ig{ background: linear-gradient(135deg, #f9ce34, #ee2a7b, #6228d7); color:#fff; border:1px solid rgba(255,255,255,.14); }
-    .btn-outline{ background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.16); color:#fff; box-shadow:none; }
+    .btn-wa{
+      background: linear-gradient(135deg, #25D366, #1aa954);
+      color:#07120b;
+    }
+    .btn-ig{
+      background: linear-gradient(135deg, #f7c0d7, #f2a8c6);
+      color:#2a0f1f;
+      border:1px solid rgba(255,255,255,.75);
+    }
+    .btn-tt{
+      background: linear-gradient(135deg, #111, #2a2a2a);
+      color:#fff;
+    }
+    .btn-outline{
+      background: rgba(255,255,255,.30);
+      border: 1px solid rgba(255,255,255,.72);
+      color:#2a0f1f;
+      box-shadow:none;
+      font-weight:900;
+    }
 
-    .divider{ height:1px; background: rgba(255,255,255,.14); margin: 16px 0; }
+    .divider{
+      height:1px;
+      background: rgba(42,15,31,.12);
+      margin: 16px 0;
+    }
 
     .headline{
       margin-top: 10px;
       padding: 18px 18px 16px;
       border-radius: 22px;
-      background: linear-gradient(135deg, rgba(255,79,161,.18), rgba(255,255,255,.06));
-      border: 1px solid rgba(255,255,255,.14);
+      background: linear-gradient(135deg, rgba(217,178,95,.12), rgba(255,255,255,.30));
+      border: 1px solid rgba(255,255,255,.72);
+      overflow:hidden;
     }
     .badge{
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 8px 12px; border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.08);
-      font-weight:800; font-size:13px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(217,178,95,.35);
+      background: rgba(255,255,255,.35);
+      color: rgba(42,15,31,.88);
+      font-weight:900;
+      font-size: 13px;
     }
-    .badge i{ width:8px; height:8px; border-radius:50%; background: var(--gold); box-shadow: 0 0 0 6px rgba(255,210,122,.12); display:inline-block; }
-    .headline h2{ margin: 14px 0 10px; font-size: clamp(28px, 4.7vw, 54px); line-height: 1.12; font-weight: 900; }
-    .headline p{ margin:0; color: var(--muted); font-size:16px; line-height:1.9; max-width:820px; }
+    .badge i{
+      width:8px; height:8px; border-radius:50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 6px rgba(217,178,95,.12);
+      display:inline-block;
+    }
+    .headline h2{
+      margin: 14px 0 10px;
+      font-size: clamp(28px, 4.7vw, 54px);
+      line-height: 1.12;
+      font-weight: 900;
+      color:#2a0f1f;
+    }
+    .headline p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.95;
+      max-width: 860px;
+      font-weight: 600;
+    }
 
-    .proof{ margin-top:18px; display:grid; grid-template-columns: 1fr; gap:12px; }
-    @media(min-width:760px){ .proof{ grid-template-columns: 1.1fr .9fr; } }
+    .proof{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:12px;
+    }
+    @media(min-width:760px){
+      .proof{ grid-template-columns: 1.1fr .9fr; }
+    }
 
     .card{
       border-radius: 22px;
-      background: linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
-      border: 1px solid rgba(255,255,255,.14);
-      box-shadow: 0 14px 40px rgba(0,0,0,.22);
+      background: linear-gradient(135deg, rgba(255,255,255,.52), rgba(255,255,255,.28));
+      border: 1px solid rgba(255,255,255,.72);
+      box-shadow: 0 14px 40px rgba(36, 10, 25, .12);
       backdrop-filter: blur(10px);
       padding: 16px;
+      color:#2a0f1f;
     }
     .card h3{ margin: 0 0 10px; font-size: 18px; font-weight: 900; }
 
-    .live{ display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; }
-    .meta{ display:flex; align-items:center; gap:10px; color: var(--muted); font-size: 14px; font-weight: 700; }
+    .live{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .meta{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color: rgba(42,15,31,.70);
+      font-size: 14px;
+      font-weight: 800;
+    }
     .dot{
-      width:10px; height:10px; border-radius:50%;
-      background:#22ff88;
-      box-shadow: 0 0 0 7px rgba(34,255,136,.12);
+      width:10px; height:10px;
+      border-radius:50%;
+      background:#22cc66;
+      box-shadow: 0 0 0 7px rgba(34,204,102,.12);
       animation: pulse 1.2s ease-in-out infinite;
     }
-    @keyframes pulse{ 0%,100%{ transform: scale(1); opacity:.9; } 50%{ transform: scale(1.2); opacity:1; } }
-    .counter{ font-size: 34px; font-weight: 900; letter-spacing:.4px; text-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    @keyframes pulse{
+      0%,100%{ transform: scale(1); opacity:.9; }
+      50%{ transform: scale(1.2); opacity:1; }
+    }
+    .counter{
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: .4px;
+      color: #2a0f1f;
+    }
 
-    /* تعليقات تتحرك (CSS فقط) */
-    .reviews-wrap{
-      border-radius: 18px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-      overflow:hidden;
+    /* ====== Comments Marquee ====== */
+    .comments-wrap{
       position:relative;
-      height: 320px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.30);
+      border: 1px solid rgba(255,255,255,.70);
+      overflow:hidden;
+      height: 340px;
     }
-    .reviews-track{
-      display:flex; flex-direction:column; gap:10px;
+    .comments-track{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
       padding: 12px;
+      animation: scrollUp 22s linear infinite;
       will-change: transform;
-      animation: scrollUp 26s linear infinite;
-    }
-    .reviews-wrap:hover .reviews-track,
-    .reviews-wrap:active .reviews-track{
-      animation-play-state: paused;
     }
     @keyframes scrollUp{
-      0%{ transform: translateY(0); }
-      100%{ transform: translateY(-50%); }
+      from{ transform: translateY(0); }
+      to{ transform: translateY(-50%); }
     }
     .review{
       border-radius: 16px;
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(255,255,255,.12);
-      padding: 12px 12px 10px;
+      background: rgba(255,255,255,.38);
+      border: 1px solid rgba(255,255,255,.70);
+      padding: 12px;
+      box-shadow: 0 10px 25px rgba(36, 10, 25, .08);
     }
-    .review .top{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:6px; }
+    .review .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom: 6px;
+    }
     .review .who{ font-weight: 900; font-size: 14px; }
     .stars{ color: var(--gold); font-size: 14px; letter-spacing: 1px; }
-    .review p{ margin:0; color: rgba(255,255,255,.88); line-height:1.8; font-size: 14px; }
+    .review p{
+      margin:0;
+      color: rgba(42,15,31,.82);
+      line-height:1.85;
+      font-size: 14px;
+      font-weight: 700;
+    }
 
     .section{ margin-top: 18px; }
-    .section-title{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin: 0 0 10px; }
-    .section-title h3{ margin:0; font-size: 20px; font-weight: 900; }
+    .section-title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin: 0 0 10px;
+    }
+    .section-title h3{
+      margin:0;
+      font-size: 20px;
+      font-weight: 900;
+      color:#2a0f1f;
+    }
+    .section-title span{
+      color: rgba(42,15,31,.70);
+      font-weight:800;
+      font-size:13px;
+    }
 
-    .grid{ display:grid; grid-template-columns: 1fr; gap:12px; }
+    .grid{ display:grid; grid-template-columns: 1fr; gap: 12px; }
     @media(min-width:560px){ .grid{ grid-template-columns: 1fr 1fr; } }
     @media(min-width:900px){ .grid{ grid-template-columns: 1fr 1fr 1fr; } }
 
     .product{
       border-radius: 22px;
       overflow:hidden;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow: 0 18px 45px rgba(0,0,0,.25);
+      background: rgba(255,255,255,.38);
+      border: 1px solid rgba(255,255,255,.72);
+      box-shadow: 0 18px 45px rgba(36, 10, 25, .10);
     }
     .product img{
       width:100%;
       height: 260px;
       object-fit: cover;
       display:block;
-      filter: saturate(1.05) contrast(1.05);
-      transform: scale(1.02);
+      background: rgba(255,255,255,.45);
+      transform: scale(1.01);
       transition: transform .35s ease;
-      background: rgba(0,0,0,.10);
     }
-    .product:hover img{ transform: scale(1.08); }
+    .product:hover img{ transform: scale(1.06); }
     .cap{ padding: 12px 12px 14px; }
-    .pname{ font-weight: 900; margin:0 0 4px; }
-    .pdesc{ margin:0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .pname{ font-weight: 900; margin:0 0 4px; color:#2a0f1f; }
+    .pdesc{ margin:0; color: rgba(42,15,31,.70); font-size: 13px; line-height: 1.75; font-weight:700; }
 
-    .footer{ margin-top:18px; text-align:center; color: rgba(255,255,255,.72); font-size:13px; line-height:1.9; }
-    .footer a{ color:#fff; opacity:.9; }
-
-    .float-wa{
-      position:fixed; bottom:16px; left:16px;
-      z-index:50;
-      display:flex; align-items:center; gap:10px;
-      padding: 12px 14px;
-      border-radius:999px;
-      background: linear-gradient(135deg, #25D366, #1aa954);
-      color:#08130d;
-      text-decoration:none;
-      font-weight:900;
-      box-shadow: 0 18px 45px rgba(0,0,0,.35);
-      border: 1px solid rgba(255,255,255,.18);
+    .footer{
+      margin-top: 18px;
+      text-align:center;
+      color: rgba(42,15,31,.74);
+      font-size: 13px;
+      line-height: 1.9;
+      font-weight:700;
     }
-    .float-wa small{ font-weight:800; opacity:.9; }
+    .footer a{ color:#2a0f1f; opacity:.9; font-weight:900; }
 
-    .ico{ width:18px; height:18px; display:inline-block; border-radius:6px; background: rgba(255,255,255,.22); }
-    .ico.wa{ background: rgba(8,19,13,.12); box-shadow: inset 0 0 0 2px rgba(8,19,13,.18); }
-    .ico.tt{ background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 2px rgba(255,255,255,.14); }
-    .ico.ig{ background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 2px rgba(255,255,255,.14); }
+    /* Floating Buttons */
+    .float-stack{
+      position:fixed;
+      bottom: 16px;
+      left: 16px;
+      z-index: 50;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .float{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      text-decoration:none;
+      font-weight: 900;
+      box-shadow: 0 18px 45px rgba(36, 10, 25, .14);
+      border: 1px solid rgba(255,255,255,.72);
+    }
+    .float small{ font-weight:900; opacity:.9; }
+    .float.wa{
+      background: linear-gradient(135deg, #25D366, #1aa954);
+      color:#07120b;
+    }
+    .float.ig{
+      background: linear-gradient(135deg, rgba(217,178,95,.25), rgba(255,255,255,.40));
+      color:#2a0f1f;
+    }
+
+    .ico{
+      width:18px; height:18px; display:inline-block; border-radius:6px;
+      background: rgba(255,255,255,.6);
+      box-shadow: inset 0 0 0 2px rgba(42,15,31,.10);
+    }
   </style>
 </head>
 
 <body>
-  <div class="bg-orb orb1"></div>
-  <div class="bg-orb orb2"></div>
-  <div class="bg-orb orb3"></div>
+  <div class="sparkle" aria-hidden="true"></div>
 
   <div id="preloader" aria-label="Loading">
     <div class="loader-card">
       <img class="loader-logo" src="logo.png" alt="Glame chic logo" onerror="this.style.display='none'">
       <div class="ring" aria-hidden="true"></div>
       <h2 class="brand">Glame chic</h2>
-      <p class="sub">فخامة أنوثة… مثل الشركات العالمية ✨</p>
+      <p class="sub">فخامة أنوثة… لمسة راقية ✨<br>لحظات ونكونو معاك…</p>
     </div>
   </div>
 
   <main class="wrap">
     <section class="hero">
-
       <div class="top-row">
         <div class="logo-title">
           <img class="logo" src="logo.png" alt="Glame chic" onerror="this.style.display='none'">
@@ -308,18 +493,18 @@
 
         <div class="actions">
           <a class="btn btn-wa" id="waBtn" href="#" rel="noopener">
-            <span class="ico wa"></span> اطلب عبر واتساب
+            <span class="ico"></span> اطلب عبر واتساب
+          </a>
+
+          <a class="btn btn-ig" id="igBtn" href="https://www.instagram.com/glame_chic" target="_blank" rel="noopener">
+            <span class="ico"></span> اطلب عبر إنستغرام
           </a>
 
           <a class="btn btn-tt" href="https://www.tiktok.com/@glame.chic?_r=1&_t=ZS-94GArdkxSwm" target="_blank" rel="noopener">
-            <span class="ico tt"></span> اطلب عبر تيكتوك
+            <span class="ico"></span> اطلب عبر تيكتوك
           </a>
 
-          <a class="btn btn-ig" href="https://www.instagram.com/glame_chic" target="_blank" rel="noopener">
-            <span class="ico ig"></span> اطلب عبر إنستغرام
-          </a>
-
-          <a class="btn btn-outline" href="#privacy">Privacy Policy</a>
+          <a class="btn btn-outline" href="#privacy">Privacy</a>
         </div>
       </div>
 
@@ -329,8 +514,8 @@
         <span class="badge"><i></i> Luxury Beauty Brand</span>
         <h2>فخامة أنوثة… مثل الشركات العالمية ✨</h2>
         <p>
-          Glame chic علامة تجميل راقية في وهران. بوكسات ومنتجات مختارة بعناية…
-          اطلب عبر واتساب أو تواصل عبر تيكتوك/إنستغرام.
+          Glame chic علامة تجميل راقية في وهران. بوكسات ومنتجات مختارة بعناية… لمظهر أنثوي فاخر ومميز.
+          اطلب بسرعة عبر واتساب أو إنستغرام أو تواصل عبر تيكتوك.
         </p>
       </div>
 
@@ -347,48 +532,117 @@
 
         <div class="card">
           <h3>💬 تعليقات الزبائن</h3>
+          <div class="comments-wrap" aria-label="Customer comments">
+            <div class="comments-track" id="commentsTrack">
+              <!-- comments injected by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
 
-          <div class="reviews-wrap">
-            <!-- نكرر نفس التعليقات مرتين داخل HTML باش الحركة تكون بلا توقف -->
-            <div class="reviews-track">
+      <div class="section" id="products">
+        <div class="section-title">
+          <h3>Our Products</h3>
+          <span>صور حقيقية</span>
+        </div>
 
-              <!-- 30 تعليق -->
-              <div class="review"><div class="top"><div class="who">سلمى بن عيسى</div><div class="stars">★★★★★</div></div><p>يااا بنات البوكس فخم بزاف 😍 التغليف راقي و يشهي.</p></div>
-              <div class="review"><div class="top"><div class="who">ريم بوضياف</div><div class="stars">★★★★★</div></div><p>طلبت مرة وجاتني فنهارها، سرويس سريع و تعامل قمة 👌</p></div>
-              <div class="review"><div class="top"><div class="who">هبة شريف</div><div class="stars">★★★★★</div></div><p>الروائح و الجودة روعة… حسّيت روحي شارية من برا ✨</p></div>
-              <div class="review"><div class="top"><div class="who">إيمان قندوز</div><div class="stars">★★★★★</div></div><p>يعطيكم الصحة على النصائح… لقيت لي يجي مع بشرتي 🤍</p></div>
-              <div class="review"><div class="top"><div class="who">مروة خالدي</div><div class="stars">★★★★★</div></div><p>سعر معقول قدّام الجودة… و البوكس يجي هدية جاهزة 🎁</p></div>
-              <div class="review"><div class="top"><div class="who">نسرين لعماري</div><div class="stars">★★★★★</div></div><p>أصليين 100%… هذا هو لي حبّيتو، ماشي تقليد.</p></div>
-              <div class="review"><div class="top"><div class="who">دنيا زروقي</div><div class="stars">★★★★★</div></div><p>من وهران للجزائر العاصمة وصلتني بلا مشاكل 👌</p></div>
-              <div class="review"><div class="top"><div class="who">حنان براهيمي</div><div class="stars">★★★★★</div></div><p>اللمعة و الفينيش… واه واه 😍 نتيجتي تحفة.</p></div>
-              <div class="review"><div class="top"><div class="who">سارة تومي</div><div class="stars">★★★★★</div></div><p>راني نعاود نطلب… الخدمة و الثقة موجودة 💗</p></div>
-              <div class="review"><div class="top"><div class="who">نادية بلقاسم</div><div class="stars">★★★★★</div></div><p>حتى الأم تاعي حباتهم 😂 قالتلي جيبيلي بوكس كيما هذا.</p></div>
+        <div class="grid" id="productsGrid">
+          <!-- products injected by JS -->
+        </div>
+      </div>
 
-              <div class="review"><div class="top"><div class="who">كوثر بوڨرة</div><div class="stars">★★★★★</div></div><p>يجي معاه ترتيب و ذوق… ما شاء الله عليكم ✨</p></div>
-              <div class="review"><div class="top"><div class="who">شيماء عيادي</div><div class="stars">★★★★★</div></div><p>ردود سريعة و محترمة… و كلشي واضح 👏</p></div>
-              <div class="review"><div class="top"><div class="who">ليلى صالحي</div><div class="stars">★★★★★</div></div><p>ما كاينش كيما الجودة… يعطيكم الصحة 💛</p></div>
-              <div class="review"><div class="top"><div class="who">مريم بن يونس</div><div class="stars">★★★★★</div></div><p>التغليف و اللمسة تاع الفخامة روعة 😍</p></div>
-              <div class="review"><div class="top"><div class="who">أمينة بوعلام</div><div class="stars">★★★★★</div></div><p>كنت خايفة من الأونلاين بصح طلعت تجربة هايلة ✅</p></div>
-              <div class="review"><div class="top"><div class="who">فاطمة زهرة بن عمر</div><div class="stars">★★★★★</div></div><p>كل مرة حاجة جديدة… ذوق و جودة 🔥</p></div>
-              <div class="review"><div class="top"><div class="who">ياسمين برناوي</div><div class="stars">★★★★★</div></div><p>وصلني كامل و منظم… و كاين لمسة VIP 🥰</p></div>
-              <div class="review"><div class="top"><div class="who">مليكة عتروس</div><div class="stars">★★★★★</div></div><p>الهدية لي ديتها لصاحبتي… فرحات بزاف 🎁</p></div>
-              <div class="review"><div class="top"><div class="who">سندس مداح</div><div class="stars">★★★★★</div></div><p>راني نوصي صحباتي كامل 💕</p></div>
-              <div class="review"><div class="top"><div class="who">أسماء دڨلة</div><div class="stars">★★★★★</div></div><p>يبان عليهم براند… ما شاء الله.</p></div>
+      <div class="footer" id="privacy">
+        <div style="margin-top:14px;">
+          <strong>تواصل</strong><br>
+          البريد: <a href="mailto:glame.chic31@gmail.com">glame.chic31@gmail.com</a><br>
+          الهاتف: <a href="tel:+213671599739">0671599739</a><br>
+          <span style="opacity:.85;">Oran • Algeria</span>
+        </div>
 
-              <div class="review"><div class="top"><div class="who">نورة مزاري</div><div class="stars">★★★★★</div></div><p>جاوبوني على كل سؤال… تعامل محترم بزاف ✅</p></div>
-              <div class="review"><div class="top"><div class="who">رانية بوشارب</div><div class="stars">★★★★★</div></div><p>أنوثة و فخامة بصح ببساطة… يعجبني ستايلكم ✨</p></div>
-              <div class="review"><div class="top"><div class="who">سميرة بن ساسي</div><div class="stars">★★★★★</div></div><p>حاجة تفتح النفس 😍</p></div>
-              <div class="review"><div class="top"><div class="who">خديجة قسوم</div><div class="stars">★★★★★</div></div><p>توصيل في الوقت و كلشي مليح 👌</p></div>
-              <div class="review"><div class="top"><div class="who">سهيلة بلميهوب</div><div class="stars">★★★★★</div></div><p>النتيجة فوق التوقعات 💗</p></div>
-              <div class="review"><div class="top"><div class="who">بشرى بن حمو</div><div class="stars">★★★★★</div></div><p>حتى خويا قاللي واش هذا الفخام 😂</p></div>
-              <div class="review"><div class="top"><div class="who">صابرينة شنيور</div><div class="stars">★★★★★</div></div><p>كاين ثقة… كاين جودة… راني معاكم ❤️</p></div>
-              <div class="review"><div class="top"><div class="who">مها بن حديد</div><div class="stars">★★★★★</div></div><p>ندمت علاش ما طلبتش بكري 😍</p></div>
-              <div class="review"><div class="top"><div class="who">زينب بن دحمان</div><div class="stars">★★★★★</div></div><p>حسّيت روحي زبونة VIP ✨</p></div>
-              <div class="review"><div class="top"><div class="who">وئام بوشريط</div><div class="stars">★★★★★</div></div><p>نصح… نصح… نصح ✅</p></div>
+        <div style="margin-top:14px; opacity:.85;">
+          <strong>Privacy Policy</strong><br>
+          نحن لا نجمع بيانات حساسة. أي تواصل يتم عبر واتساب/إنستغرام/تيكتوك حسب اختيارك.
+        </div>
 
-              <!-- نفس 30 تعليق مكرر (باش الحركة بلا انقطاع) -->
-              <div class="review"><div class="top"><div class="who">سلمى بن عيسى</div><div class="stars">★★★★★</div></div><p>يااا بنات البوكس فخم بزاف 😍 التغليف راقي و يشهي.</p></div>
-              <div class="review"><div class="top"><div class="who">ريم بوضياف</div><div class="stars">★★★★★</div></div><p>طلبت مرة وجاتني فنهارها، سرويس سريع و تعامل قمة 👌</p></div>
-              <div class="review"><div class="top"><div class="who">هبة شريف</div><div class="stars">★★★★★</div></div><p>الروائح و الجودة روعة… حسّيت روحي شارية من برا ✨</p></div>
-              <div class="review"><div class="top"><div class="who">إيمان قندوز</div><div class="stars">★★★★★</div></div><p>يعطيكم الصحة على النصائح… لقيت لي يجي مع بشرتي 🤍</p></div>
-              <div class="review"><div class="top"><div class
+        <div style="margin-top:14px; opacity:.7;">
+          © <span id="year"></span> Glame chic
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <div class="float-stack">
+    <a class="float wa" id="waFloat" href="#" rel="noopener">
+      <span class="ico"></span> اطلب واتساب <small>+213779665820</small>
+    </a>
+    <a class="float ig" href="https://www.instagram.com/glame_chic" target="_blank" rel="noopener">
+      <span class="ico"></span> إنستغرام <small>@glame_chic</small>
+    </a>
+  </div>
+
+  <script>
+    (function(){
+      try{
+        // ===== WhatsApp =====
+        const WHATSAPP_NUMBER_INT = "213779665820";
+        const WA_MESSAGE = "مرحباً Glame chic ✨ نحب نطلب/نستفسر من فضلك.";
+        const wa = "https://wa.me/" + WHATSAPP_NUMBER_INT + "?text=" + encodeURIComponent(WA_MESSAGE);
+
+        const waBtn = document.getElementById("waBtn");
+        const waFloat = document.getElementById("waFloat");
+        if(waBtn) waBtn.href = wa;
+        if(waFloat) waFloat.href = wa;
+
+        // Year
+        const year = document.getElementById("year");
+        if(year) year.textContent = new Date().getFullYear();
+
+        // ===== Counter (ascending random small increment) =====
+        const counterEl = document.getElementById("ordersCounter");
+        let current = 1287;
+
+        function randInt(min,max){ return Math.floor(Math.random()*(max-min+1))+min; }
+        function animate(from,to,duration){
+          const start = performance.now();
+          const diff = to - from;
+          function step(now){
+            const t = Math.min(1, (now - start)/duration);
+            const eased = 1 - Math.pow(1 - t, 3);
+            const val = Math.round(from + diff*eased);
+            if(counterEl) counterEl.textContent = val.toLocaleString("en-US");
+            if(t < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        }
+
+        setInterval(function(){
+          const add = randInt(1,4);
+          const next = current + add;
+          animate(current, next, 650);
+          current = next;
+        }, 60000);
+
+        // ===== Comments (realistic DZ names + Arabic/DZ tone) =====
+        const COMMENTS = [
+          {name:"هبة شريف", text:"الروائح و الجودة روعة… حسّيت روحي شارية من برا ✨"},
+          {name:"إيمان قندوز", text:"يعطيكم الصحة على النصائح… لقيت لي يجي مع بشرتي 🤍"},
+          {name:"مروة غادي", text:"سعر معقول قدّام الجودة… و البوكس يجي هدية جاهزة 🎁"},
+          {name:"سهيلة بن موسى", text:"التغليف فخم بزاف… حبيت التفاصيل الصغيرة 💛"},
+          {name:"رانيا بوعلام", text:"وصلني في الوقت… و كلش منظم و نظيف 👌"},
+          {name:"كوثر خضرة", text:"المنتجات أصلية و باينة الجودة… راح نعاود نطلب ✅"},
+          {name:"سارة بلقاسم", text:"ريحة ثابتة و ماشي قوية بزاف… كيما نحب 💗"},
+          {name:"نسرين بن عيسى", text:"خدمة راقية و تعامل محترم… بارك الله فيكم 🌸"},
+          {name:"أمينة زروقي", text:"بوكس يفتح النفس… أنيق و أنثوي بزاف ✨"},
+          {name:"ياسمين بن دحمان", text:"حتى الاختيار تاع الألوان و اللمسة ذهبية تجنن 💛"},
+          {name:"ريم جاب الله", text:"كي شفت النتيجة قلت لازم نشارك… بصح صح هايل 😍"},
+          {name:"صورية بن يحي", text:"مصداقية و سرعة… و الأسعار معقولة بالنسبة للجودة 💯"},
+          {name:"مليكة قارة", text:"عجبني بزاف كيفاش جا مرتب… ماكانش عشوائية 👏"},
+          {name:"خولة بن ناصر", text:"يعطيكم الصحة… أنا راضية بزاف على الطلبية 🌷"},
+          {name:"سندس مرزوق", text:"الهدية كانت ناجحة… الكل سقصاني منين شريتها 🎁"},
+          {name:"حنان بلمهدي", text:"ريحـة فخمة و خفيفة… ما تزعفش نهائياً ✨"},
+          {name:"نورهان شوشان", text:"البارح طلبت واليوم وصلني… خدمة سريعة بزاف 🚚"},
+          {name:"دليلة بن عمر", text:"المنتج جا كيما في الصور… و أكثر روعة 🩷"},
+          {name:"فضيلة تلمساني", text:"التعامل تاعكم يريح… نصائح و توجيه صح ✅"},
+          {name:"ليلى بوجمعة", text:"بوكساتكم فخامة… تبان ماركة كبيرة 🤍"},
+          {name:"سميرة بن رحال", text:"نحب اللمسة الأنثوية… راكم 
