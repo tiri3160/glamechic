@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -40,7 +41,7 @@
       overflow:auto;
     }
 
-    /* خلفيات ناعمة متحركة */
+    /* خلفيات ناعمة */
     .bg-orb{
       position:fixed;
       width:520px; height:520px;
@@ -60,11 +61,8 @@
 
     /* ====== PRELOADER (CSS فقط) ====== */
     #preloader{
-      position:fixed;
-      inset:0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      position:fixed; inset:0;
+      display:flex; align-items:center; justify-content:center;
       z-index:9999;
       background:
         radial-gradient(900px 700px at 50% 40%, rgba(255,79,161,.25), transparent 55%),
@@ -75,7 +73,6 @@
     @keyframes preHide{
       to{ opacity:0; visibility:hidden; pointer-events:none; }
     }
-
     .loader-card{
       width:min(540px, 92vw);
       padding:28px 22px;
@@ -206,9 +203,9 @@
       border:1px solid rgba(255,255,255,.12);
     }
     .btn-ig{
-      background: linear-gradient(135deg, rgba(255,79,161,.92), rgba(255,210,122,.55));
-      color:#1a0012;
-      border:1px solid rgba(255,255,255,.15);
+      background: linear-gradient(135deg, #f9ce34, #ee2a7b, #6228d7);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.14);
     }
     .btn-outline{
       background: rgba(255,255,255,.10);
@@ -270,8 +267,9 @@
       gap:12px;
     }
     @media(min-width:760px){
-      .proof{ grid-template-columns: 1.2fr .8fr; }
+      .proof{ grid-template-columns: 1.1fr .9fr; }
     }
+
     .card{
       border-radius: 22px;
       background: linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
@@ -323,61 +321,49 @@
       line-height: 1.8;
     }
 
-    /* ====== تعليقات متحركة (نسخة قوية + واقعية) ====== */
-    .comments-wrap{
-      position: relative;
-      overflow: hidden;
+    /* ====== تعليقات الزبائن (تتحرك تلقائياً) ====== */
+    .reviews-wrap{
       border-radius: 18px;
       background: rgba(255,255,255,.06);
       border: 1px solid rgba(255,255,255,.12);
-      padding: 10px;
-      height: 240px;
+      overflow:hidden;
+      position:relative;
+      height: 320px; /* واضح على الهاتف */
     }
-    .comment-bubble{
-      position:absolute;
-      right:-10%;
-      max-width: 92%;
-      min-width: 180px;
-      padding: 10px 12px;
+    .reviews-track{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      padding: 12px;
+      will-change: transform;
+      animation: scrollUp 28s linear infinite;
+    }
+    /* توقف الحركة عند اللمس/الهوفر */
+    .reviews-wrap:hover .reviews-track,
+    .reviews-wrap:active .reviews-track{
+      animation-play-state: paused;
+    }
+    @keyframes scrollUp{
+      0%{ transform: translateY(0); }
+      100%{ transform: translateY(calc(-50% - 6px)); } /* لأننا نكرر اللست */
+    }
+    .review{
       border-radius: 16px;
-      background: linear-gradient(135deg, rgba(255,255,255,.11), rgba(255,255,255,.06));
-      border: 1px solid rgba(255,255,255,.14);
-      box-shadow: 0 18px 45px rgba(0,0,0,.25);
-      backdrop-filter: blur(8px);
-      animation: fly 9.5s linear forwards;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 12px 12px 10px;
     }
-    .comment-bubble::after{
-      content:"";
-      position:absolute;
-      bottom:-7px;
-      right:18px;
-      width: 14px; height: 14px;
-      background: inherit;
-      border-right: 1px solid rgba(255,255,255,.12);
-      border-bottom: 1px solid rgba(255,255,255,.12);
-      transform: rotate(45deg);
-      border-bottom-right-radius: 4px;
-      filter: blur(0px);
-    }
-    @keyframes fly{
-      0%   { transform: translateX(0) translateY(var(--y)) scale(.98); opacity:0; }
-      8%   { opacity:1; }
-      90%  { opacity:1; }
-      100% { transform: translateX(-140%) translateY(var(--y)) scale(1); opacity:0; }
-    }
-    .c-top{
+    .review .top{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:10px;
       margin-bottom: 6px;
     }
-    .c-name{ font-weight: 900; font-size: 14px; }
-    .c-time{ color: rgba(255,255,255,.68); font-size: 12px; font-weight: 800; }
-    .c-text{ margin:0; color: rgba(255,255,255,.90); line-height:1.75; font-size: 13.5px; }
-    .c-stars{ color: var(--gold); font-size: 12px; letter-spacing: 1px; font-weight: 900; opacity:.95; }
+    .review .who{ font-weight: 900; font-size: 14px; }
+    .stars{ color: var(--gold); font-size: 14px; letter-spacing: 1px; }
+    .review p{ margin:0; color: rgba(255,255,255,.88); line-height:1.8; font-size: 14px; }
 
-    /* ====== المنتجات ====== */
     .section{ margin-top: 18px; }
     .section-title{
       display:flex;
@@ -407,7 +393,7 @@
       filter: saturate(1.05) contrast(1.05);
       transform: scale(1.02);
       transition: transform .35s ease;
-      background: rgba(0,0,0,.15);
+      background: rgba(0,0,0,.10);
     }
     .product:hover img{ transform: scale(1.08); }
     .cap{ padding: 12px 12px 14px; }
@@ -445,17 +431,18 @@
     .ico{ width:18px; height:18px; display:inline-block; border-radius:6px; background: rgba(255,255,255,.22); }
     .ico.wa{ background: rgba(8,19,13,.12); box-shadow: inset 0 0 0 2px rgba(8,19,13,.18); }
     .ico.tt{ background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 2px rgba(255,255,255,.14); }
-    .ico.ig{ background: rgba(26,0,18,.12); box-shadow: inset 0 0 0 2px rgba(26,0,18,.16); }
+    .ico.ig{ background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 2px rgba(255,255,255,.14); }
+
+    /* لطيف: تدرّج ذهبي خفيف للعناوين الصغيرة */
+    .goldy{ color: rgba(255,210,122,.95); }
   </style>
 </head>
 
 <body>
-
   <div class="bg-orb orb1"></div>
   <div class="bg-orb orb2"></div>
   <div class="bg-orb orb3"></div>
 
-  <!-- Preloader -->
   <div id="preloader" aria-label="Loading">
     <div class="loader-card">
       <img class="loader-logo" src="logo.png" alt="Glame chic logo" onerror="this.style.display='none'">
@@ -485,7 +472,7 @@
             <span class="ico tt"></span> اطلب عبر تيكتوك
           </a>
 
-          <a class="btn btn-ig" id="igBtn" href="https://www.instagram.com/glame_chic" target="_blank" rel="noopener">
+          <a class="btn btn-ig" href="https://www.instagram.com/glame_chic" target="_blank" rel="noopener">
             <span class="ico ig"></span> اطلب عبر إنستغرام
           </a>
 
@@ -513,24 +500,30 @@
             </div>
             <div class="counter" id="ordersCounter">1,287</div>
           </div>
-          <div class="hint">يزيد كل دقيقة بزيادة عشوائية صغيرة (تصاعدي) ليبان النشاط طبيعي.</div>
+          <div class="hint">يزيد كل دقيقة بزيادة عشوائية صغيرة (تصاعدياً) لإظهار نشاط طبيعي.</div>
         </div>
 
         <div class="card">
-          <h3>💬 تعليقات الزبائن (متحركة)</h3>
-          <div class="comments-wrap" id="commentsWrap" aria-label="Animated comments"></div>
-          <div class="hint">تعليقات واقعية بلهجتنا/عربية + أسماء جزائرية.</div>
+          <h3>💬 تعليقات الزبائن</h3>
+
+          <div class="reviews-wrap" aria-label="Customer comments">
+            <div class="reviews-track" id="reviewsTrack">
+              <!-- سيتم حقن التعليقات هنا + تكرارها بالـ JS -->
+            </div>
+          </div>
+
+          <div class="hint">ملاحظة: إذا لمست على التعليقات تتوقف الحركة مؤقتاً.</div>
         </div>
       </div>
 
       <div class="section">
         <div class="section-title">
           <h3>Our Products</h3>
-          <span style="color:rgba(255,255,255,.75); font-weight:800; font-size:13px;">صور حقيقية</span>
+          <span class="goldy" style="font-weight:800; font-size:13px;">صور حقيقية</span>
         </div>
 
         <div class="grid" id="productsGrid">
-          <!-- يتم توليد 31 منتج تلقائياً عبر JS -->
+          <!-- سيتم توليد 31 منتج تلقائياً من product1.jpg إلى product31.jpg -->
         </div>
       </div>
 
@@ -538,7 +531,8 @@
         <div style="margin-top:14px;">
           <strong>تواصل</strong><br>
           البريد: <a href="mailto:glame.chic31@gmail.com">glame.chic31@gmail.com</a><br>
-          الهاتف: <a href="tel:+213671599739">0671599739</a>
+          الهاتف: <a href="tel:+213671599739">0671599739</a><br>
+          إنستغرام: <a href="https://www.instagram.com/glame_chic" target="_blank" rel="noopener">@glame_chic</a>
         </div>
 
         <div style="margin-top:14px; opacity:.85;">
@@ -550,7 +544,6 @@
           © <span id="year"></span> Glame chic — Oran
         </div>
       </div>
-
     </section>
   </main>
 
@@ -575,7 +568,7 @@
         const year = document.getElementById("year");
         if(year) year.textContent = new Date().getFullYear();
 
-        // ===== عداد تصاعدي (كل دقيقة) =====
+        // ===== العداد (تصاعدي كل دقيقة) =====
         const counterEl = document.getElementById("ordersCounter");
         let current = 1287;
 
@@ -593,32 +586,34 @@
           requestAnimationFrame(step);
         }
 
-        // تحديث أولي لطيف بعد ثواني
+        // تحديث فوري بسيط بعد فتح الصفحة (يعطي إحساس نشاط)
         setTimeout(function(){
-          const add = randInt(2,6);
+          const add = randInt(1,4);
           const next = current + add;
           animate(current, next, 650);
           current = next;
         }, 2500);
 
         setInterval(function(){
-          const add = randInt(1,5); // زيادة معقولة
+          const add = randInt(1,5); // زيادة صغيرة
           const next = current + add;
           animate(current, next, 650);
           current = next;
         }, 60000);
 
-        // ===== 30 تعليق جزائري واقعي (أسماء + لهجة/عربية) =====
+        // ===== تعليقات جزائرية واقعية (30) =====
         const comments = [
-          {name:"أمينة", text:"وصلني البوكس اليوم… التغليف روعة بصح وبريستييج 👌"},
-          {name:"ريم", text:"المنتجات باينة أصلية وريحة تاعها تجنن… يعطيكم الصحة 💗"},
-          {name:"سميرة", text:"طلبت من عندكم ثاني مرة، الخدمة سريعة والذوق عالي بزاف ✨"},
-          {name:"سارة", text:"ياااا سلام على التنظيم! كلش مرتب وما فيه حتى حاجة ناقصة."},
-          {name:"ليلى", text:"الهدية خرجت فخمة… صاحبيتي فرحت بزاف 🙈"},
-          {name:"هدى", text:"مصداقية + تعامل راقي… راني نوصي خوّاتي كامل 😍"},
-          {name:"كوثر", text:"الالوان تاع البوكس والستايل فخم… كيما البراندات العالمية."},
-          {name:"إيمان", text:"جربت ماسك/كريم من عندكم… النتيجة باينة من أول أسبوع 💯"},
-          {name:"خديجة", text:"باردو ممتاز! وصلني بلا ما يتكسر والو، شكراً."},
-          {name:"سهيلة", text:"حبيت بزاف الاختيارات… كل مرة تلقى حاجة جديدة."},
-          {name:"نسرين", text:"خدمة الزبائن شابة… يجاوبو بسرعة وبذوق."},
-     
+          {name:"سلمى بن عيسى", text:"يااااا بنات البوكس فخم بزاف 😍 التغليف يجيك راقي و يشهي."},
+          {name:"ريم بوضياف", text:"طلبت مرة وجاتني فنهارها، سرويس سريع و تعامل قمة 👌"},
+          {name:"هبة شريف", text:"الروائح و الجودة روعة… حسّيت روحي شارية من برا ✨"},
+          {name:"إيمان قندوز", text:"يعطيكم الصحة على النصائح… لقيت لي يجي مع بشرتي 🤍"},
+          {name:"مروة خالدي", text:"سعر معقول قدّام الجودة… و البوكس يجي هدية جاهزة 🎁"},
+          {name:"نسرين لعماري", text:"أصليين 100%… هذا هو لي حبّيتو، ماشي تقليد."},
+          {name:"دنيا زروقي", text:"من وهران للجزائر العاصمة وصلتني بلا مشاكل 👌"},
+          {name:"حنان براهيمي", text:"اللمعة و الفينيش… واه واه 😍 نتيجتي تحفة."},
+          {name:"سارة تومي", text:"راني نعاود نطلب… الخدمة و الثقة موجودة 💗"},
+          {name:"نادية بلقاسم", text:"حتى الأم تاعي حباتهم 😂 قالتلي جيبيلي بوكس كيما هذا."},
+          {name:"كوثر بوڨرة", text:"يجي معاه ترتيب و ذوق… ما شاء الله عليكم ✨"},
+          {name:"شيماء عيادي", text:"هذي أحسن صفحة شريت منها… الردود سريعة و محترمة 👏"},
+          {name:"ليلى صالحي", text:"ما كاينش كيما الجودة… يعطيكم الصحة 💛"},
+          {name:"مريم بن يونس
