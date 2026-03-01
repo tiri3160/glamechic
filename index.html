@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#f7b7c9" />
+  <meta name="theme-color" content="#f7c9d7" />
   <title>Glame Chic — فخامة أنوثة</title>
   <meta name="description" content="Glame Chic — علامة تجميل راقية في وهران. اطلب عبر واتساب أو تيكتوك أو إنستغرام." />
 
@@ -12,7 +12,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="logo.png" />
 
-  <!-- ✅ Schema كما طلبت -->
+  <!-- ✅ Schema (كما طلبت) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -32,15 +32,18 @@
 
   <style>
     :root{
-      --pink:#f7b7c9;
-      --pink2:#ffd7e5;
-      --gold:#d9b15a;
-      --gold2:#ffe7a6;
-      --ink:#2b1b23;
-      --muted: rgba(43,27,35,.72);
-      --card: rgba(255,255,255,.72);
-      --card2: rgba(255,255,255,.58);
-      --shadow: 0 18px 60px rgba(35,10,25,.18);
+      /* ✅ وردي فاتح + لمسات ذهبية براقة */
+      --bgA:#ffe3ec;
+      --bgB:#ffd7e5;
+      --card:#ffffffcc;
+      --card2:#ffffffb3;
+      --text:#2a1f25;
+      --muted:rgba(42,31,37,.72);
+      --pink:#ff5aa9;
+      --pink2:#ff86c3;
+      --gold:#d7a84a;
+      --gold2:#ffd27a;
+      --shadow: 0 18px 55px rgba(25,10,18,.18);
       --radius: 26px;
     }
 
@@ -49,336 +52,352 @@
     body{
       margin:0;
       font-family:"Tajawal", system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      color: var(--ink);
+      color:var(--text);
       background:
-        radial-gradient(900px 650px at 20% 10%, rgba(255,215,229,.85), transparent 60%),
-        radial-gradient(900px 650px at 80% 25%, rgba(255,231,166,.55), transparent 62%),
-        radial-gradient(900px 650px at 30% 92%, rgba(247,183,201,.65), transparent 60%),
-        linear-gradient(135deg, #fff7fa, #ffeef4 45%, #fff7fb);
-      overflow:auto;
+        radial-gradient(1200px 700px at 15% 5%, rgba(255,210,122,.45), transparent 55%),
+        radial-gradient(900px 650px at 90% 18%, rgba(255,90,169,.35), transparent 60%),
+        radial-gradient(900px 650px at 30% 95%, rgba(255,134,195,.35), transparent 55%),
+        linear-gradient(135deg, var(--bgA), var(--bgB));
+      overflow-x:hidden;
     }
 
-    /* لمعان ذهبي خفيف بالخلفية */
-    .glow{
+    /* لمعة ذهبية خفيفة متحركة بالخلفية */
+    .sparkle{
       position:fixed;
       inset:-20%;
-      z-index:-3;
-      background:
-        radial-gradient(closest-side at 60% 35%, rgba(255,231,166,.22), transparent 70%),
-        radial-gradient(closest-side at 25% 65%, rgba(217,177,90,.14), transparent 72%);
-      filter: blur(18px);
-      animation: glowMove 10s ease-in-out infinite;
       pointer-events:none;
+      z-index:-2;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,210,122,.20), transparent 35%),
+        radial-gradient(circle at 80% 30%, rgba(215,168,74,.14), transparent 40%),
+        radial-gradient(circle at 40% 80%, rgba(255,90,169,.10), transparent 38%);
+      filter: blur(10px);
+      animation: drift 10s ease-in-out infinite;
+      opacity:.9;
     }
-    @keyframes glowMove{
-      0%,100%{ transform: translate(0,0) scale(1); opacity:.9;}
-      50%{ transform: translate(-10px, 10px) scale(1.02); opacity:1;}
+    @keyframes drift{
+      0%,100%{ transform: translate(0,0) scale(1); }
+      50%{ transform: translate(18px,-10px) scale(1.02); }
+    }
+
+    /* Preloader بسيط */
+    #preloader{
+      position:fixed;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:9999;
+      background: linear-gradient(135deg, var(--bgA), var(--bgB));
+      animation: preHide .5s ease forwards;
+      animation-delay: 1.6s;
+    }
+    @keyframes preHide{
+      to{ opacity:0; visibility:hidden; pointer-events:none; }
+    }
+    .loader{
+      width:min(520px, 92vw);
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(255,255,255,.78), rgba(255,255,255,.55));
+      border:1px solid rgba(215,168,74,.25);
+      box-shadow: var(--shadow);
+      padding: 22px 18px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .loader:before{
+      content:"";
+      position:absolute;
+      inset:-45%;
+      background: linear-gradient(120deg, transparent 0%, rgba(255,210,122,.26) 38%, rgba(255,255,255,.20) 50%, rgba(255,90,169,.18) 60%, transparent 78%);
+      transform: rotate(10deg);
+      animation: shine 5.5s ease-in-out infinite;
+      opacity:.9;
+      filter: blur(2px);
+    }
+    @keyframes shine{
+      0%{ transform: translateX(-18%) rotate(10deg); opacity:.55; }
+      50%{ transform: translateX(18%) rotate(10deg); opacity:.95; }
+      100%{ transform: translateX(-18%) rotate(10deg); opacity:.55; }
+    }
+    .loader img{
+      width:86px; height:86px;
+      border-radius: 22px;
+      object-fit:cover;
+      border:1px solid rgba(215,168,74,.30);
+      box-shadow: 0 12px 30px rgba(25,10,18,.16);
+      background:#fff;
+      position:relative;
+      z-index:1;
+    }
+    .loader h2{
+      margin:12px 0 4px;
+      font-family:"Playfair Display", serif;
+      font-size: 30px;
+      position:relative;
+      z-index:1;
+    }
+    .loader p{
+      margin:0;
+      color: rgba(42,31,37,.78);
+      font-weight:700;
+      position:relative;
+      z-index:1;
     }
 
     .wrap{
       width:min(980px, 92vw);
       margin: 0 auto;
-      padding: 22px 0 42px;
+      padding: 24px 0 46px;
       position:relative;
       z-index:1;
     }
 
     .hero{
       border-radius: var(--radius);
-      background: linear-gradient(135deg, var(--card), var(--card2));
-      border: 1px solid rgba(255,255,255,.7);
+      background: linear-gradient(135deg, rgba(255,255,255,.78), rgba(255,255,255,.55));
+      border:1px solid rgba(215,168,74,.20);
       box-shadow: var(--shadow);
       backdrop-filter: blur(10px);
       overflow:hidden;
       padding: 18px;
       position:relative;
     }
-
-    /* إطار خارجي وردي */
-    .hero::before{
+    .hero:before{
       content:"";
-      position:absolute; inset:0;
-      border-radius: var(--radius);
-      padding:1px;
-      background: linear-gradient(135deg, rgba(247,183,201,.65), rgba(255,231,166,.55), rgba(255,255,255,.65));
-      -webkit-mask:
-        linear-gradient(#000 0 0) content-box,
-        linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
+      position:absolute;
+      inset:-50%;
+      background: linear-gradient(125deg, transparent 0%, rgba(255,210,122,.22) 35%, rgba(255,255,255,.18) 48%, rgba(255,90,169,.16) 62%, transparent 80%);
+      transform: rotate(8deg);
+      animation: shine 7s ease-in-out infinite;
       pointer-events:none;
-      opacity:.75;
+      opacity:.55;
+      filter: blur(3px);
     }
 
-    .top{
+    .topbar{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:14px;
+      gap:12px;
       flex-wrap:wrap;
+      position:relative;
+      z-index:1;
     }
-
-    .brand{
+    .brandBox{
       display:flex;
       align-items:center;
-      gap:14px;
+      gap:12px;
       min-width: 240px;
     }
     .logo{
       width:58px; height:58px;
       border-radius: 18px;
       object-fit:cover;
+      border:1px solid rgba(215,168,74,.25);
+      box-shadow: 0 12px 30px rgba(25,10,18,.12);
       background:#fff;
-      border: 1px solid rgba(43,27,35,.10);
-      box-shadow: 0 12px 35px rgba(35,10,25,.12);
     }
-    .btxt h1{
+    .brandText h1{
       margin:0;
       font-family:"Playfair Display", serif;
       font-size: 34px;
       letter-spacing:.2px;
     }
-    .btxt .loc{
+    .brandText .loc{
       margin-top:4px;
-      color: var(--muted);
-      font-size: 14px;
-      font-weight:700;
+      color: rgba(42,31,37,.65);
+      font-weight:800;
     }
 
     .divider{
       height:1px;
-      background: rgba(43,27,35,.10);
-      margin: 14px 0;
+      background: rgba(42,31,37,.12);
+      margin: 14px 0 16px;
+      position:relative;
+      z-index:1;
     }
 
     .headline{
-      margin-top: 8px;
-      padding: 18px 18px 16px;
-      border-radius: 22px;
-      background: linear-gradient(135deg, rgba(255,255,255,.76), rgba(255,255,255,.60));
-      border: 1px solid rgba(43,27,35,.08);
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(255,255,255,.75), rgba(255,255,255,.48));
+      border:1px solid rgba(215,168,74,.18);
+      padding: 16px 16px 14px;
       position:relative;
-      overflow:hidden;
+      z-index:1;
+      box-shadow: 0 10px 28px rgba(25,10,18,.10);
     }
-
-    /* لمعان فاخر أعلى الكرت */
-    .headline::after{
-      content:"";
-      position:absolute;
-      inset:-60% -30%;
-      background: linear-gradient(115deg,
-        transparent 0%,
-        rgba(255,231,166,.32) 35%,
-        rgba(255,255,255,.35) 45%,
-        rgba(247,183,201,.24) 55%,
-        transparent 75%);
-      transform: rotate(10deg);
-      animation: shimmer 7s ease-in-out infinite;
-      pointer-events:none;
-      filter: blur(1px);
-      opacity:.85;
-    }
-    @keyframes shimmer{
-      0%{ transform: translateX(-18%) rotate(10deg); opacity:.55; }
-      50%{ transform: translateX(18%) rotate(10deg); opacity:.95; }
-      100%{ transform: translateX(-18%) rotate(10deg); opacity:.55; }
-    }
-
     .badge{
       display:inline-flex;
       align-items:center;
       gap:8px;
       padding: 8px 12px;
       border-radius: 999px;
-      border: 1px solid rgba(43,27,35,.10);
-      background: rgba(255,255,255,.55);
-      color: rgba(43,27,35,.85);
+      background: rgba(255,255,255,.62);
+      border:1px solid rgba(215,168,74,.22);
+      color: rgba(42,31,37,.78);
       font-weight:900;
       font-size: 13px;
-      position:relative;
-      z-index:1;
     }
     .badge i{
-      width:8px; height:8px; border-radius:50%;
-      background: linear-gradient(135deg, var(--gold), var(--gold2));
-      box-shadow: 0 0 0 6px rgba(217,177,90,.16);
+      width:10px; height:10px;
+      border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, var(--gold2), var(--gold));
+      box-shadow: 0 0 0 7px rgba(255,210,122,.22);
       display:inline-block;
     }
     .headline h2{
-      position:relative;
-      z-index:1;
-      margin: 14px 0 10px;
-      font-size: clamp(28px, 4.7vw, 52px);
-      line-height: 1.12;
-      font-weight: 900;
-      color: #2b1b23;
+      margin: 12px 0 8px;
+      font-size: clamp(26px, 5vw, 50px);
+      line-height:1.14;
+      font-weight: 1000;
+      color: rgba(42,31,37,.92);
     }
     .headline p{
-      position:relative;
-      z-index:1;
-      margin: 0;
-      color: rgba(43,27,35,.74);
+      margin:0;
+      color: rgba(42,31,37,.72);
+      font-weight:700;
+      line-height:1.95;
       font-size: 16px;
-      line-height: 1.9;
-      max-width: 820px;
-      font-weight:600;
     }
 
-    /* ======= أزرار (2×2) مع أيقونات ملونة ======= */
-    .actions-grid{
+    /* ✅ أزرار (2x2) + أيقونات صغيرة مثل الصورة القديمة */
+    .actionGrid{
+      margin-top: 16px;
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap:12px;
-      margin-top: 14px;
+      position:relative;
+      z-index:1;
     }
-
     .btn{
-      border:0;
-      cursor:pointer;
-      padding: 14px 14px;
-      border-radius: 20px;
-      font-weight: 900;
-      font-size: 16px;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:12px;
+      padding: 14px 16px;
+      border-radius: 22px;
       text-decoration:none;
-      user-select:none;
-      transition: transform .14s ease, filter .14s ease;
-      box-shadow: 0 14px 40px rgba(35,10,25,.12);
-      border: 1px solid rgba(43,27,35,.08);
-      background: rgba(255,255,255,.75);
-      color: #2b1b23;
-      min-height: 56px;
+      font-weight:1000;
+      font-size: 16px;
+      box-shadow: 0 14px 35px rgba(25,10,18,.10);
+      border:1px solid rgba(0,0,0,.06);
+      transition: transform .12s ease, filter .12s ease;
+      min-height: 58px;
     }
     .btn:active{ transform: translateY(1px) scale(.99); }
     .btn:hover{ filter: brightness(1.02); }
 
     .btn .label{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      min-width:0;
-      font-weight:900;
+      color: rgba(0,0,0,.75);
+      text-align:center;
+      flex:1;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
     }
 
-    /* أيقونة داخل كبسولة صغيرة (لا تخرج عن الإطار) */
+    /* ✅ الأيقونة الصغيرة (28px) */
     .iconBox{
-      width:42px; height:42px;
-      border-radius: 14px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background: rgba(255,255,255,.42);
-      border: 1px solid rgba(43,27,35,.10);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.55);
-      flex: 0 0 auto;
+      width:28px;
+      height:28px;
+      border-radius: 10px;
+      display:grid;
+      place-items:center;
+      flex: 0 0 28px;
+      background: rgba(255,255,255,.55);
+      border: 1px solid rgba(255,255,255,.55);
+      box-shadow: inset 0 0 0 2px rgba(0,0,0,.06);
     }
-    .iconBox svg{ width:24px; height:24px; display:block; }
+    .iconBox svg{ width:16px; height:16px; display:block; }
 
-    .btn-wa{ background: linear-gradient(135deg, #25D366, #17b357); color:#07160e; border-color: rgba(0,0,0,.06); }
-    .btn-tt{ background: linear-gradient(135deg, #111, #2a2a2a); color:#fff; border-color: rgba(255,255,255,.10); }
-    .btn-ig{ background: linear-gradient(135deg, #ff4fa1, #ffd27a); color:#2b1b23; border-color: rgba(0,0,0,.06); }
-    .btn-pp{ background: rgba(255,255,255,.70); color:#2b1b23; }
+    /* ألوان الأزرار */
+    .wa{ background: linear-gradient(135deg, #21d366, #11b85a); }
+    .tt{ background: linear-gradient(135deg, #111, #2b2b2b); }
+    .ig{ background: linear-gradient(135deg, #ff56a9, #ffd27a); }
+    .pp{ background: linear-gradient(135deg, #ffffff, #f6f0f2); }
 
-    .btn-wa .iconBox{ background: rgba(255,255,255,.22); border-color: rgba(0,0,0,.08); }
-    .btn-tt .iconBox{ background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.14); }
-    .btn-ig .iconBox{ background: rgba(255,255,255,.22); border-color: rgba(0,0,0,.08); }
-    .btn-pp .iconBox{ background: rgba(255,231,166,.26); border-color: rgba(217,177,90,.22); }
+    .tt .label{ color:#fff; }
+    .pp .label{ color: rgba(42,31,37,.82); }
 
-    /* ======= شاشة العرض (السلايدر) ======= */
+    /* ======= السلايدر ======= */
     .showcase{
-      margin-top: 16px;
+      margin-top: 18px;
+      position:relative;
+      z-index:1;
     }
-    .showcase-title{
+    .showcaseTitle{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:10px;
       margin: 0 0 10px;
+      padding: 0 2px;
     }
-    .showcase-title h3{
+    .showcaseTitle h3{
       margin:0;
       font-size: 20px;
-      font-weight: 900;
-      color:#2b1b23;
-    }
-    .showcase-title span{
-      color: rgba(43,27,35,.68);
-      font-weight:800;
-      font-size: 13px;
+      font-weight:1000;
+      color: rgba(42,31,37,.92);
     }
 
     .frame{
-      position: relative;
+      position:relative;
       border-radius: 28px;
       padding: 10px;
-      background: linear-gradient(135deg, rgba(255,231,166,.55), rgba(247,183,201,.48));
-      border: 1px solid rgba(217,177,90,.22);
-      box-shadow: 0 18px 60px rgba(35,10,25,.14);
+      background: linear-gradient(135deg, rgba(255,210,122,.42), rgba(255,90,169,.24));
+      border: 1px solid rgba(215,168,74,.25);
+      box-shadow: 0 18px 55px rgba(25,10,18,.14);
       overflow:hidden;
     }
-    .frame::before{
+    .frame:before{
       content:"";
       position:absolute;
       inset:-50%;
-      background: linear-gradient(115deg,
-        transparent 0%,
-        rgba(255,231,166,.28) 35%,
-        rgba(255,255,255,.30) 45%,
-        rgba(247,183,201,.22) 55%,
-        transparent 75%);
+      background: linear-gradient(120deg, transparent 0%, rgba(255,210,122,.26) 38%, rgba(255,255,255,.18) 50%, rgba(255,90,169,.18) 62%, transparent 80%);
       transform: rotate(10deg);
-      animation: shimmer 7s ease-in-out infinite;
+      animation: shine 6.5s ease-in-out infinite;
       pointer-events:none;
-      filter: blur(2px);
       opacity:.75;
+      filter: blur(2px);
     }
 
     .slider{
-      position: relative;
+      position:relative;
       border-radius: 22px;
-      background: rgba(255,255,255,.55);
-      border: 1px solid rgba(43,27,35,.10);
       overflow:hidden;
+      background: rgba(255,255,255,.55);
+      border:1px solid rgba(255,255,255,.75);
+      box-shadow: inset 0 0 0 1px rgba(215,168,74,.10);
       backdrop-filter: blur(10px);
     }
-
-    /* أهم سطرين لتفادي مشاكل RTL في السلايدر */
-    .slides{ display:flex; width:100%; direction:ltr; transition: transform .65s cubic-bezier(.2,.9,.2,1); will-change: transform; touch-action: pan-y; }
+    .slides{
+      display:flex;
+      width:100%;
+      transition: transform .65s cubic-bezier(.2,.9,.2,1);
+      will-change: transform;
+      touch-action: pan-y;
+    }
     .slide{ min-width:100%; position:relative; }
-
     .slide img{
       width:100%;
       height: 360px;
       object-fit: cover;
       display:block;
-      transform: scale(1.01);
-      filter: saturate(1.05) contrast(1.03);
-      background: rgba(255,255,255,.4);
+      filter: saturate(1.03) contrast(1.02);
+      background:#fff;
     }
-    @media(min-width:760px){
-      .slide img{ height: 420px; }
-    }
+    @media(min-width:760px){ .slide img{ height: 430px; } }
 
-    .slide::after{
+    .slide:after{
       content:"";
       position:absolute;
       inset:0;
       background:
-        radial-gradient(800px 500px at 70% 15%, rgba(255,231,166,.20), transparent 55%),
-        radial-gradient(700px 550px at 20% 85%, rgba(247,183,201,.22), transparent 60%),
-        linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.00), rgba(0,0,0,.08));
-      pointer-events:none;
-    }
-
-    .slider-controls{
-      position:absolute;
-      inset: 0;
+        radial-gradient(900px 550px at 70% 15%, rgba(255,210,122,.20), transparent 55%),
+        radial-gradient(800px 600px at 20% 90%, rgba(255,90,169,.14), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.04), rgba(0,0,0,.12));
       pointer-events:none;
     }
 
@@ -386,27 +405,25 @@
       position:absolute;
       top:50%;
       transform: translateY(-50%);
-      pointer-events:auto;
       border:0;
       width:44px;
       height:44px;
       border-radius: 999px;
       cursor:pointer;
-      background: rgba(255,255,255,.55);
-      border:1px solid rgba(43,27,35,.14);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 10px 25px rgba(35,10,25,.12);
+      background: rgba(255,255,255,.62);
+      border:1px solid rgba(215,168,74,.20);
+      box-shadow: 0 10px 24px rgba(25,10,18,.12);
       display:flex;
       align-items:center;
       justify-content:center;
-      color:#2b1b23;
+      color: rgba(42,31,37,.85);
       font-size: 22px;
-      transition: transform .15s ease, filter .15s ease;
+      font-weight: 1000;
+      transition: transform .12s ease, filter .12s ease;
+      z-index:5;
     }
-    .navBtn:hover{ filter: brightness(1.03); }
     .navBtn:active{ transform: translateY(-50%) scale(.98); }
-
-    /* RTL: السابق على اليمين، التالي على اليسار */
+    .navBtn:hover{ filter: brightness(1.02); }
     .prev{ right: 10px; }
     .next{ left: 10px; }
 
@@ -418,169 +435,208 @@
       display:flex;
       justify-content:center;
       gap:8px;
-      pointer-events:auto;
-      padding: 0 12px;
+      padding: 0 10px;
+      z-index:6;
     }
     .dotBtn{
       width:10px; height:10px;
-      border-radius: 999px;
-      border: 1px solid rgba(43,27,35,.22);
+      border-radius:999px;
+      border:1px solid rgba(215,168,74,.28);
       background: rgba(255,255,255,.55);
       cursor:pointer;
-      transition: transform .15s ease, background .15s ease;
+      transition: transform .12s ease, background .12s ease;
     }
     .dotBtn.active{
-      background: linear-gradient(135deg, var(--gold), var(--gold2));
-      border-color: rgba(217,177,90,.55);
+      background: radial-gradient(circle at 30% 30%, var(--gold2), var(--gold));
       transform: scale(1.15);
+      border-color: rgba(215,168,74,.55);
     }
 
-    /* ======= مؤشر + تعليقات ======= */
+    /* ======= البراهين: العداد + التعليقات المتحركة للأعلى ======= */
     .proof{
       margin-top: 18px;
       display:grid;
       grid-template-columns: 1fr;
       gap:12px;
+      position:relative;
+      z-index:1;
     }
-    @media(min-width:760px){
-      .proof{ grid-template-columns: 1.15fr .85fr; }
-    }
+    @media(min-width:760px){ .proof{ grid-template-columns: 1.2fr .8fr; } }
+
     .card{
-      border-radius: 22px;
-      background: linear-gradient(135deg, rgba(255,255,255,.74), rgba(255,255,255,.55));
-      border: 1px solid rgba(43,27,35,.08);
-      box-shadow: 0 14px 40px rgba(35,10,25,.12);
-      backdrop-filter: blur(10px);
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(255,255,255,.72), rgba(255,255,255,.50));
+      border:1px solid rgba(215,168,74,.18);
+      box-shadow: 0 14px 40px rgba(25,10,18,.10);
       padding: 16px;
       position:relative;
       overflow:hidden;
     }
-    .card h3{ margin: 0 0 10px; font-size: 18px; font-weight: 900; color:#2b1b23; }
+    .card h3{
+      margin:0 0 10px;
+      font-size: 18px;
+      font-weight:1000;
+      color: rgba(42,31,37,.92);
+    }
 
-    .live{
+    .liveRow{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:10px;
+      gap:12px;
       flex-wrap:wrap;
     }
     .meta{
       display:flex;
       align-items:center;
       gap:10px;
-      color: rgba(43,27,35,.70);
+      color: rgba(42,31,37,.68);
+      font-weight:900;
       font-size: 14px;
-      font-weight: 800;
     }
     .dot{
       width:10px; height:10px;
       border-radius:50%;
-      background:#22c55e;
-      box-shadow: 0 0 0 7px rgba(34,197,94,.16);
+      background:#24d26a;
+      box-shadow: 0 0 0 7px rgba(36,210,106,.18);
       animation: pulse 1.2s ease-in-out infinite;
     }
-    @keyframes pulse{
-      0%,100%{ transform: scale(1); opacity:.9; }
-      50%{ transform: scale(1.2); opacity:1; }
-    }
-
+    @keyframes pulse{ 0%,100%{ transform:scale(1); opacity:.9;} 50%{ transform:scale(1.2); opacity:1;} }
     .counter{
       font-size: 34px;
-      font-weight: 900;
-      letter-spacing: .4px;
-      color: #2b1b23;
-      text-shadow: 0 10px 30px rgba(35,10,25,.10);
+      font-weight: 1000;
+      color: rgba(42,31,37,.92);
+      letter-spacing: .2px;
     }
 
-    /* ✅ تعليقات متحركة للأعلى (بدون JS) */
+    /* ✅ تعليقات تصعد للأعلى (بدون جافاسكريبت) */
     .reviewsWrap{
       position:relative;
-      height: 240px;
+      height: 210px;
       overflow:hidden;
       border-radius: 18px;
-      border: 1px solid rgba(43,27,35,.08);
-      background: rgba(255,255,255,.52);
+      background: rgba(255,255,255,.55);
+      border:1px solid rgba(0,0,0,.06);
+      padding: 10px;
     }
     .reviewsTrack{
       display:flex;
       flex-direction:column;
       gap:10px;
-      padding:12px;
-      animation: rise 18s linear infinite;
-      will-change: transform;
+      animation: scrollUp 18s linear infinite;
     }
-    .reviewsWrap:hover .reviewsTrack{ animation-play-state: paused; }
-    @keyframes rise{
+    @keyframes scrollUp{
       0%{ transform: translateY(0); }
       100%{ transform: translateY(-50%); }
     }
-
+    @media (prefers-reduced-motion: reduce){
+      .reviewsTrack{ animation:none; }
+    }
     .review{
       border-radius: 16px;
-      background: rgba(255,255,255,.68);
-      border: 1px solid rgba(43,27,35,.08);
+      background: rgba(255,255,255,.72);
+      border:1px solid rgba(215,168,74,.12);
       padding: 12px;
-      box-shadow: 0 10px 25px rgba(35,10,25,.08);
+      box-shadow: 0 10px 22px rgba(25,10,18,.08);
     }
-    .review .top{
+    .reviewTop{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:10px;
       margin-bottom: 6px;
     }
-    .review .who{ font-weight: 900; font-size: 14px; color:#2b1b23; }
-    .stars{ color: #d9b15a; font-size: 14px; letter-spacing: 1px; }
-    .review p{ margin:0; color: rgba(43,27,35,.78); line-height:1.8; font-size: 14px; font-weight:600; }
+    .who{ font-weight:1000; color: rgba(42,31,37,.90); }
+    .stars{ color: var(--gold); font-weight:1000; letter-spacing:1px; }
+    .review p{ margin:0; color: rgba(42,31,37,.74); font-weight:800; line-height:1.8; }
 
     /* ======= المنتجات ======= */
-    .section{ margin-top: 18px; }
-    .section-title{
+    .section{ margin-top: 18px; position:relative; z-index:1; }
+    .sectionTitle{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:10px;
       margin: 0 0 10px;
     }
-    .section-title h3{ margin:0; font-size: 20px; font-weight: 900; color:#2b1b23; }
-
-    .grid{ display:grid; grid-template-columns: 1fr; gap: 12px; }
+    .sectionTitle h3{
+      margin:0;
+      font-size: 20px;
+      font-weight:1000;
+      color: rgba(42,31,37,.92);
+    }
+    .sectionTitle span{
+      color: rgba(42,31,37,.62);
+      font-weight:900;
+      font-size: 13px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
     @media(min-width:560px){ .grid{ grid-template-columns: 1fr 1fr; } }
     @media(min-width:900px){ .grid{ grid-template-columns: 1fr 1fr 1fr; } }
 
     .product{
       border-radius: 22px;
       overflow:hidden;
-      background: rgba(255,255,255,.62);
-      border: 1px solid rgba(43,27,35,.08);
-      box-shadow: 0 18px 45px rgba(35,10,25,.10);
+      background: rgba(255,255,255,.60);
+      border:1px solid rgba(215,168,74,.14);
+      box-shadow: 0 16px 45px rgba(25,10,18,.10);
     }
     .product img{
       width:100%;
       height: 260px;
       object-fit: cover;
       display:block;
-      filter: saturate(1.05) contrast(1.04);
+      background:#fff;
       transform: scale(1.01);
       transition: transform .35s ease;
-      background: rgba(255,255,255,.55);
+      filter: saturate(1.03) contrast(1.02);
     }
     .product:hover img{ transform: scale(1.06); }
     .cap{ padding: 12px 12px 14px; }
-    .pname{ font-weight: 900; margin:0 0 4px; color:#2b1b23; }
-    .pdesc{ margin:0; color: rgba(43,27,35,.70); font-size: 13px; line-height: 1.7; font-weight:700; }
+    .pname{ font-weight:1000; margin:0 0 4px; color: rgba(42,31,37,.92); }
+    .pdesc{ margin:0; color: rgba(42,31,37,.62); font-weight:800; font-size: 13px; line-height: 1.7; }
 
+    /* ======= الفوتر + النصوص (TikTok كنص) ======= */
     .footer{
       margin-top: 18px;
       text-align:center;
-      color: rgba(43,27,35,.72);
+      color: rgba(42,31,37,.72);
+      font-weight:800;
       font-size: 13px;
-      line-height: 1.9;
-      font-weight:700;
+      line-height: 1.95;
+      position:relative;
+      z-index:1;
     }
-    .footer a{ color:#2b1b23; opacity:.92; }
+    .footer a{ color: rgba(42,31,37,.90); font-weight:1000; }
+    .tiktokSEO{
+      margin-top: 12px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.60);
+      border:1px solid rgba(215,168,74,.14);
+      box-shadow: 0 12px 30px rgba(25,10,18,.08);
+      padding: 12px;
+      text-align:center;
+    }
+    .tiktokSEO .line1{
+      font-weight:1000;
+      color: rgba(42,31,37,.86);
+      margin-bottom: 6px;
+    }
+    .tiktokSEO .line2{
+      direction:ltr;
+      unicode-bidi: plaintext;
+      display:inline-block;
+      font-weight:1000;
+      color: rgba(42,31,37,.86);
+      text-decoration: underline;
+    }
 
-    .float-wa{
+    /* زر واتساب عائم */
+    .floatWA{
       position:fixed;
       bottom: 16px;
       left: 16px;
@@ -590,99 +646,93 @@
       gap:10px;
       padding: 12px 14px;
       border-radius: 999px;
-      background: linear-gradient(135deg, #25D366, #17b357);
-      color:#07160e;
+      background: linear-gradient(135deg, #21d366, #11b85a);
+      color:#0b2a17;
       text-decoration:none;
-      font-weight: 900;
-      box-shadow: 0 18px 45px rgba(35,10,25,.18);
-      border: 1px solid rgba(0,0,0,.06);
+      font-weight: 1000;
+      box-shadow: 0 18px 45px rgba(25,10,18,.16);
+      border: 1px solid rgba(255,255,255,.55);
     }
-    .float-wa small{ font-weight:900; opacity:.95; }
+    .floatWA small{ font-weight:1000; opacity:.92; }
 
-    /* تحسين لمس */
-    @media (max-width:420px){
-      .btxt h1{ font-size: 30px; }
+    /* تحسينات صغيرة للموبايل */
+    @media(max-width:420px){
+      .brandText h1{ font-size: 30px; }
       .btn{ font-size: 15px; }
-      .slide img{ height: 320px; }
     }
   </style>
 </head>
 
 <body>
-  <div class="glow"></div>
+  <div class="sparkle"></div>
+
+  <div id="preloader" aria-label="Loading">
+    <div class="loader">
+      <img src="logo.png" alt="Glame Chic logo" onerror="this.style.display='none'">
+      <h2>Glame Chic</h2>
+      <p>فخامة أنوثة… لمسة ذهبية ✨</p>
+    </div>
+  </div>
 
   <main class="wrap">
     <section class="hero">
 
-      <div class="top">
-        <div class="brand">
+      <div class="topbar">
+        <div class="brandBox">
           <img class="logo" src="logo.png" alt="Glame Chic" onerror="this.style.display='none'">
-          <div class="btxt">
+          <div class="brandText">
             <h1>Glame chic</h1>
             <div class="loc">Oran • Algeria</div>
           </div>
         </div>
       </div>
 
-      <div class="actions-grid" aria-label="روابط الطلب">
-
-        <!-- WhatsApp -->
-        <a class="btn btn-wa" id="waBtn" href="#" rel="noopener">
+      <!-- ✅ الأزرار 2×2 + أيقونات صغيرة مثل الصورة القديمة -->
+      <div class="actionGrid" aria-label="Actions">
+        <a class="btn wa" id="waBtn" href="#" rel="noopener">
           <span class="label">اطلب عبر واتساب</span>
           <span class="iconBox" aria-hidden="true">
-            <!-- WhatsApp (أخضر/أبيض) -->
-            <svg viewBox="0 0 32 32" role="img" aria-label="WhatsApp">
-              <path fill="#ffffff" d="M19.11 17.39c-.25-.12-1.46-.72-1.69-.8-.23-.08-.4-.12-.57.12-.17.25-.65.8-.8.97-.15.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.01-.39.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.57-1.37-.78-1.88-.2-.49-.41-.42-.57-.43l-.49-.01c-.17 0-.43.06-.66.31-.23.25-.86.84-.86 2.05 0 1.21.88 2.38 1 2.55.12.17 1.73 2.64 4.19 3.7.58.25 1.03.4 1.38.51.58.18 1.1.15 1.52.09.46-.07 1.46-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29z"/>
-              <path fill="#ffffff" d="M26.66 5.34A12.88 12.88 0 0 0 16.03 1C8.88 1 3.06 6.82 3.06 13.97c0 2.29.6 4.52 1.73 6.5L3 31l10.72-1.75a12.93 12.93 0 0 0 6.31 1.61h.01c7.15 0 12.97-5.82 12.97-12.97 0-3.46-1.35-6.71-3.75-9.05zM20.03 28.7h-.01a10.8 10.8 0 0 1-5.5-1.51l-.39-.23-6.36 1.04 1.06-6.2-.25-.4a10.78 10.78 0 0 1-1.66-5.74c0-5.96 4.85-10.81 10.81-10.81 2.88 0 5.59 1.12 7.62 3.15a10.73 10.73 0 0 1 3.17 7.65c0 5.96-4.85 10.81-10.81 10.81z"/>
+            <!-- WhatsApp -->
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M20.5 11.8c0 4.83-3.93 8.75-8.75 8.75a8.7 8.7 0 0 1-4.2-1.08L3.5 20.5l1.1-3.86A8.7 8.7 0 0 1 3.25 11.8c0-4.83 3.92-8.75 8.75-8.75s8.75 3.92 8.75 8.75Z" stroke="white" stroke-width="1.8" opacity=".95"/>
+              <path d="M9.2 8.7c.2-.44.42-.46.64-.47h.52c.17 0 .4-.05.62.47.22.52.75 1.84.82 1.98.06.13.1.29.01.47-.1.18-.15.29-.3.45-.15.15-.3.33-.43.44-.15.13-.3.27-.13.54.17.27.76 1.25 1.63 2.03 1.12.99 2.05 1.3 2.32 1.44.27.13.43.11.59-.07.16-.18.69-.8.87-1.07.18-.27.36-.22.6-.13.24.09 1.54.73 1.8.86.27.13.44.2.51.31.07.11.07.64-.15 1.25-.22.61-1.28 1.2-1.77 1.25-.46.05-1.04.07-1.69-.11-.4-.11-.9-.29-1.56-.57-2.75-1.19-4.55-3.96-4.68-4.14-.13-.18-1.12-1.5-1.12-2.87 0-1.37.72-2.04.97-2.32Z" fill="white" opacity=".95"/>
             </svg>
           </span>
         </a>
 
-        <!-- TikTok -->
-        <a class="btn btn-tt" href="https://www.tiktok.com/@glame.chic" target="_blank" rel="noopener">
+        <a class="btn tt" id="ttBtn" href="https://www.tiktok.com/@glame.chic" target="_blank" rel="noopener">
           <span class="label">اطلب عبر تيكتوك</span>
           <span class="iconBox" aria-hidden="true">
-            <!-- TikTok (ألوان قريبة للحقيقي) -->
-            <svg viewBox="0 0 32 32" role="img" aria-label="TikTok">
-              <path fill="#25F4EE" d="M19.55 6.2c.75 3.1 2.94 5.52 5.86 6.24v3.69c-2.27.07-4.33-.65-5.86-1.95v7.18c0 4.32-3.5 7.82-7.82 7.82-4.32 0-7.82-3.5-7.82-7.82 0-4.32 3.5-7.82 7.82-7.82.41 0 .81.03 1.2.09v3.87a3.93 3.93 0 0 0-1.2-.18 3.98 3.98 0 1 0 3.98 3.98V2.2h3.84c.1 1.37.3 2.67.99 4z"/>
-              <path fill="#FE2C55" d="M20.07 5.68c.78 3.13 2.97 5.55 5.89 6.27v3.66c-2.29.09-4.36-.63-5.89-1.93v7.18c0 4.32-3.5 7.82-7.82 7.82-2.98 0-5.56-1.66-6.89-4.1a7.8 7.8 0 0 0 6.12 2.96c4.32 0 7.82-3.5 7.82-7.82V8.02c1.53 1.3 3.6 2.02 5.89 1.93V6.29c-1.78-.52-3.34-1.65-4.26-3.15-.47-.76-.77-1.59-.86-2.46h-3.84v19.16a3.98 3.98 0 1 1-2.78-3.79V12.2a7.83 7.83 0 0 0-1.2-.09c-4.32 0-7.82 3.5-7.82 7.82 0 .96.17 1.88.49 2.73a7.79 7.79 0 0 1-.49-2.73c0-4.32 3.5-7.82 7.82-7.82.41 0 .81.03 1.2.09V2.2h3.84c.09.87.39 1.7.86 2.46z"/>
-              <path fill="#FFFFFF" opacity=".85" d="M20.07 5.68c.78 3.13 2.97 5.55 5.89 6.27v1.46c-2.29.09-4.36-.63-5.89-1.93v7.18c0 4.32-3.5 7.82-7.82 7.82-1.42 0-2.75-.38-3.9-1.05 1.14.73 2.5 1.16 3.96 1.16 4.32 0 7.82-3.5 7.82-7.82V8.02c1.53 1.3 3.6 2.02 5.89 1.93V6.29c-1.78-.52-3.34-1.65-4.26-3.15z"/>
+            <!-- TikTok (لون حقيقي بسيط) -->
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M14 3v10.3a3.4 3.4 0 1 1-3-3.37" stroke="white" stroke-width="1.9" stroke-linecap="round"/>
+              <path d="M14 6.2c1.1 1.8 2.8 2.8 4.9 2.9" stroke="#00F2EA" stroke-width="1.9" stroke-linecap="round"/>
+              <path d="M14 6.2c.9 1.5 2.2 2.4 4.1 2.7" stroke="#FF004F" stroke-width="1.2" stroke-linecap="round" opacity=".95"/>
             </svg>
           </span>
         </a>
 
-        <!-- Instagram -->
-        <a class="btn btn-ig" href="https://www.instagram.com/glame_chic" target="_blank" rel="noopener">
+        <a class="btn ig" id="igBtn" href="https://www.instagram.com/glame_chic" target="_blank" rel="noopener">
           <span class="label">اطلب عبر إنستغرام</span>
           <span class="iconBox" aria-hidden="true">
-            <!-- Instagram (تدرج قريب للحقيقي) -->
-            <svg viewBox="0 0 32 32" role="img" aria-label="Instagram">
-              <defs>
-                <linearGradient id="igG" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#F58529"/>
-                  <stop offset="0.35" stop-color="#DD2A7B"/>
-                  <stop offset="0.7" stop-color="#8134AF"/>
-                  <stop offset="1" stop-color="#515BD4"/>
-                </linearGradient>
-              </defs>
-              <path fill="url(#igG)" d="M16 7.8c2.67 0 2.99.01 4.05.06 0.98.05 1.51.21 1.86.35.46.18.79.4 1.13.74.34.34.56.67.74 1.13.14.35.3.88.35 1.86.05 1.06.06 1.38.06 4.05s-.01 2.99-.06 4.05c-.05.98-.21 1.51-.35 1.86-.18.46-.4.79-.74 1.13-.34.34-.67.56-1.13.74-.35.14-.88.3-1.86.35-1.06.05-1.38.06-4.05.06s-2.99-.01-4.05-.06c-.98-.05-1.51-.21-1.86-.35-.46-.18-.79-.4-1.13-.74-.34-.34-.56-.67-.74-1.13-.14-.35-.3-.88-.35-1.86-.05-1.06-.06-1.38-.06-4.05s.01-2.99.06-4.05c.05-.98.21-1.51.35-1.86.18-.46.4-.79.74-1.13.34-.34.67-.56 1.13-.74.35-.14.88-.3 1.86-.35 1.06-.05 1.38-.06 4.05-.06m0-1.8c-2.72 0-3.06.01-4.13.06-1.07.05-1.81.22-2.45.47-.66.26-1.22.6-1.78 1.16-.56.56-.9 1.12-1.16 1.78-.25.64-.42 1.38-.47 2.45-.05 1.07-.06 1.41-.06 4.13s.01 3.06.06 4.13c.05 1.07.22 1.81.47 2.45.26.66.6 1.22 1.16 1.78.56.56 1.12.9 1.78 1.16.64.25 1.38.42 2.45.47 1.07.05 1.41.06 4.13.06s3.06-.01 4.13-.06c1.07-.05 1.81-.22 2.45-.47.66-.26 1.22-.6 1.78-1.16.56-.56.9-1.12 1.16-1.78.25-.64.42-1.38.47-2.45.05-1.07.06-1.41.06-4.13s-.01-3.06-.06-4.13c-.05-1.07-.22-1.81-.47-2.45-.26-.66-.6-1.22-1.16-1.78-.56-.56-1.12-.9-1.78-1.16-.64-.25-1.38-.42-2.45-.47-1.07-.05-1.41-.06-4.13-.06z"/>
-              <path fill="#ffffff" d="M16 11.7a4.3 4.3 0 1 0 0 8.6 4.3 4.3 0 0 0 0-8.6zm0 7.1a2.8 2.8 0 1 1 0-5.6 2.8 2.8 0 0 1 0 5.6z"/>
-              <circle cx="20.7" cy="11.3" r="1.05" fill="#ffffff"/>
+            <!-- Instagram -->
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M7.6 3.6h8.8a4 4 0 0 1 4 4v8.8a4 4 0 0 1-4 4H7.6a4 4 0 0 1-4-4V7.6a4 4 0 0 1 4-4Z" stroke="white" stroke-width="1.8" opacity=".95"/>
+              <path d="M12 16.2a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Z" stroke="white" stroke-width="1.8" opacity=".95"/>
+              <path d="M17.2 6.8h.01" stroke="white" stroke-width="3" stroke-linecap="round"/>
             </svg>
           </span>
         </a>
 
-        <!-- Privacy -->
-        <a class="btn btn-pp" href="#privacy">
+        <a class="btn pp" href="#privacy">
           <span class="label">Privacy Policy</span>
           <span class="iconBox" aria-hidden="true">
             <!-- Shield -->
-            <svg viewBox="0 0 24 24" role="img" aria-label="Privacy">
-              <path fill="#2b1b23" d="M12 2 20 5v6c0 5.55-3.84 10.74-8 11-4.16-.26-8-5.45-8-11V5l8-3zm0 2.18L6 6.1V11c0 4.62 3.09 8.86 6 9.02 2.91-.16 6-4.4 6-9.02V6.1l-6-1.92z"/>
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 3.2 19 6.2v6.2c0 4.4-3 7.9-7 8.9-4-1-7-4.5-7-8.9V6.2l7-3Z" stroke="#2a1f25" stroke-width="1.8" opacity=".9"/>
             </svg>
           </span>
         </a>
-
       </div>
 
       <div class="divider"></div>
@@ -696,140 +746,131 @@
         </p>
       </div>
 
-      <!-- شاشة العرض -->
-      <div class="showcase">
-        <div class="showcase-title">
+      <!-- ✅ السلايدر (يعمل تلقائي + يدوي) + تم حذف أي عبارات إضافية -->
+      <div class="showcase" aria-label="Showcase">
+        <div class="showcaseTitle">
           <h3>✨ شاشة العرض</h3>
-          <span>تبديل تلقائي • تحكم يدوي</span>
+          <!-- ✅ لا نضع أي جملة هنا -->
+          <div></div>
         </div>
 
         <div class="frame">
           <div class="slider" id="slider" aria-label="Glame Chic slideshow">
             <div class="slides" id="slides">
-              <div class="slide"><img src="slides/slide1.jpg" alt="Glame Chic slide 1" loading="eager"></div>
-              <div class="slide"><img src="slides/slide2.jpg" alt="Glame Chic slide 2" loading="lazy"></div>
-              <div class="slide"><img src="slides/slide3.jpg" alt="Glame Chic slide 3" loading="lazy"></div>
-              <div class="slide"><img src="slides/slide4.jpg" alt="Glame Chic slide 4" loading="lazy"></div>
-              <div class="slide"><img src="slides/slide5.jpg" alt="Glame Chic slide 5" loading="lazy"></div>
-              <div class="slide"><img src="slides/slide6.jpg" alt="Glame Chic slide 6" loading="lazy"></div>
-              <div class="slide"><img src="slides/slide7.jpg" alt="Glame Chic slide 7" loading="lazy"></div>
-              <div class="slide"><img src="slides/slide8.jpg" alt="Glame Chic slide 8" loading="lazy"></div>
+              <div class="slide"><img src="slides/slide1.jpg" alt="Slide 1" loading="eager" onerror="this.style.display='none'"></div>
+              <div class="slide"><img src="slides/slide2.jpg" alt="Slide 2" loading="lazy" onerror="this.style.display='none'"></div>
+              <div class="slide"><img src="slides/slide3.jpg" alt="Slide 3" loading="lazy" onerror="this.style.display='none'"></div>
+              <div class="slide"><img src="slides/slide4.jpg" alt="Slide 4" loading="lazy" onerror="this.style.display='none'"></div>
+              <div class="slide"><img src="slides/slide5.jpg" alt="Slide 5" loading="lazy" onerror="this.style.display='none'"></div>
+              <div class="slide"><img src="slides/slide6.jpg" alt="Slide 6" loading="lazy" onerror="this.style.display='none'"></div>
+              <div class="slide"><img src="slides/slide7.jpg" alt="Slide 7" loading="lazy" onerror="this.style.display='none'"></div>
+              <div class="slide"><img src="slides/slide8.jpg" alt="Slide 8" loading="lazy" onerror="this.style.display='none'"></div>
             </div>
 
-            <div class="slider-controls">
-              <button class="navBtn prev" id="prevBtn" aria-label="السابق">›</button>
-              <button class="navBtn next" id="nextBtn" aria-label="التالي">‹</button>
-              <div class="dots" id="dots" aria-label="اختيار السلايد"></div>
-            </div>
+            <button class="navBtn prev" id="prevBtn" aria-label="السابق">›</button>
+            <button class="navBtn next" id="nextBtn" aria-label="التالي">‹</button>
+            <div class="dots" id="dots" aria-label="Dots"></div>
           </div>
         </div>
       </div>
 
       <div class="proof">
         <div class="card">
-          <div class="live">
+          <div class="liveRow">
             <div>
               <h3 style="margin:0 0 6px">📈 مؤشر الطلبات المباشر</h3>
-              <div class="meta"><span class="dot"></span> مباشر الآن • يتحدث تلقائياً</div>
+              <div class="meta"><span class="dot"></span> مباشر الآن</div>
             </div>
             <div class="counter" id="ordersCounter">1,287</div>
           </div>
-          <!-- ✅ حذفنا جملة الزيادة كما طلبت -->
+          <!-- ✅ حذفنا جملة "يزيد كل دقيقة..." -->
         </div>
 
         <div class="card">
           <h3>💬 تعليقات الزبائن</h3>
 
+          <!-- ✅ لوحة التعليقات تصعد للأعلى مثل النسخة القديمة -->
           <div class="reviewsWrap" aria-label="Reviews marquee">
-            <!-- نكرر البلوك مرتين لعمل حلقة سلسة -->
             <div class="reviewsTrack" id="reviewsTrack">
+              <!-- المجموعة 1 -->
               <div class="review">
-                <div class="top"><div class="who">أمينة بن حمو</div><div class="stars">★★★★★</div></div>
+                <div class="reviewTop"><div class="who">أمينة بن حمو</div><div class="stars">★★★★★</div></div>
                 <p>الروائح و الجودة روعة… حسّيت روحي شارية من برا ✨</p>
               </div>
               <div class="review">
-                <div class="top"><div class="who">ليلى بوعلام</div><div class="stars">★★★★★</div></div>
+                <div class="reviewTop"><div class="who">ليلى بوعلام</div><div class="stars">★★★★★</div></div>
                 <p>كاين تنوع كبير… كل مرة نلقى حاجة جديدة، صحّة 👌</p>
               </div>
               <div class="review">
-                <div class="top"><div class="who">نسـرين لعماري</div><div class="stars">★★★★★</div></div>
+                <div class="reviewTop"><div class="who">نسرين لعماري</div><div class="stars">★★★★★</div></div>
                 <p>أصليين 100%… هذا هو لي حبيتـو، ماشي تقليد 💗</p>
               </div>
               <div class="review">
-                <div class="top"><div class="who">سهيلة قادة</div><div class="stars">★★★★★</div></div>
-                <p>التغليف فخم بزاف… و الخدمة سريعة و محترمة 💎</p>
-              </div>
-              <div class="review">
-                <div class="top"><div class="who">مريم زروقي</div><div class="stars">★★★★★</div></div>
-                <p>عروضهم دايمًا قوية… و الجودة ثابتة ❤️</p>
+                <div class="reviewTop"><div class="who">سمية بلخير</div><div class="stars">★★★★★</div></div>
+                <p>تغليف فخم وتعامل راقي… نعاود نطلب أكيد ✨</p>
               </div>
 
-              <!-- تكرار نفس المجموعة لعمل loop -->
+              <!-- المجموعة 2 (تكرار للّوب السلس) -->
               <div class="review">
-                <div class="top"><div class="who">أمينة بن حمو</div><div class="stars">★★★★★</div></div>
+                <div class="reviewTop"><div class="who">أمينة بن حمو</div><div class="stars">★★★★★</div></div>
                 <p>الروائح و الجودة روعة… حسّيت روحي شارية من برا ✨</p>
               </div>
               <div class="review">
-                <div class="top"><div class="who">ليلى بوعلام</div><div class="stars">★★★★★</div></div>
+                <div class="reviewTop"><div class="who">ليلى بوعلام</div><div class="stars">★★★★★</div></div>
                 <p>كاين تنوع كبير… كل مرة نلقى حاجة جديدة، صحّة 👌</p>
               </div>
               <div class="review">
-                <div class="top"><div class="who">نسـرين لعماري</div><div class="stars">★★★★★</div></div>
+                <div class="reviewTop"><div class="who">نسرين لعماري</div><div class="stars">★★★★★</div></div>
                 <p>أصليين 100%… هذا هو لي حبيتـو، ماشي تقليد 💗</p>
               </div>
               <div class="review">
-                <div class="top"><div class="who">سهيلة قادة</div><div class="stars">★★★★★</div></div>
-                <p>التغليف فخم بزاف… و الخدمة سريعة و محترمة 💎</p>
-              </div>
-              <div class="review">
-                <div class="top"><div class="who">مريم زروقي</div><div class="stars">★★★★★</div></div>
-                <p>عروضهم دايمًا قوية… و الجودة ثابتة ❤️</p>
+                <div class="reviewTop"><div class="who">سمية بلخير</div><div class="stars">★★★★★</div></div>
+                <p>تغليف فخم وتعامل راقي… نعاود نطلب أكيد ✨</p>
               </div>
             </div>
           </div>
-
         </div>
       </div>
 
       <!-- المنتجات -->
       <div class="section">
-        <div class="section-title">
+        <div class="sectionTitle">
           <h3>Our Products</h3>
-          <span style="color:rgba(43,27,35,.68); font-weight:900; font-size:13px;">صور حقيقية</span>
+          <span>صور حقيقية</span>
         </div>
 
         <div class="grid">
-          <article class="product"><img src="product1.jpg" alt="Glame Chic product 1" loading="lazy"><div class="cap"><p class="pname">Product 1</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product2.jpg" alt="Glame Chic product 2" loading="lazy"><div class="cap"><p class="pname">Product 2</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product3.jpg" alt="Glame Chic product 3" loading="lazy"><div class="cap"><p class="pname">Product 3</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product4.jpg" alt="Glame Chic product 4" loading="lazy"><div class="cap"><p class="pname">Product 4</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product5.jpg" alt="Glame Chic product 5" loading="lazy"><div class="cap"><p class="pname">Product 5</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product6.jpg" alt="Glame Chic product 6" loading="lazy"><div class="cap"><p class="pname">Product 6</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product7.jpg" alt="Glame Chic product 7" loading="lazy"><div class="cap"><p class="pname">Product 7</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product8.jpg" alt="Glame Chic product 8" loading="lazy"><div class="cap"><p class="pname">Product 8</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product9.jpg" alt="Glame Chic product 9" loading="lazy"><div class="cap"><p class="pname">Product 9</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product10.jpg" alt="Glame Chic product 10" loading="lazy"><div class="cap"><p class="pname">Product 10</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product11.jpg" alt="Glame Chic product 11" loading="lazy"><div class="cap"><p class="pname">Product 11</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product12.jpg" alt="Glame Chic product 12" loading="lazy"><div class="cap"><p class="pname">Product 12</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product13.jpg" alt="Glame Chic product 13" loading="lazy"><div class="cap"><p class="pname">Product 13</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product14.jpg" alt="Glame Chic product 14" loading="lazy"><div class="cap"><p class="pname">Product 14</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product15.jpg" alt="Glame Chic product 15" loading="lazy"><div class="cap"><p class="pname">Product 15</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product16.jpg" alt="Glame Chic product 16" loading="lazy"><div class="cap"><p class="pname">Product 16</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product17.jpg" alt="Glame Chic product 17" loading="lazy"><div class="cap"><p class="pname">Product 17</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product18.jpg" alt="Glame Chic product 18" loading="lazy"><div class="cap"><p class="pname">Product 18</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product19.jpg" alt="Glame Chic product 19" loading="lazy"><div class="cap"><p class="pname">Product 19</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product20.jpg" alt="Glame Chic product 20" loading="lazy"><div class="cap"><p class="pname">Product 20</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product21.jpg" alt="Glame Chic product 21" loading="lazy"><div class="cap"><p class="pname">Product 21</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product22.jpg" alt="Glame Chic product 22" loading="lazy"><div class="cap"><p class="pname">Product 22</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product23.jpg" alt="Glame Chic product 23" loading="lazy"><div class="cap"><p class="pname">Product 23</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product24.jpg" alt="Glame Chic product 24" loading="lazy"><div class="cap"><p class="pname">Product 24</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product25.jpg" alt="Glame Chic product 25" loading="lazy"><div class="cap"><p class="pname">Product 25</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product26.jpg" alt="Glame Chic product 26" loading="lazy"><div class="cap"><p class="pname">Product 26</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product27.jpg" alt="Glame Chic product 27" loading="lazy"><div class="cap"><p class="pname">Product 27</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product28.jpg" alt="Glame Chic product 28" loading="lazy"><div class="cap"><p class="pname">Product 28</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product29.jpg" alt="Glame Chic product 29" loading="lazy"><div class="cap"><p class="pname">Product 29</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product30.jpg" alt="Glame Chic product 30" loading="lazy"><div class="cap"><p class="pname">Product 30</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
-          <article class="product"><img src="product31.jpg" alt="Glame Chic product 31" loading="lazy"><div class="cap"><p class="pname">Product 31</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product1.jpg" alt="Product 1" loading="lazy"><div class="cap"><p class="pname">Product 1</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product2.jpg" alt="Product 2" loading="lazy"><div class="cap"><p class="pname">Product 2</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product3.jpg" alt="Product 3" loading="lazy"><div class="cap"><p class="pname">Product 3</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product4.jpg" alt="Product 4" loading="lazy"><div class="cap"><p class="pname">Product 4</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product5.jpg" alt="Product 5" loading="lazy"><div class="cap"><p class="pname">Product 5</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product6.jpg" alt="Product 6" loading="lazy"><div class="cap"><p class="pname">Product 6</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product7.jpg" alt="Product 7" loading="lazy"><div class="cap"><p class="pname">Product 7</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product8.jpg" alt="Product 8" loading="lazy"><div class="cap"><p class="pname">Product 8</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product9.jpg" alt="Product 9" loading="lazy"><div class="cap"><p class="pname">Product 9</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product10.jpg" alt="Product 10" loading="lazy"><div class="cap"><p class="pname">Product 10</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product11.jpg" alt="Product 11" loading="lazy"><div class="cap"><p class="pname">Product 11</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product12.jpg" alt="Product 12" loading="lazy"><div class="cap"><p class="pname">Product 12</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product13.jpg" alt="Product 13" loading="lazy"><div class="cap"><p class="pname">Product 13</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product14.jpg" alt="Product 14" loading="lazy"><div class="cap"><p class="pname">Product 14</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product15.jpg" alt="Product 15" loading="lazy"><div class="cap"><p class="pname">Product 15</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product16.jpg" alt="Product 16" loading="lazy"><div class="cap"><p class="pname">Product 16</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product17.jpg" alt="Product 17" loading="lazy"><div class="cap"><p class="pname">Product 17</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product18.jpg" alt="Product 18" loading="lazy"><div class="cap"><p class="pname">Product 18</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product19.jpg" alt="Product 19" loading="lazy"><div class="cap"><p class="pname">Product 19</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product20.jpg" alt="Product 20" loading="lazy"><div class="cap"><p class="pname">Product 20</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product21.jpg" alt="Product 21" loading="lazy"><div class="cap"><p class="pname">Product 21</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product22.jpg" alt="Product 22" loading="lazy"><div class="cap"><p class="pname">Product 22</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product23.jpg" alt="Product 23" loading="lazy"><div class="cap"><p class="pname">Product 23</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product24.jpg" alt="Product 24" loading="lazy"><div class="cap"><p class="pname">Product 24</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product25.jpg" alt="Product 25" loading="lazy"><div class="cap"><p class="pname">Product 25</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product26.jpg" alt="Product 26" loading="lazy"><div class="cap"><p class="pname">Product 26</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product27.jpg" alt="Product 27" loading="lazy"><div class="cap"><p class="pname">Product 27</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product28.jpg" alt="Product 28" loading="lazy"><div class="cap"><p class="pname">Product 28</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product29.jpg" alt="Product 29" loading="lazy"><div class="cap"><p class="pname">Product 29</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product30.jpg" alt="Product 30" loading="lazy"><div class="cap"><p class="pname">Product 30</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
+          <article class="product"><img src="product31.jpg" alt="Product 31" loading="lazy"><div class="cap"><p class="pname">Product 31</p><p class="pdesc">Glame chic • صور حقيقية</p></div></article>
         </div>
       </div>
 
@@ -841,21 +882,18 @@
           إنستغرام: <a href="https://www.instagram.com/glame_chic" target="_blank" rel="noopener">@glame_chic</a>
         </div>
 
-        <!-- ✅ تيكتوك: مختصر + فخم + فعال للبحث (مرة واحدة فقط) -->
-        <div style="margin-top:14px; opacity:.92;">
-          <strong>TikTok:</strong> <span style="font-weight:900;">@glame.chic</span><br>
-          <span style="display:inline-block; max-width:860px;">
-            Experience Glame Chic on TikTok (@glame.chic) — luxury makeup, authentic beauty collections, and exclusive offers from Oran, Algeria.
-          </span><br>
-          <a href="https://www.tiktok.com/@glame.chic" target="_blank" rel="noopener">https://www.tiktok.com/@glame.chic</a>
+        <!-- ✅ نص تيكتوك (بدون تكرار مزعج / بدون وضعه في الوسط) -->
+        <div class="tiktokSEO" aria-label="TikTok text for SEO">
+          <div class="line1">Experience Glame Chic on TikTok (@glame.chic) — luxury makeup, authentic beauty collections, and exclusive offers from Oran, Algeria.</div>
+          <a class="line2" href="https://www.tiktok.com/@glame.chic" target="_blank" rel="noopener">https://www.tiktok.com/@glame.chic</a>
         </div>
 
-        <div style="margin-top:14px; opacity:.90;">
+        <div style="margin-top:14px; opacity:.85;">
           <strong>Privacy Policy</strong><br>
           نحن لا نجمع بيانات حساسة. أي تواصل يتم عبر واتساب/تيكتوك/إنستغرام حسب اختيارك.
         </div>
 
-        <div style="margin-top:14px; opacity:.7;">
+        <div style="margin-top:14px; opacity:.72;">
           © <span id="year"></span> Glame chic — Oran
         </div>
       </div>
@@ -863,14 +901,14 @@
     </section>
   </main>
 
-  <a class="float-wa" id="waFloat" href="#" rel="noopener">
+  <a class="floatWA" id="waFloat" href="#" rel="noopener">
     اطلب واتساب <small>+213779665820</small>
   </a>
 
   <script>
     (function(){
       try{
-        // WhatsApp
+        // روابط واتساب ثابتة
         const WHATSAPP_NUMBER_INT = "213779665820";
         const WA_MESSAGE = "مرحباً Glame chic ✨ أريد الطلب / الاستفسار من فضلك.";
         const wa = "https://wa.me/" + WHATSAPP_NUMBER_INT + "?text=" + encodeURIComponent(WA_MESSAGE);
@@ -883,10 +921,9 @@
         const year = document.getElementById("year");
         if(year) year.textContent = new Date().getFullYear();
 
-        // Counter (يبقى شغال لكن بدون نص الزيادة)
+        // عداد الطلبات (يبقى شغال لكن بدون جملة شرح ظاهرة)
         const counterEl = document.getElementById("ordersCounter");
         let current = 1287;
-
         function randInt(min,max){ return Math.floor(Math.random()*(max-min+1))+min; }
         function animate(from,to,duration){
           const start = performance.now();
@@ -907,7 +944,7 @@
           current = next;
         }, 60000);
 
-        // Slider (Auto + Manual + Swipe)
+        // السلايدر (Auto + Manual + Swipe)
         const slider = document.getElementById("slider");
         const slidesEl = document.getElementById("slides");
         const prevBtn = document.getElementById("prevBtn");
@@ -937,7 +974,7 @@
               const b = document.createElement("button");
               b.className = "dotBtn" + (i===0 ? " active":"");
               b.type = "button";
-              b.setAttribute("aria-label", "سلايد " + (i+1));
+              b.setAttribute("aria-label", "Slide " + (i+1));
               b.addEventListener("click", function(){
                 pauseAuto(9000);
                 go(i);
@@ -948,9 +985,7 @@
 
           function startAuto(){
             stopAuto();
-            autoTimer = setInterval(function(){
-              go(index + 1);
-            }, 5000);
+            autoTimer = setInterval(function(){ go(index + 1); }, 5000);
           }
           function stopAuto(){
             if(autoTimer){ clearInterval(autoTimer); autoTimer = null; }
@@ -964,7 +999,7 @@
           if(prevBtn) prevBtn.addEventListener("click", function(){ pauseAuto(9000); go(index - 1); });
           if(nextBtn) nextBtn.addEventListener("click", function(){ pauseAuto(9000); go(index + 1); });
 
-          // Swipe
+          // swipe
           let startX = 0, dragging = false;
           slider.addEventListener("touchstart", function(e){
             if(!e.touches || !e.touches[0]) return;
@@ -979,7 +1014,7 @@
             const endX = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0].clientX : startX;
             const dx = endX - startX;
             if(Math.abs(dx) > 40){
-              // RTL: سحب يمين = السابق، يسار = التالي
+              // RTL: يمين = السابق، يسار = التالي
               if(dx > 0) go(index - 1);
               else go(index + 1);
             }
@@ -992,9 +1027,10 @@
           go(0);
           startAuto();
         }
-      }catch(e){}
+      }catch(e){
+        // لا شيء
+      }
     })();
   </script>
-
 </body>
 </html>
