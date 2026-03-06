@@ -6,10 +6,10 @@
 
   <title>Glame Chic | Box Beauté, Coffrets Maquillage & Luxury Beauty Brand in Oran Algeria</title>
   <meta name="description" content="Glame Chic à Oran, Algérie. Luxury beauty brand proposant box beauté, coffrets maquillage, palettes et collections féminines élégantes. Commande facile via WhatsApp, Instagram et TikTok." />
-  <meta name="keywords" content="Glame Chic, box beauté, coffret maquillage, box maquillage Algérie, makeup box Algeria, coffret maquillage Oran, palette maquillage, beauty brand Oran, luxury makeup Algeria, box beauté Oran" />
+  <meta name="keywords" content="Glame Chic, box beauté, coffret maquillage, box maquillage Algérie, makeup box Algeria, coffret maquillage Oran, palette maquillage, beauty brand Oran, luxury makeup Algeria, box beauté Oran, glame chic oran" />
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
-  <meta name="theme-color" content="#f7cad9" />
   <meta name="author" content="Glame Chic" />
+  <meta name="theme-color" content="#f7cad9" />
   <link rel="canonical" href="https://glamechic.com/" />
 
   <meta property="og:locale" content="fr_FR" />
@@ -77,7 +77,7 @@
       },
       {
         "@type":"FAQPage",
-        "@id":"https://glamechic.com/#faq",
+        "@id":"https://glamechic.com/#faq-schema",
         "mainEntity":[
           {
             "@type":"Question",
@@ -100,7 +100,7 @@
             "name":"Les photos produits sont-elles réelles ?",
             "acceptedAnswer":{
               "@type":"Answer",
-              "text":"Oui, la présentation met en avant des photos réelles des produits."
+              "text":"Oui, Glame Chic présente des photos réelles de produits."
             }
           }
         ]
@@ -113,21 +113,22 @@
     :root{
       --bg:#fff9fc;
       --white:#ffffff;
-      --text:#4b3841;
-      --muted:#7d6670;
-      --soft:#fdf1f6;
-      --pink:#f7ccd9;
-      --pink2:#f6bdd1;
-      --rose:#ff6ea9;
-      --gold:#e3be69;
-      --gold2:#f8e7b0;
-      --dark:#241b21;
+      --text:#4c3942;
+      --muted:#7c6670;
       --line:rgba(112,84,96,.12);
+      --soft:#fff4f8;
+      --pink:#f7cad9;
+      --pink2:#f3bfd0;
+      --rose:#ff70ab;
+      --gold:#e0bc67;
+      --gold2:#f7e6ae;
+      --dark:#221a1f;
       --shadow:0 18px 45px rgba(124,82,100,.14);
       --shadow-soft:0 10px 25px rgba(124,82,100,.09);
-      --radius:30px;
-      --radius-sm:20px;
-      --max:1200px;
+      --radius-xl:38px;
+      --radius-lg:30px;
+      --radius-md:22px;
+      --max:1220px;
     }
 
     *{box-sizing:border-box}
@@ -138,27 +139,93 @@
       color:var(--text);
       background:
         radial-gradient(circle at top left, rgba(255,255,255,.98), rgba(255,255,255,0) 28%),
-        radial-gradient(circle at bottom right, rgba(255,240,247,.9), rgba(255,240,247,0) 32%),
-        linear-gradient(135deg,#f7ced9 0%, #fffafc 28%, #fdeff5 60%, #f4cad8 100%);
+        radial-gradient(circle at bottom right, rgba(255,241,247,.9), rgba(255,241,247,0) 32%),
+        linear-gradient(135deg,#f7ced9 0%, #fffafc 30%, #fdf0f6 62%, #f3cad8 100%);
       line-height:1.8;
       overflow-x:hidden;
     }
 
-    img{max-width:100%;display:block}
-    a{text-decoration:none;color:inherit}
-    button,input{font:inherit}
+    body.no-scroll{
+      overflow:hidden;
+    }
+
+    img,video{
+      max-width:100%;
+      display:block;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
 
     .container{
       width:min(var(--max), calc(100% - 28px));
       margin-inline:auto;
     }
 
+    /* Splash */
+    #splash{
+      position:fixed;
+      inset:0;
+      z-index:99999;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,.95), rgba(255,255,255,0) 35%),
+        linear-gradient(135deg,#f7ced9 0%, #fffafc 30%, #fdeff5 65%, #f2c6d6 100%);
+      transition:opacity .7s ease, visibility .7s ease;
+    }
+
+    #splash.hide{
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+    }
+
+    .splash-inner{
+      text-align:center;
+      padding:32px 34px;
+      border-radius:34px;
+      background:rgba(255,255,255,.76);
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(10px);
+      min-width:min(90vw, 420px);
+    }
+
+    .splash-inner img{
+      width:118px;
+      height:118px;
+      object-fit:cover;
+      border-radius:28px;
+      margin:0 auto 16px;
+      background:#fff;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .splash-inner h2{
+      margin:0 0 6px;
+      font-family:"Playfair Display",serif;
+      font-size:clamp(2rem,4vw,3.2rem);
+      line-height:1;
+    }
+
+    .splash-inner p{
+      margin:0;
+      color:#8a6b77;
+      font-weight:800;
+      letter-spacing:.3px;
+    }
+
+    /* Topbar */
     .topbar{
       position:sticky;
       top:0;
       z-index:1000;
-      background:rgba(255,250,252,.78);
-      backdrop-filter:blur(16px);
+      background:rgba(255,250,252,.92);
+      backdrop-filter:blur(14px);
       border-bottom:1px solid var(--line);
     }
 
@@ -167,37 +234,33 @@
       align-items:center;
       justify-content:space-between;
       gap:16px;
-      padding:14px 0;
+      padding:12px 0;
     }
 
     .brand{
       display:flex;
       align-items:center;
-      gap:14px;
+      gap:12px;
       min-width:0;
     }
 
     .brand img{
-      width:68px;
-      height:68px;
+      width:62px;
+      height:62px;
       object-fit:cover;
-      border-radius:24px;
+      border-radius:22px;
       background:#fff;
       border:2px solid rgba(255,255,255,.95);
       box-shadow:var(--shadow-soft);
       flex-shrink:0;
     }
 
-    .brand-text{
-      min-width:0;
-    }
-
     .brand-text h1{
       margin:0;
       font-family:"Playfair Display",serif;
-      font-size:clamp(2rem,4vw,3.2rem);
+      font-size:clamp(2rem,4vw,3rem);
       line-height:1;
-      letter-spacing:.4px;
+      letter-spacing:.3px;
       white-space:nowrap;
     }
 
@@ -211,45 +274,47 @@
     .nav-links{
       display:flex;
       align-items:center;
-      gap:10px;
+      gap:8px;
       flex-wrap:wrap;
       justify-content:flex-end;
     }
 
     .nav-links a{
-      padding:10px 16px;
+      padding:9px 14px;
       border-radius:999px;
       border:1px solid var(--line);
-      background:rgba(255,255,255,.8);
+      background:rgba(255,255,255,.88);
       font-weight:800;
+      font-size:.95rem;
       color:var(--text);
-      transition:.25s ease;
       box-shadow:var(--shadow-soft);
+      transition:.25s ease;
     }
 
     .nav-links a:hover{
       transform:translateY(-2px);
       background:linear-gradient(135deg,#fff,#fff5d8);
-      border-color:rgba(227,190,105,.35);
+      border-color:rgba(224,188,103,.35);
     }
 
+    /* Hero */
     .hero{
-      padding:24px 0 16px;
+      padding:24px 0 18px;
     }
 
     .hero-wrap{
       display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:22px;
+      grid-template-columns:1.08fr .92fr;
+      gap:20px;
       align-items:stretch;
     }
 
     .hero-card,
     .hero-side{
-      background:rgba(255,255,255,.82);
+      background:rgba(255,255,255,.84);
       border:1px solid var(--line);
       box-shadow:var(--shadow);
-      border-radius:40px;
+      border-radius:var(--radius-xl);
       overflow:hidden;
       position:relative;
     }
@@ -265,7 +330,7 @@
       inset:auto -80px -80px auto;
       width:240px;
       height:240px;
-      background:radial-gradient(circle, rgba(227,190,105,.26), rgba(227,190,105,0));
+      background:radial-gradient(circle, rgba(224,188,103,.24), rgba(224,188,103,0));
       z-index:-1;
     }
 
@@ -275,7 +340,7 @@
       inset:-90px auto auto -90px;
       width:260px;
       height:260px;
-      background:radial-gradient(circle, rgba(255,110,169,.18), rgba(255,110,169,0));
+      background:radial-gradient(circle, rgba(255,112,171,.16), rgba(255,112,171,0));
       z-index:-1;
     }
 
@@ -283,10 +348,10 @@
       display:inline-flex;
       align-items:center;
       gap:8px;
-      background:linear-gradient(135deg,#fff,#fff4da);
-      border:1px solid rgba(227,190,105,.35);
+      background:linear-gradient(135deg,#fff,#fff5da);
+      border:1px solid rgba(224,188,103,.35);
       border-radius:999px;
-      color:#886a29;
+      color:#876a24;
       padding:10px 16px;
       font-weight:900;
       font-size:.95rem;
@@ -295,7 +360,7 @@
 
     .hero-card h2{
       margin:0 0 12px;
-      font-size:clamp(2.3rem,5vw,4.6rem);
+      font-size:clamp(2.35rem,5vw,4.8rem);
       line-height:1.12;
       font-weight:900;
       letter-spacing:-.5px;
@@ -304,7 +369,7 @@
     .hero-card p{
       margin:0;
       color:#6f5a63;
-      font-size:1.11rem;
+      font-size:1.1rem;
       font-weight:700;
       max-width:700px;
     }
@@ -321,25 +386,29 @@
       align-items:center;
       justify-content:center;
       gap:10px;
-      min-height:58px;
+      min-height:56px;
       padding:14px 22px;
       border-radius:18px;
       font-weight:900;
       border:none;
-      cursor:pointer;
       box-shadow:var(--shadow-soft);
       transition:.25s ease;
     }
 
-    .btn:hover{transform:translateY(-2px)}
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
     .btn-wa{
       color:#fff;
       background:linear-gradient(135deg,#25d366,#1aa64f);
     }
+
     .btn-ig{
-      color:#311e27;
-      background:linear-gradient(135deg,#ff66b1,#ff9b90,#f5cb72);
+      color:#301d26;
+      background:linear-gradient(135deg,#ff66b1,#ff9d92,#f5cb72);
     }
+
     .btn-tt{
       color:#fff;
       background:linear-gradient(135deg,#151519,#33333a);
@@ -353,7 +422,7 @@
     }
 
     .metric{
-      background:rgba(255,255,255,.88);
+      background:rgba(255,255,255,.9);
       border:1px solid var(--line);
       border-radius:22px;
       padding:16px;
@@ -366,7 +435,6 @@
       font-size:1.35rem;
       line-height:1;
       margin-bottom:4px;
-      color:var(--text);
     }
 
     .metric span{
@@ -379,19 +447,17 @@
       padding:14px;
       display:flex;
       flex-direction:column;
-      justify-content:space-between;
       gap:14px;
-      min-height:100%;
     }
 
     .slider{
       position:relative;
-      border-radius:30px;
+      border-radius:28px;
       overflow:hidden;
       background:#fff;
-      box-shadow:var(--shadow-soft);
       min-height:100%;
       flex:1;
+      box-shadow:var(--shadow-soft);
     }
 
     .slide{
@@ -401,21 +467,23 @@
       transition:opacity .7s ease;
     }
 
-    .slide.active{opacity:1}
+    .slide.active{
+      opacity:1;
+    }
 
     .slide img{
       width:100%;
       height:100%;
       object-fit:cover;
-      aspect-ratio:1/1.08;
+      aspect-ratio:1/1.1;
     }
 
     .slide-overlay{
       position:absolute;
       inset:auto 16px 16px 16px;
-      background:rgba(255,255,255,.88);
+      background:rgba(255,255,255,.9);
       border:1px solid var(--line);
-      border-radius:22px;
+      border-radius:20px;
       padding:14px 16px;
       box-shadow:var(--shadow-soft);
     }
@@ -423,7 +491,13 @@
     .slide-overlay strong{
       display:block;
       font-size:1rem;
-      margin-bottom:4px;
+      margin-bottom:3px;
+    }
+
+    .slide-overlay span{
+      color:var(--muted);
+      font-weight:700;
+      font-size:.92rem;
     }
 
     .slide-dots{
@@ -437,18 +511,19 @@
       width:10px;
       height:10px;
       border-radius:50%;
-      background:#e8d9df;
+      background:#ead9df;
       transition:.25s ease;
     }
 
     .dot.active{
-      width:26px;
+      width:28px;
       border-radius:999px;
       background:linear-gradient(135deg,var(--rose),var(--gold));
     }
 
+    /* Shared sections */
     section{
-      padding:16px 0;
+      padding:18px 0;
     }
 
     .section-header{
@@ -502,13 +577,13 @@
       inset:-40px auto auto -30px;
       width:110px;
       height:110px;
-      background:radial-gradient(circle, rgba(255,110,169,.14), rgba(255,110,169,0));
+      background:radial-gradient(circle, rgba(255,112,171,.14), rgba(255,112,171,0));
       pointer-events:none;
     }
 
     .glass-card h4{
       margin:0 0 8px;
-      font-size:1.28rem;
+      font-size:1.24rem;
       font-weight:900;
     }
 
@@ -518,11 +593,54 @@
       font-weight:700;
     }
 
+    /* Brand film */
+    .brand-film-card{
+      background:rgba(255,255,255,.88);
+      border:1px solid var(--line);
+      border-radius:34px;
+      padding:18px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .brand-film-card video{
+      width:100%;
+      display:block;
+      border-radius:26px;
+      background:#000;
+      max-height:680px;
+      object-fit:cover;
+    }
+
+    .brand-film-text{
+      padding:18px 8px 6px;
+      text-align:center;
+    }
+
+    .brand-film-text h4{
+      margin:0 0 8px;
+      font-size:1.35rem;
+      font-weight:900;
+    }
+
+    .brand-film-text p{
+      margin:0;
+      color:var(--muted);
+      font-weight:700;
+    }
+
+    .brand-film-text a{
+      color:var(--text);
+      font-weight:900;
+      text-decoration:underline;
+    }
+
+    /* Products */
     .seo-text{
-      max-width:900px;
+      max-width:920px;
       margin:0 auto 22px;
       text-align:center;
-      background:rgba(255,255,255,.78);
+      background:rgba(255,255,255,.8);
       border:1px solid var(--line);
       border-radius:28px;
       padding:18px 20px;
@@ -556,7 +674,7 @@
       transform:translateY(-4px);
     }
 
-    .product-card .img-wrap{
+    .img-wrap{
       position:relative;
       overflow:hidden;
       background:#fff;
@@ -579,7 +697,7 @@
       right:16px;
       background:linear-gradient(135deg,#fff8df,#f8e4a8);
       color:#876a24;
-      border:1px solid rgba(227,190,105,.38);
+      border:1px solid rgba(224,188,103,.38);
       padding:8px 12px;
       font-size:.82rem;
       font-weight:900;
@@ -604,12 +722,12 @@
 
     .product-top h4{
       margin:0;
-      font-size:1.18rem;
+      font-size:1.16rem;
       font-weight:900;
     }
 
     .product-top span{
-      color:#8c6e79;
+      color:#8b6d79;
       font-size:.9rem;
       font-weight:800;
       white-space:nowrap;
@@ -650,6 +768,7 @@
       border:1px solid rgba(155,63,114,.14);
     }
 
+    /* About / Reviews / Contact / FAQ */
     .about-grid,
     .reviews-grid,
     .contact-grid,
@@ -676,7 +795,7 @@
     .faq-card h4,
     .policy-card h4{
       margin:0 0 8px;
-      font-size:1.24rem;
+      font-size:1.22rem;
       font-weight:900;
     }
 
@@ -724,6 +843,18 @@
       word-break:break-word;
     }
 
+    .tiktok-line{
+      margin-top:14px;
+      color:var(--muted);
+      font-weight:800;
+    }
+
+    .tiktok-line a{
+      text-decoration:underline;
+      font-weight:900;
+      color:var(--text);
+    }
+
     .policy-card{
       margin-top:18px;
       text-align:center;
@@ -740,33 +871,19 @@
       inset:auto -25px -25px auto;
       width:120px;
       height:120px;
-      background:radial-gradient(circle, rgba(227,190,105,.16), rgba(227,190,105,0));
+      background:radial-gradient(circle, rgba(224,188,103,.16), rgba(224,188,103,0));
       pointer-events:none;
     }
 
+    /* Footer */
     footer{
-      padding:22px 0 110px;
+      padding:22px 0 88px;
       text-align:center;
       color:var(--muted);
       font-weight:900;
     }
 
-    .footer-links{
-      display:flex;
-      justify-content:center;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:10px;
-    }
-
-    .footer-links a{
-      padding:10px 14px;
-      border-radius:999px;
-      background:rgba(255,255,255,.8);
-      border:1px solid var(--line);
-      box-shadow:var(--shadow-soft);
-    }
-
+    /* Floating WhatsApp */
     .floating-wa{
       position:fixed;
       right:14px;
@@ -776,14 +893,15 @@
       align-items:center;
       justify-content:center;
       gap:10px;
-      padding:12px 18px;
+      padding:10px 16px;
       border-radius:999px;
       background:linear-gradient(135deg,#24cf63,#18aa50);
       color:#fff;
       font-weight:900;
-      font-size:.95rem;
-      box-shadow:0 16px 30px rgba(33,197,94,.28);
-      max-width:min(240px, calc(100% - 28px));
+      font-size:.92rem;
+      box-shadow:0 14px 26px rgba(33,197,94,.25);
+      max-width:220px;
+      min-height:50px;
     }
 
     .floating-wa span:last-child{
@@ -792,7 +910,8 @@
       text-overflow:ellipsis;
     }
 
-    @media (max-width: 1080px){
+    /* Responsive */
+    @media (max-width:1080px){
       .hero-wrap{
         grid-template-columns:1fr;
       }
@@ -803,23 +922,48 @@
       }
     }
 
-    @media (max-width: 760px){
+    @media (max-width:760px){
       .navbar{
         flex-direction:column;
-        align-items:stretch;
+        align-items:center;
+        padding:10px 0 12px;
       }
 
       .brand{
         justify-content:center;
       }
 
+      .brand img{
+        width:56px;
+        height:56px;
+      }
+
+      .brand-text h1{
+        font-size:2.1rem;
+        text-align:center;
+        white-space:nowrap;
+      }
+
+      .brand-text p{
+        text-align:center;
+        font-size:.95rem;
+      }
+
       .nav-links{
         justify-content:center;
+        gap:8px;
+        margin-top:6px;
+      }
+
+      .nav-links a{
+        padding:8px 13px;
+        font-size:.92rem;
       }
 
       .hero-card,
       .hero-side,
       .glass-card,
+      .brand-film-card,
       .product-card,
       .about-card,
       .review-card,
@@ -846,20 +990,6 @@
         grid-template-columns:1fr;
       }
 
-      .brand img{
-        width:62px;
-        height:62px;
-      }
-
-      .brand-text h1{
-        white-space:normal;
-        text-align:center;
-      }
-
-      .brand-text p{
-        text-align:center;
-      }
-
       .cta-row .btn{
         width:100%;
       }
@@ -868,11 +998,31 @@
         left:12px;
         right:12px;
         max-width:none;
+        min-height:48px;
+        padding:10px 14px;
+        font-size:.9rem;
+      }
+
+      .splash-inner{
+        padding:28px 22px;
+      }
+
+      .splash-inner img{
+        width:100px;
+        height:100px;
       }
     }
   </style>
 </head>
-<body>
+<body class="no-scroll">
+
+  <div id="splash">
+    <div class="splash-inner">
+      <img src="logo.png" alt="Glame Chic logo" />
+      <h2>Glame Chic</h2>
+      <p>Luxury Beauty Brand</p>
+    </div>
+  </div>
 
   <header class="topbar">
     <div class="container navbar">
@@ -902,7 +1052,7 @@
           <div class="eyebrow">Luxury Beauty Brand ✨</div>
           <h2>فخامة أنوثة...<br>بلمسة Glame Chic</h2>
           <p>
-            Glame Chic علامة تجميل راقية في وهران.  
+            Glame Chic علامة تجميل راقية في وهران.
             Découvrez une sélection élégante de <strong>box beauté</strong>, <strong>coffrets maquillage</strong>,
             palettes et collections féminines au style luxueux, doux et moderne.
           </p>
@@ -980,6 +1130,35 @@
             <h4>Style élégant pour l’Algérie</h4>
             <p>Une identité premium pensée pour les clientes à Oran et partout en Algérie.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="brand-film">
+      <div class="container">
+        <div class="section-header">
+          <span class="mini">Brand Film</span>
+          <h3>Découvrez l’univers Glame Chic</h3>
+          <p>
+            Un aperçu visuel raffiné de notre identité féminine, de nos box beauté
+            et de notre univers luxe à Oran, Algérie.
+          </p>
+        </div>
+
+        <div class="brand-film-card">
+          <video controls playsinline preload="metadata" poster="product1.jpg">
+            <source src="intro.mp4" type="video/mp4" />
+            Votre navigateur ne supporte pas la lecture vidéo.
+          </video>
+
+          <div class="brand-film-text">
+            <h4>Glame Chic — Luxury Beauty Experience</h4>
+            <p>
+              Regardez notre vidéo de présentation et découvrez une marque beauté élégante,
+              féminine et moderne. Suivez-nous aussi sur TikTok :
+              <a href="https://www.tiktok.com/@glame.chic" target="_blank" rel="noopener">tiktok.com/@glame.chic</a>
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -1086,6 +1265,11 @@
               <a href="https://www.instagram.com/glame_chic" target="_blank" rel="noopener">Instagram: @glame_chic</a>
               <a href="https://www.tiktok.com/@glame.chic" target="_blank" rel="noopener">TikTok: @glame.chic</a>
             </div>
+
+            <p class="tiktok-line">
+              TikTok officiel:
+              <a href="https://www.tiktok.com/@glame.chic" target="_blank" rel="noopener">https://www.tiktok.com/@glame.chic</a>
+            </p>
           </article>
 
           <article class="contact-card">
@@ -1144,13 +1328,6 @@
   <footer>
     <div class="container">
       <div>Glame Chic — Oran 2026 ©</div>
-      <div class="footer-links">
-        <a href="#top">Accueil</a>
-        <a href="#products">Produits</a>
-        <a href="#about">À propos</a>
-        <a href="#reviews">Avis</a>
-        <a href="#contact">Contact</a>
-      </div>
     </div>
   </footer>
 
@@ -1228,6 +1405,14 @@
       currentSlide = (currentSlide + 1) % slides.length;
       showSlide(currentSlide);
     }, 3500);
+
+    window.addEventListener("load", () => {
+      const splash = document.getElementById("splash");
+      setTimeout(() => {
+        splash.classList.add("hide");
+        document.body.classList.remove("no-scroll");
+      }, 1800);
+    });
   </script>
 </body>
 </html>
