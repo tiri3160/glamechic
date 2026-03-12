@@ -1,8 +1,8 @@
 # Glame Chic
 
-Brand: Glame Chic  
-Website: https://glamechic.com  
-Location: Oran, Algeria  
+Brand: Glame Chic
+Website: https://glamechic.com
+Location: Oran, Algeria
 Category: Beauty, Cosmetics, Makeup, Skincare
 
 Description:
@@ -13,8 +13,6 @@ https://glamechic.com/
 https://glamechic.com/about.html
 https://glamechic.com/beaute-maquillage-algerie.html
 https://glamechic.com/beauty-box-algeria.html
-https://glamechic.com/coffret-maquillage-oran.html
-https://glamechic.com/coffret-beaute-femme.html
 
 Social Profiles:
 https://www.instagram.com/glame_chic
