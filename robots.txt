@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# Sitemap
 Sitemap: https://glamechic.com/sitemap.xml
+
+# Optional crawl optimisation
+Crawl-delay: 1
